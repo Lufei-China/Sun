@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Don't forget to set system property
+-Dlog4j2.contextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector
+     to make all loggers asynchronous. -->
+<configuration packages="com.framework.loglevel.supply.log4j.core.appender" status="WARN">
+    <Properties>
+        <Property name="service">sun</Property>
+        <Property name="brokers">10.112.5.52:9092,10.112.5.53:9092,10.112.5.54:9092</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %T %t %-5level %logger{36} - %msg%n"/>
+        </Console>
+        <RollingFile name="RollingFile" fileName="./logs/sun.log"
+                     filePattern="./logs/sun-%d{yyyy-MM-dd}-%i.log">
+            <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
+            <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+        </RollingFile>
+        <InmobiKafka name="InmobiKafka" topic="fluentd-log" syncSend="false">
+            <InmobiJsonLayout compact="true" eventEol="true">
+                <KeyValuePair key="timestamp" value="$${date:yyyy-MM-dd'T'HH:mm:ss.SSSZ}"/>
+                <KeyValuePair key="indexname" value="lc-${service}-$${date:yyyyMMdd}"/>
+            </InmobiJsonLayout>
+            <Property name="bootstrap.servers">${brokers}</Property>
+            <Property name="batch.size">524288</Property>
+        </InmobiKafka>
+        <Async name="Async-Kafka" bufferSize="262144">
+            <AppenderRef ref="InmobiKafka"/>
+        </Async>
+    </Appenders>
+
+    <loggers>
+        <root level="INFO">
+            <appender-ref ref="Async-Kafka"/>
+            <appender-ref ref="Console"/>
+            <appender-ref ref="RollingFile"/>
+        </root>
+        <Logger name="org.apache.kafka" level="ERROR"/>
+        <Logger name="com.framework.starter" level="DEBUG"/>
+
+    </loggers>
+</configuration>

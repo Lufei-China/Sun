@@ -1,0 +1,779 @@
+#set($sdkGreaterThanEqualTo450 = $tool.sdkGreaterOrEquals(${htmlContext.sdkVersion}, "450"))
+#set($ns = "im_1011_")
+<html>
+<head>
+    <meta name="viewport" content="user-scalable=0, minimum-scale=1.0, maximum-scale=1.0, viewport-fit=cover"/>
+    #if($htmlContext.isShineEffect())
+        <link rel="stylesheet" type="text/css" href="https://prod-supply-bucket.oss-cn-beijing.aliyuncs.com/sdk/sdk/banner_template/shine_effect_20210629.css">
+        <style type="text/css">
+            .shine::after {
+                -webkit-animation-duration: $htmlContext.getShineAnimationDelay()s;
+                animation-duration: $htmlContext.getShineAnimationDelay()s;
+            }
+        </style>
+    #end
+    <style type="text/css">
+        html,body{
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            cursor: pointer;
+        }
+        #${ns}ad{
+            background: rgba(0,0,0,0.8);
+            height: 100%;
+            width: 100%;
+            position:absolute;
+            #if(${htmlContext.centreCreative})
+                display:table;
+            #end
+        }
+            #if(${htmlContext.centreCreative})
+            #${ns}p{
+                height: 100%;
+                width: 100%;
+                vertical-align:middle;
+            }
+            #end
+        #${ns}img{
+            border: 0;
+            height: 100%;
+        }
+        .${ns}beacon{
+            display: none;
+        }
+            #if($htmlContext.isEnableCustomCloseInt() && $htmlContext.getStaticInterstitialCloseDelay() == 0)
+            .iconFadeIn {
+                animation: fadeIn ease 0s;
+            }
+            #elseif($htmlContext.isEnableCustomCloseInt())
+            .iconFadeIn {
+                animation: fadeIn ease 3s;
+            }
+            #end
+
+            #if($htmlContext.isEnableCustomCloseInt())
+            @keyframes fadeIn {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+            #end
+    </style>
+</head>
+<body>
+    ####
+    ## Controller layer
+    ####
+    #if(${htmlContext.mraidPath})
+    <script type="text/javascript" src="${htmlContext.mraidPath}"></script>
+    #end
+    #if($htmlContext.omidEnabled)
+    <script type="text/javascript" src="${OMID_JS_SESSION_CLIENT_URL}"> </script>
+    <script type="text/javascript" src="${OMID_JS_SERVICE_URL}"> </script>
+    #end
+    #if($htmlContext.isLazyLoadingEnabledForInt())
+    <script src="https://prod-supply-bucket.oss-cn-beijing.aliyuncs.com/sdk/sdk/banner_template/postscribe_2.0.8.min.js"></script>
+    #end
+    #if($htmlContext.isInterstitial())
+    <script type="text/javascript" src="https://prod-supply-bucket.oss-cn-beijing.aliyuncs.com/sdk/sdk/banner_template/postscribe_2.0.8.min.js"></script>
+    #end
+    #if($htmlContext.isShineEffect())
+    <script type="text/javascript" src="https://prod-supply-bucket.oss-cn-beijing.aliyuncs.com/sdk/sdk/banner_template/animation_20210629.js"></script>
+    #end
+    #if($htmlContext.isPlayable() || $htmlContext.isSDKAdPod())
+    <script type="text/javascript" src="https://prod-supply-bucket.oss-cn-beijing.aliyuncs.com/sdk/sdk/banner_template/interaction_min_20210521.js"></script>
+        #if($htmlContext.isPlayable())
+        <script type="text/javascript" src="https://prod-supply-bucket.oss-cn-beijing.aliyuncs.com/sdk/sdk/banner_template/playable_icon_min_20210518.js"></script>
+        #end
+        #if($htmlContext.isSDKAdPod())
+        <script type="text/javascript" src="https://prod-supply-bucket.oss-cn-beijing.aliyuncs.com/sdk/sdk/banner_template/adPod_util_min20210521.js"></script>
+        <script type="text/javascript">
+            window['inmobi'] = window['inmobi'] || {};
+            var inmobi = window['inmobi'];
+            window['imraid'] = imraid;
+            window['mraid'] = mraid;
+            inmobi.skipDelay = $htmlContext.getPodsStaticIntSkipDelay();
+            inmobi.delayToShowNextAd = $htmlContext.getDelayToShowNextAd();
+            inmobi.skipDelayTimeForRewarded = $htmlContext.getPodsRewardedStaticIntSkipDelay();
+        </script>
+        #end
+    <script type="text/javascript">
+        window['inmobi'] = window['inmobi'] || {};
+        var inmobi = window['inmobi'];
+        inmobi.interactionInfo($htmlContext.isSDKAdPod(),$htmlContext.isPlayable(),$htmlContext.isCapturePlayableInteraction());
+        //handling swipe interaction to remove timeout inmobi.delayedNextAdControl in case there is any interaction
+            #if($htmlContext.isInterstitial())
+            document.addEventListener('touchstart', inmobi.handleTouchStart, false);
+            document.addEventListener('touchmove', inmobi.handleTouchMove, false);
+            #end
+    </script>
+    #end
+    #if($htmlContext.isEnableOverlay())
+    <script type="text/javascript" src="https://prod-supply-bucket.oss-cn-beijing.aliyuncs.com/sdk/sdk/banner_template/overlay_min_20210701.js"></script>
+    #end
+<script type='text/javascript'>
+        #if($htmlContext.omidEnabled)
+            #if($htmlContext.omid13)
+                #parse("viewability/omViewability13.vm")
+            #else
+                #parse("viewability/omViewability.vm")
+            #end
+        window['${ns}initOMIDTracking']();
+        #end
+    var closeAd = function(event) {
+        event.stopPropagation();
+        if (mraid && typeof (mraid.close) === "function") {
+            mraid.close()
+        }
+    };
+    window["closeAd"] = closeAd;
+    window.onerror = function (msg, url, lineNo) {
+        var label = "m:" + msg + ",l:" + lineNo + ",u:" + url;
+        #if($htmlContext.impOnBodyLoad && $htmlContext.isDv360Ad)
+                ${ns}fireBeacon("$JS_ESC_BEACON" + "?m=99&action=javascript-error_dv360&label" + label);
+        #else
+                ${ns}fireBeacon("$JS_ESC_BEACON" + "?m=99&action=javascript-error&label" + label);
+        #end
+    };
+    var ${ns}events = {
+        impressionBeacons: [
+            #if(${htmlContext.impressionTrackers})
+                #foreach(${impressionTracker} in ${htmlContext.impressionTrackers})
+                    '$tool.javascript(${impressionTracker})',
+                #end
+            #end
+        ],
+        onLoadBeacons: [
+            #if(${htmlContext.onLoadTrackers})
+                #foreach(${onLoadTracker} in ${htmlContext.onLoadTrackers})
+                    '$tool.javascript(${onLoadTracker})',
+                #end
+            #end
+        ],
+        clickBeacons: [
+            #if(${htmlContext.clickTrackers})
+                #foreach(${clickTracker} in ${htmlContext.clickTrackers})
+                    '$tool.javascript(${clickTracker})',
+                #end
+            #end
+        ]
+    };
+    var ${ns}isMraidPresent = function () {
+        return "undefined" !== typeof mraid;
+    };
+    var ${ns}isMraidViewablePresent = function() {
+        return ${ns}isMraidPresent() && typeof mraid.isViewable === "function";
+    };
+    var ${ns}fireBeacon = function (beaconUrl) {
+        if (null == beaconUrl) {
+            return;
+        }
+        var x = document.createElement("img");
+        x.setAttribute("src", beaconUrl);
+        x.className = "${ns}beacon";
+        document.body.appendChild(x);
+    };
+    var ${ns}fireBeacons = function (beaconUrls) {
+        for (var index = 0; index < beaconUrls.length; ++index) {
+                ${ns}fireBeacon(beaconUrls[index]);
+        }
+    };
+    var ${ns}impressionCallback = function() {
+        #if($htmlContext.isDv360Ad() && $htmlContext.getImpDelayInMs() > 0)
+                ${ns}fireCustomBeacon("dv360Imp")
+            setTimeout(function () {
+                    ${ns}fireBeacons(${ns}events.impressionBeacons);
+                #if($htmlContext.omidEnabled)
+                    window['${ns}trackOMIDEvents'](18);
+                #end
+            }, $htmlContext.getImpDelayInMs());
+        #else
+                ${ns}fireBeacons(${ns}events.impressionBeacons);
+            #if($htmlContext.omidEnabled)
+                window['${ns}trackOMIDEvents'](18);
+            #end
+        #end
+    };
+    var ${ns}fireImpressionBeaconOnBodyLoad = function () {
+        if (!${ns}impressionBeaconFired) {
+                ${ns}impressionCallback();
+            ## window.setTimeout(
+            ##		 function () {
+            ##			 var url = "$JS_ESC_BEACON" + "?m=99&action=1secAfterBodyLoadAndViewable";
+            ##				 ${ns}fireBeacon(url);
+            ##		 }, 1000);
+                ${ns}impressionBeaconFired = true;
+        }
+    };
+    var ${ns}canFireImpBeacons = false;
+    var ${ns}documentBodyLoaded = false;
+    var ${ns}impressionBeaconFired = false;
+    var ${ns}creativeUsedCustomClose = false;
+    var ${ns}timerControl;
+        #if($htmlContext.isEnableCustomCloseInt())
+        var ${ns}closeButtonFadeIn = true;
+        var ${ns}closeButtonFadeInDelay = $htmlContext.getStaticInterstitialCloseDelay();
+        var ${ns}closeBtnSize = "$htmlContext.getCloseButtonDim()";
+        var ${ns}closeAd = function(event) {
+            event.stopPropagation();
+            if (mraid && typeof (mraid.close) === "function") {
+                mraid.close()
+            }
+        };
+        if (mraid && typeof (mraid.useCustomClose) === "function") {
+            mraid.tempUseCustomClose = mraid.useCustomClose;
+            var tempCustomClose = function (...args) {
+                    ${ns}creativeUsedCustomClose = true;
+                    ${ns}fireCustomBeacon("creativeUsedCustomClose");
+                mraid.tempUseCustomClose(...args);
+            };
+            mraid.useCustomClose = tempCustomClose;
+        }
+        var ${ns}disableSdkClose = function () {
+            ##disable default close button
+            if (mraid && typeof (mraid.useCustomClose) === "function") {
+                mraid.tempUseCustomClose(true);
+            }
+            ## disableCloseRegion works on SDK >= 450
+            if (imraid && typeof(imraid.disableCloseRegion) === "function") {
+                imraid.disableCloseRegion(true);
+            }
+            if (imraid && typeof (imraid.disableBackButton) === "function") {
+                imraid.disableBackButton(true);
+            }
+        };
+        window['inmobi'] = window['inmobi'] || {};
+        var inmobi = window['inmobi'];
+            #if($htmlContext.isRewarded())
+            var ${ns}provideRewardedIncentive = function () {
+                if (imraid && typeof (imraid.incentCompleted) === "function") {
+                    imraid.incentCompleted($htmlContext.getIncentiveJSON());
+                        ${ns}fireCustomBeacon("incentiveJson");
+                }
+            }
+            #end
+        var ${ns}handleCloseBtn = function () {
+            ## when we have creativeUsedCustomClose as true dont show timer or close button
+            if (!${ns}creativeUsedCustomClose) {
+                if ($htmlContext.isRewarded()) {
+                    var ${ns}rewardedIncentiveDelay = 2;
+                    setTimeout(${ns}provideRewardedIncentive, ${ns}rewardedIncentiveDelay * 1000);
+                    var ${ns}timerDelay = 0;
+                    setTimeout(inmobi.showCloseTimerForRewarded(${ns}documentBodyLoaded,${ns}closeButtonFadeIn,${ns}closeButtonFadeInDelay,${ns}closeBtnSize), ${ns}timerDelay);
+                } else {
+                    inmobi.handleCloseBtnForNonRewarded(${ns}documentBodyLoaded,${ns}closeButtonFadeIn,${ns}closeButtonFadeInDelay,${ns}closeBtnSize);
+                }
+            }
+        }
+        #end
+    var ${ns}fireCustomBeacon = function (action, label) {
+        var url = "$JS_ESC_BEACON" + "?m=99";
+        if (action) {
+            url += "&action=" + action;
+        }
+        if (label) {
+            url += "&label=" + label;
+        }
+            ${ns}fireBeacon(url);
+    };
+    var ${ns}fireImpressionBeacons = function () {
+        #if($htmlContext.impOnBodyLoad)
+                ${ns}canFireImpBeacons = true;
+            if (${ns}documentBodyLoaded) {
+                    ${ns}fireImpressionBeaconOnBodyLoad();
+                ## var url = "$JS_ESC_BEACON" + "?m=99&action=mraidViewableAndBodyLoaded";
+                ##	 ${ns}fireBeacon(url);
+            }
+        #elseif(${htmlContext.isVCPM()})
+            window.setTimeout(function () { ${ns}impressionCallback();}, 1000 );
+        #else
+                ${ns}impressionCallback();
+        #end
+    };
+    var ${ns}fireClickBeacons = function() {
+            ${ns}fireBeacons(${ns}events.clickBeacons);
+    };
+    var ${ns}count = 0,
+            mraid = window.mraid;
+        #if(${htmlContext.isLpMetaMissing()})
+        var alreadyFiredLPBeacon = false;
+        var fireLPBeacon = function(url) {
+            if (alreadyFiredLPBeacon) return;
+            alreadyFiredLPBeacon = true;
+            var landingPageBeacon = "$JS_ESC_BEACON";
+            landingPageBeacon += "?m=122";
+            var data = {
+                "adid" : "$tool.jsInline($htmlContext.advertiserId)",
+                "cid" : "$tool.jsInline($htmlContext.creativeId)",
+                "lp" : url,
+                "ua" : "$tool.jsInline($htmlContext.userAgent)",
+                "ip" : "$tool.jsInline($htmlContext.userIPv4)"
+            };
+            landingPageBeacon += "&" + "data" + "=" + encodeURIComponent(JSON.stringify(data));
+                ${ns}fireBeacon(landingPageBeacon);
+        };
+        #end
+        #if($htmlContext.isInterstitial() && $htmlContext.isStaticIntAutoClose())
+        var ${ns}adEligibleToClose = false;
+        var ${ns}closeAdAfteClick = function () {
+            if (${ns}isMraidViewablePresent()) {
+                if(${ns}adEligibleToClose) {
+                    mraid.addEventListener("viewableChange", function (viewable) {
+                        if (viewable) {
+                            mraid.removeEventListener("viewableChange", arguments.callee);
+                            if (mraid && typeof (mraid.close) === "function") {
+                                mraid.close()
+                            }
+                        }
+                    });
+                } else{
+                    if(!($htmlContext.isSdkSupportsNativeTracking() && $htmlContext.isFireClickViaSDK())){
+                        document.addEventListener('click', ${ns}closeAdAfteClick)
+                    } else {
+                        imraid.addEventListener("onUserInteraction", ${ns}onUserInteractionHandler);
+                    }
+                }
+            }
+        }
+        #end
+    var ${ns}onViewable = function () {
+        #if(!($htmlContext.isSdkSupportsNativeTracking() && $htmlContext.isFireImpressionViaSDK())) {
+                ${ns}fireImpressionBeacons();
+        }
+        #end
+        ## if ($htmlContext.isSDKAdPod() && inmobi.checkHasNextAd() && $htmlContext.isInterstitial()) {
+        ## 	## adPod Flow, only for first and second ad, skip, skipall and timer is being shown
+        ## 	inmobi.setAdPodContext($htmlContext.isRewarded(), 1);
+        ## } else {
+        ## normal Flow
+        #if($htmlContext.isEnableCustomCloseInt())
+                ${ns}handleCloseBtn();
+        #end
+        ## }
+        if (typeof ${ns}fireCustomImpressionBeacons === "function") {
+                ${ns}fireCustomImpressionBeacons();
+        }
+        #if($htmlContext.isInterstitial() && $htmlContext.isStaticIntAutoClose())
+            setTimeout(function () {
+                    ${ns}adEligibleToClose = true
+            }, 2000);
+        #end
+        #if($htmlContext.isPlayable())
+            inmobi.showPlayableIcon(${ns}documentBodyLoaded);
+        #end
+        #if($htmlContext.isEnableOverlay())
+            var ${ns}overlayHeight = "$htmlContext.getOverlayHeight()";
+            var ${ns}preLoaderDelay = $htmlContext.getPreLoaderDelay();
+            inmobi.handleOverlay(${ns}documentBodyLoaded, ${ns}preLoaderDelay, ${ns}overlayHeight);
+        #end
+    };
+
+        #if($htmlContext.isShineEffect()) {
+            var ${ns}bannerAnimation = function () {
+                setTimeout(inmobi.enableShineEffect.bind(null, $htmlContext.getShineIterativeDelay(), $htmlContext.getShineAnimationDelay()), 500);
+            };
+            if (${ns}isMraidViewablePresent()) {
+                if (mraid.isViewable()) {
+                        ${ns}bannerAnimation();
+                } else {
+                    mraid.addEventListener("viewableChange", function (viewable) {
+                        if (viewable) {
+                            mraid.removeEventListener("viewableChange", arguments.callee);
+                                ${ns}bannerAnimation();
+                        }
+                    });
+                }
+            } else {
+                    ${ns}bannerAnimation();
+            }
+        }
+        #end
+
+    var ${ns}checkForMraid = function() {
+        if (${ns}isMraidPresent()) {
+            if (${ns}isMraidViewablePresent() && mraid.isViewable()) {
+                    ${ns}onViewable();
+            } else {
+                mraid.addEventListener("viewableChange", function(viewable) {
+                    if (viewable) {
+                        mraid.removeEventListener("viewableChange", arguments.callee);
+                            ${ns}onViewable();
+                    }
+                });
+            }
+            #if(${htmlContext.isLpMetaMissing()})
+                var events = [];
+                #if($htmlContext.isAndroid())
+                    events.push("openSuccessful", "openEmbeddedSuccessful");
+                #elseif($htmlContext.isIOS())
+                    events.push("openEmbeddedSuccessful", "openExternalSuccessful");
+                #end
+                events.forEach(function (e) {
+                    mraid.addEventListener(e, function (url) {
+                        fireLPBeacon(url);
+                    });
+                });
+            #end
+        } else {
+                ${ns}fireImpressionBeacons();
+        }
+    };
+        ## Handle impression beacons
+        ${ns}fireBeacons(${ns}events.onLoadBeacons);
+        #if(!$htmlContext.isShouldCheckForMraidOnBodyLoad())
+            #if($htmlContext.isTrueViewEnabled())
+                ${ns}checkForMraid();
+            #elseif($htmlContext.isInterstitial())
+                #if($htmlContext.isSDK())
+                    ${ns}checkForMraid();
+                #else
+                    ${ns}fireImpressionBeacons();
+                #end
+            #else
+                #if (!($htmlContext.isSdkSupportsNativeTracking() && $htmlContext.isFireImpressionViaSDK()))
+                    ${ns}fireImpressionBeacons();
+                #end
+            #end
+        #end
+        ## Handle click beacons
+    var ${ns}clickHandler = function () {
+        #if($htmlContext.isInterstitial() && $htmlContext.isStaticIntAutoClose())
+                ${ns}closeAdAfteClick();
+        #end
+        document.removeEventListener('click', ${ns}clickHandler);
+        if (typeof (_im_imai) !== "undefined" && typeof (_im_imai.onUserInteraction) !== "undefined") {
+            _im_imai.onUserInteraction();
+        }
+            ${ns}fireClickBeacons();
+    };
+    var openLandingPage = function (landingPage) {
+        if (typeof (imraid) !== "undefined" && typeof (imraid.openExternal) === "function") {
+            imraid.openExternal(landingPage);
+        } else if (mraid && typeof (mraid.open) === "function") {
+            mraid.open(landingPage);
+        } else {
+            window.open(landingPage, '_blank');
+        }
+    };
+    window['inmobi'] = window['inmobi'] || {};
+    var inmobi = window['inmobi'];
+    inmobi.openLandingPage = openLandingPage;
+        #if (!($htmlContext.isSdkSupportsNativeTracking() && $htmlContext.isFireClickViaSDK()))
+        document.addEventListener('click', ${ns}clickHandler);
+        #end
+
+        #if ($htmlContext.isSDKAdPod() && !$htmlContext.isInterstitial())
+        if (${ns}isMraidViewablePresent() && mraid.isViewable()) {
+            inmobi.handleBannerPods();
+        } else {
+            mraid.addEventListener("viewableChange", function (viewable) {
+                if (viewable) {
+                    mraid.removeEventListener("viewableChange", arguments.callee);
+                    inmobi.handleBannerPods();
+                }
+            });
+        }
+        #end
+
+    var ${ns}impressionRenderedHandler = function () {
+        #if (!$htmlContext.isFireImpressionViaSDK())
+                ${ns}fireImpressionBeacons();
+        #end
+    };
+
+        #if ($htmlContext.isSdkSupportsNativeTracking())
+        imraid.addEventListener("impressionRendered", ${ns}impressionRenderedHandler);
+        #end
+
+    var ${ns}onGestureDetectedHandler = function () {
+
+    };
+
+        #if ($htmlContext.isSdkSupportsNativeTracking())
+        imraid.addEventListener("onGestureDetected", ${ns}onGestureDetectedHandler);
+        #end
+
+    var ${ns}onUserLandingCompletedHandler = function () {
+
+    };
+
+        #if ($htmlContext.isSdkSupportsNativeTracking())
+        imraid.addEventListener("onUserLandingCompleted", ${ns}onUserLandingCompletedHandler);
+        #end
+
+    var ${ns}onUserInteractionHandler = function () {
+        document.removeEventListener('onUserInteraction', ${ns}onUserInteractionHandler);
+        #if($htmlContext.isInterstitial() && $htmlContext.isStaticIntAutoClose())
+                ${ns}closeAdAfteClick();
+        #end
+        if (typeof (_im_imai) !== "undefined" && typeof (_im_imai.onUserInteraction) !== "undefined") {
+            _im_imai.onUserInteraction();
+        }
+        #if(!$htmlContext.isFireClickViaSDK())
+                ${ns}fireClickBeacons();
+        #end
+    };
+
+        #if ($htmlContext.isSdkSupportsNativeTracking())
+        imraid.addEventListener("onUserInteraction", ${ns}onUserInteractionHandler);
+        #end
+
+
+    var clientFillFired = false;
+        ## Handle FireAdReady for Interstitials on SDK >= 450, FireAdReady for banner is supported on SDK>=903
+        #if(${sdkGreaterThanEqualTo450})
+        var ${ns}readyHandler = function () {
+            #if($htmlContext.isEnableCustomCloseInt())
+                    ${ns}disableSdkClose();
+            #end
+            #if($htmlContext.isFireM120Beacon())
+                if(!clientFillFired) {
+                        ${ns}fireBeacon("$JS_ESC_BEACON" + "?m=120");
+                    clientFillFired = true;
+                }
+            #end
+            _im_imai.fireAdReady();
+            window['im_1011_trackOMIDEvents'](99, {"action": "static-ad-load"});
+            _im_imai.removeEventListener("ready", ${ns}readyHandler);
+        };
+        _im_imai.addEventListener("ready", ${ns}readyHandler);
+        #end
+        ## This is added to ovveride default behavior of mraid.open. It will ensure that mraid.open when called opens
+        ## a new browser for both android and ios cases.
+        #if(${htmlContext.isOverrideMraidOpen()})
+        var ${ns}readyMraidHandler = function () {
+            mraid.removeEventListener("ready", ${ns}readyMraidHandler);
+            if (${ns}isMraidPresent()) {
+                if (typeof mraid.open === "function") {
+                    mraid.open = function (val) {
+                        #if(${htmlContext.isSDK()})
+                            _im_imai.openExternal(val);
+                        #else
+                            window.open(val);
+                        #end
+                    };
+                }
+            }
+        };
+        mraid.addEventListener("ready", ${ns}readyMraidHandler);
+        #end
+        ## The below is added to avoid JS error since SDK invokes the inmobi.recordEvent function. Refer to IX-877.
+        #if(${SDK500Onwards})
+        window['inmobi'] = window['inmobi'] || {};
+        window['inmobi'].recordEvent = function(id, params) {
+            var beacon = "${htmlContext.beaconUrl}";
+            beacon += "?m=" + id;
+            if (params) {
+                for (var key in params) {
+                    beacon += "&" + encodeURIComponent(key) + "=" + encodeURIComponent(params[key]);
+                }
+            }
+            if( id === "120" || id === 120) {
+                if(!clientFillFired) {
+                        ${ns}fireBeacon(beacon);
+                    clientFillFired = true;
+                }
+            } else {
+                    ${ns}fireBeacon(beacon);
+            }
+        };
+        #end
+</script>
+    ####
+    ## Presentation layer
+    ####
+    #if($htmlContext.isDv360Ad())
+    <script>
+        var interceptG = 'view?xai=';
+        Array.prototype.push = (function () {
+            var original = Array.prototype.push;
+            return function () {
+                if (typeof (arguments[0]) == 'object' && typeof (arguments[0].src) == 'string') {
+                    if (arguments[0].src.includes(interceptG)) {
+                        var url = "$JS_ESC_BEACON" + "?m=99&action=dv360CustomImp";
+                            ${ns}fireBeacon(url);
+                    }
+                }
+                return original.apply(this, arguments);
+            };
+        })();
+    </script>
+    #end
+<div id="${ns}ad">
+    #if(!$htmlContext.isLazyLoadingEnabledForInt())
+        #if(${htmlContext.centreCreative})
+        <div id="${ns}p">
+        #end
+        #if(${htmlContext.buildMorphAdMarkup})
+            #parse("morph/${morph.getContainerName()}.vm")
+        #elseif(${htmlContext.buildPartnerAdMarkup})
+            #parse("dcp/banner/${thirdPartyAdBuilder.containerName}.vm")
+            #parse("dcp/banner/customTrackerHandler.vm")
+        #else
+            <div id="${ns}child" style="display: inline-block; transform-origin: left top">
+                <a style="border:0px solid #f00;display:block;width:${htmlContext.image.width}px;height:${htmlContext.image.height}px; text-decoration:none;" href="${htmlContext.targetUrl}" target="_blank"><img src="${htmlContext.image.url}" border="0" width="${htmlContext.deviceScreenWidth}" height="${htmlContext.deviceScreenHeight}"/></a>
+            </div>
+        #end
+        #if(${htmlContext.centreCreative})
+        </div>
+        #end
+    #end
+</div>
+<script type='text/javascript'>
+    var creativeResize = function () {
+        var child_div = document.getElementById("${ns}child");
+        var parent_height = $htmlContext.adHeight;
+        var parent_width = $htmlContext.adWidth;
+        var child_height = parent_height;
+        var child_width = parent_width;
+        ## DSPs could be attaching beacons(img 1X1) in child div, do not consider it as creative for resize
+        if (child_div.offsetHeight > 1 && child_div.offsetWidth > 1) {
+            child_height = child_div.offsetHeight;
+            child_width = child_div.offsetWidth;
+        }
+        var aspect_width = child_width, aspect_height = child_height;
+        if (child_height > parent_height || child_width > parent_width) {
+            var parent_aspect = parent_width / parent_height, child_aspect = child_width / child_height,
+                    scale_factor = 1;
+            if (parent_aspect > child_aspect) {
+                scale_factor = (parent_height / child_height);
+                aspect_width = child_width * scale_factor;
+                aspect_height = parent_height;
+            } else {
+                scale_factor = (parent_width / child_width);
+                aspect_width = parent_width;
+                aspect_height = child_height * (scale_factor);
+            }
+            child_div.style.transform = "scale(" + scale_factor + "," + scale_factor + ")";
+            ## var url = "$JS_ESC_BEACON" + "?m=99&action=scale&label=" + child_div.style.transform;
+            ##	 ${ns}fireBeacon(url);
+        }
+        if (aspect_width < parent_width) {
+            child_div.style.marginLeft = (parent_width - aspect_width) / 2 + "px";
+        }
+        if (aspect_height < parent_height) {
+            child_div.style.marginTop = (parent_height - aspect_height) / 2 + "px";
+        }
+    };
+</script>
+    #if($htmlContext.isLazyLoadingEnabledForInt())
+    <script type='text/javascript'>
+        var loader = function() {
+            postscribe('#${ns}ad', "$tool.javascript('<a style="border:0px solid #f00;display:block;width:${htmlContext.image.width}px;height:${htmlContext.image.height}px; text-decoration:none;" href="${htmlContext.targetUrl}" target="_blank"><img src="${htmlContext.image.url}" border="0" width="${htmlContext.image.width}" height="${htmlContext.image.height}"/></a>')", {
+                done: function() {
+                    console.log('postscribe done');
+                },
+                error: function(e) {
+                    console.log('postscribe error', e);
+                }
+            });
+        };
+        var executeOnView = function(fun) {
+            if (${ns}isMraidPresent()) {
+                if (${ns}isMraidViewablePresent() && mraid.isViewable()) {
+                    fun();
+                } else {
+                    mraid.addEventListener("viewableChange", function(viewable) {
+                        if (viewable) {
+                            mraid.removeEventListener("viewableChange", arguments.callee);
+                            fun();
+                        }
+                    });
+                }
+            } else {
+                fun();
+            }
+        };
+        executeOnView(loader);
+    </script>
+    #end
+    #if(${htmlContext.isLpMetaMissing()})
+    <script type='text/javascript'>
+        for (var ls = document.links, numLinks = ls.length, i = 0; i < numLinks; i++) {
+            ls[i].addEventListener("click", function () {
+                fireLPBeacon(this.href);
+            });
+        }
+    </script>
+    #end
+    #if($htmlContext.omidEnabled)
+        #if(${htmlContext.omidTags})
+            #foreach(${omidTag} in ${htmlContext.omidTags})
+                ${omidTag}
+            #end
+        #end
+    #else
+        #if(${htmlContext.moatScripts})
+            #foreach(${moatScript} in ${htmlContext.moatScripts})
+                ${moatScript}
+            #end
+        #end
+        #if(${htmlContext.iasScripts})
+            #foreach(${iasScript} in ${htmlContext.iasScripts})
+                ${iasScript}
+            #end
+        #end
+    #end
+    #if(${htmlContext.genericScripts})
+        ${htmlContext.genericScripts}
+    #end
+    #if(${htmlContext.impressionTrackerScripts})
+        #foreach(${impressionTrackerScript} in ${htmlContext.impressionTrackerScripts})
+            ${impressionTrackerScript}
+        #end
+    #end
+
+    #if(!$htmlContext.isInterstitial())
+        #if($htmlContext.isSdkSupportsNativeTracking() && $htmlContext.isNewAdChoice())
+        <style type="text/css">#${ns}dw{-webkit-perspective:1000;perspective:1000;}#${ns}dw {position:relative;width:100vw;height:0vh;}#${ns}aci{width:28px;height:14px;opacity:.55;right:0;position:absolute;z-index:1000}#${ns}bi{-webkit-transform:rotateX(0);transform:rotateX(0);pointer-events:none}#${ns}ias,.${ns}f #${ns}bi{}.${ns}f #${ns}ias{display:block;right:30px;top:0px;z-index:1000;}.${ns}b{width:85px;height:14px;-webkit-transition:.5s;transition:.5s;-webkit-backface-visibility:hidden;backface-visibility:hidden}#${ns}ias{display:none;position:absolute !important}</style>
+        <script type="text/javascript">!function(){var t="${ns}",n=(window.mraid,window.imraid),e=function(t){return document.getElementById(t)},a=function(){var t='$tool.jsInline("$htmlContext.optOutUrl")';n&&"function"==typeof n.openWithoutTracker?n.openWithoutTracker(t):window.location.href=t},i=function(t,n,e){var a=0,i=0;if("tap"===n){var s,o=!1;t.addEventListener("touchstart",function(t){a=t.changedTouches[0].pageX,i=t.changedTouches[0].pageY,o=!0,s=!1}),t.addEventListener("touchmove",function(){s=!0}),t.addEventListener("touchend",function(t){var n=t.changedTouches[0].pageY,c=t.changedTouches[0].pageX,d=Math.abs(c-a),r=Math.abs(n-i);o&&(o=!1,s?10>=d&&10>=r&&e.call(null,t):e.call(null,t))})}else t.addEventListener(n,e)},s=function(n){n.stopPropagation();var o=e(t+"aci"),c=e(t+"ias");e(t+"dw").classList.add(t+"f"),o.removeEventListener("touchstart",s),i(o,"tap",a),i(c,"tap",a)};!function(){var n=document.createElement("div");n.setAttribute("id",t+"dw"),n.innerHTML="<img id='${ns}aci' src='https://prod-supply-bucket.oss-cn-beijing.aliyuncs.com/sdk/sdk/banner_template/adchoices070721.png'/><img id='${ns}ias' class='${ns}b' src='https://prod-supply-bucket.oss-cn-beijing.aliyuncs.com/sdk/sdk/banner_template/InmAdSettings.png'/>",document.body.appendChild(n);var a=e(t+"aci");i(a,"touchstart",s)}()}();</script>
+        #elseif($htmlContext.isSdkSupportsNativeTracking())
+        <style type="text/css">#${ns}dw{-webkit-perspective:1000;perspective:1000;top:34px}#${ns}dw,#${ns}dw img{position:relative;}#${ns}aci{width:14px;height:14px;opacity:.55;left:0;z-index:1000}#${ns}bi{-webkit-transform:rotateX(0);transform:rotateX(0);pointer-events:none}#${ns}ias,.${ns}f #${ns}bi{}.${ns}f #${ns}ias{display:block;bottom:4px;z-index:1000;}.${ns}b{width:85px;height:14px;-webkit-transition:.5s;transition:.5s;-webkit-backface-visibility:hidden;backface-visibility:hidden}#${ns}ias{display:none;position:absolute !important}</style>
+        <script type="text/javascript">!function(){var t="${ns}",n=(window.mraid,window.imraid),e=function(t){return document.getElementById(t)},a=function(){var t='$tool.jsInline("$htmlContext.optOutUrl")';n&&"function"==typeof n.openWithoutTracker?n.openWithoutTracker(t):window.location.href=t},i=function(t,n,e){var a=0,i=0;if("tap"===n){var s,o=!1;t.addEventListener("touchstart",function(t){a=t.changedTouches[0].pageX,i=t.changedTouches[0].pageY,o=!0,s=!1}),t.addEventListener("touchmove",function(){s=!0}),t.addEventListener("touchend",function(t){var n=t.changedTouches[0].pageY,c=t.changedTouches[0].pageX,d=Math.abs(c-a),r=Math.abs(n-i);o&&(o=!1,s?10>=d&&10>=r&&e.call(null,t):e.call(null,t))})}else t.addEventListener(n,e)},s=function(n){n.stopPropagation();var o=e(t+"aci"),c=e(t+"ias");e(t+"dw").classList.add(t+"f"),o.removeEventListener("touchstart",s),i(o,"tap",a),i(c,"tap",a)};!function(){var n=document.createElement("div");n.setAttribute("id",t+"dw"),n.innerHTML="<img id='${ns}aci' src='https://prod-supply-bucket.oss-cn-beijing.aliyuncs.com/sdk/sdk/banner_template/adR.svg'/><img id='${ns}ias' class='${ns}b' src='https://prod-supply-bucket.oss-cn-beijing.aliyuncs.com/sdk/sdk/banner_template/InmAdSettings.png' style='left:14px;'/>",document.body.appendChild(n);var a=e(t+"aci");i(a,"touchstart",s)}()}();</script>
+        #elseif($htmlContext.isNewAdChoice())
+        <style type="text/css">#${ns}dw{-webkit-perspective:1000;perspective:1000;}#${ns}dw {position:relative;width:100vw;height:0vh;}#${ns}aci{width:28px;height:14px;opacity:.55;right:0;position:absolute;z-index:1000}#${ns}bi{-webkit-transform:rotateX(0);transform:rotateX(0);pointer-events:none}#${ns}ias,.${ns}f #${ns}bi{}.${ns}f #${ns}ias{display:block;right:30px;top:0px;z-index:1000;}.${ns}b{width:85px;height:14px;-webkit-transition:.5s;transition:.5s;-webkit-backface-visibility:hidden;backface-visibility:hidden}#${ns}ias{display:none;position:absolute !important}</style>
+        <script type="text/javascript">!function(){var a="${ns}",b=window.mraid,c=function(a){return document.getElementById(a)},d=function(){var c='$tool.jsInline("$htmlContext.optOutUrl")',d=c||"https://www.inmobi.com/page/opt-out";b&&"function"==typeof b.open?b.open(d):window.location.href=d},e=function(a,b,c){var d=0,e=0;if("tap"===b){var f,g=!1;a.addEventListener("touchstart",function(a){d=a.changedTouches[0].pageX,e=a.changedTouches[0].pageY,g=!0,f=!1}),a.addEventListener("touchmove",function(){f=!0}),a.addEventListener("touchend",function(a){var b=a.changedTouches[0].pageY,h=a.changedTouches[0].pageX,i=Math.abs(h-d),j=Math.abs(b-e);g&&(g=!1,f?10>=i&&10>=j&&c.call(null,a):c.call(null,a))})}else a.addEventListener(b,c)},f=function(b){b.stopPropagation();var g=c(a+"aci"),h=c(a+"ias"),i=c(a+"dw");i.classList.add(a+"f"),g.removeEventListener("touchstart",f),e(g,"tap",d),e(h,"tap",d)},g=function(){var b="0px",d="https://prod-supply-bucket.oss-cn-beijing.aliyuncs.com/sdk/sdk/banner_template/adchoices070721.png",g="https://prod-supply-bucket.oss-cn-beijing.aliyuncs.com/sdk/sdk/banner_template/InmAdSettings.png",h="<img id='"+a+"aci' src='"+d+"'/>",i="<img id='"+a+"ias' class='"+a+"b' src='"+g+"'/>",j="";j=h,j+=i;var k=document.createElement("div");k.setAttribute("id",a+"dw"),k.innerHTML=j,document.body.appendChild(k);var l=c(a+"aci");e(l,"touchstart",f)};g()}();</script>
+        #else
+        <style type="text/css">#${ns}dw{-webkit-perspective:1000;perspective:1000;top:34px}#${ns}dw,#${ns}dw img{position:relative;}#${ns}aci{width:14px;height:14px;opacity:.55;left:0;z-index:1000}#${ns}bi{-webkit-transform:rotateX(0);transform:rotateX(0);pointer-events:none}#${ns}ias,.${ns}f #${ns}bi{}.${ns}f #${ns}ias{display:block;bottom:4px;z-index:1000;}.${ns}b{width:85px;height:14px;-webkit-transition:.5s;transition:.5s;-webkit-backface-visibility:hidden;backface-visibility:hidden}#${ns}ias{display:none;position:absolute !important}</style>
+        <script type="text/javascript">!function(){var a="${ns}",b=window.mraid,c=function(a){return document.getElementById(a)},d=function(){var c='$tool.jsInline("$htmlContext.optOutUrl")',d=c||"https://www.inmobi.com/page/opt-out";b&&"function"==typeof b.open?b.open(d):window.location.href=d},e=function(a,b,c){var d=0,e=0;if("tap"===b){var f,g=!1;a.addEventListener("touchstart",function(a){d=a.changedTouches[0].pageX,e=a.changedTouches[0].pageY,g=!0,f=!1}),a.addEventListener("touchmove",function(){f=!0}),a.addEventListener("touchend",function(a){var b=a.changedTouches[0].pageY,h=a.changedTouches[0].pageX,i=Math.abs(h-d),j=Math.abs(b-e);g&&(g=!1,f?10>=i&&10>=j&&c.call(null,a):c.call(null,a))})}else a.addEventListener(b,c)},f=function(b){b.stopPropagation();var g=c(a+"aci"),h=c(a+"ias"),i=c(a+"dw");i.classList.add(a+"f"),g.removeEventListener("touchstart",f),e(g,"tap",d),e(h,"tap",d)},g=function(){var b="14px",d="https://prod-supply-bucket.oss-cn-beijing.aliyuncs.com/sdk/sdk/banner_template/adR.svg",g="https://prod-supply-bucket.oss-cn-beijing.aliyuncs.com/sdk/sdk/banner_template/InmAdSettings.png",h="<img id='"+a+"aci' src='"+d+"'/>",i="<img id='"+a+"ias' class='"+a+"b' src='"+g+"' style='left:"+b+";'/>",j="";j=h,j+=i;var k=document.createElement("div");k.setAttribute("id",a+"dw"),k.innerHTML=j,document.body.appendChild(k);var l=c(a+"aci");e(l,"touchstart",f)};g()}();</script>
+        #end
+    #else
+        #if($htmlContext.isSdkSupportsNativeTracking())
+        <style type="text/css">#${ns}dw{-webkit-perspective:1000;perspective:1000;z-index:1000;outline-color:transparent;-webkit-tap-highlight-color:transparent}#${ns}dw,#${ns}dw img{position:absolute;bottom:0;height:14px}#${ns}aci{width:14px;z-index:1005;-webkit-transition:transform .5s;transition:transform .5s}#${ns}bi{width:85px;-webkit-transform:rotateX(0);transform:rotateX(0)}#${ns}ias{width:60px;display:none;}.${ns}f #${ns}bi{-webkit-transform:rotateX(180deg);transform:rotateX(180deg)}.${ns}f #${ns}ias{display:block;}.${ns}b{left:14px;-webkit-transition:.5s;transition:.5s;-webkit-backface-visibility:hidden;backface-visibility:hidden;z-index:1005}</style>
+        <script type="text/javascript">!function(){var t="${ns}",n=(window.mraid,window.imraid),e=function(t){return document.getElementById(t)},a=function(t){return t.replace(/^https?/,"https")},i=function(){var t='$tool.jsInline("$htmlContext.optOutUrl")';n&&"function"==typeof n.openWithoutTracker?n.openWithoutTracker(t):window.location.href=t},o=function(t,n,e){var a=0,i=0;if("tap"===n){var o,s=!1;t.addEventListener("touchstart",function(t){t.stopPropagation(),a=t.changedTouches[0].pageX,i=t.changedTouches[0].pageY,s=!0,o=!1}),t.addEventListener("touchmove",function(t){t.stopPropagation(),o=!0}),t.addEventListener("touchend",function(t){t.stopPropagation();var n=t.changedTouches[0].pageY,c=t.changedTouches[0].pageX,d=Math.abs(c-a),r=Math.abs(n-i);s&&(s=!1,o?10>=d&&10>=r&&e.call(null,t):e.call(null,t))})}else t.addEventListener(n,e)};!function(){var n=a("https://prod-supply-bucket.oss-cn-beijing.aliyuncs.com/sdk/sdk/banner_template/adR.svg"),s=a("https://prod-supply-bucket.oss-cn-beijing.aliyuncs.com/sdk/sdk/banner_template/AdSettings.png"),c=!1,d="<img id='"+t+"ias' class='"+t+"b' src='"+s+"'/>",r="";r=("<img id='"+t+"aci' src='"+n+"' style='left:#l#px'/>").replace("#l#",0),r+=d;var u=document.createElement("div");u.setAttribute("id",t+"dw"),u.innerHTML=r,document.body.appendChild(u);var p=e(t+"aci");o(p,"tap",function(){c?i():(function(){var n=e(t+"aci"),a=e(t+"ias"),s=e(t+"dw");n.style.webkitTransform="",n.style.transform="",s.classList.add(t+"f"),o(a,"tap",i)}(),c=!0)}),u.addEventListener("click",function(){})}()}();</script>
+        #else
+        <style type="text/css">#${ns}dw{-webkit-perspective:1000;perspective:1000;z-index:1000;outline-color:transparent;-webkit-tap-highlight-color:transparent}#${ns}dw,#${ns}dw img{position:absolute;bottom:0;height:14px}#${ns}aci{width:14px;z-index:1005;-webkit-transition:transform .5s;transition:transform .5s}#${ns}bi{width:85px;-webkit-transform:rotateX(0);transform:rotateX(0)}#${ns}ias{width:60px;display:none;}.${ns}f #${ns}bi{-webkit-transform:rotateX(180deg);transform:rotateX(180deg)}.${ns}f #${ns}ias{display:block;}.${ns}b{left:14px;-webkit-transition:.5s;transition:.5s;-webkit-backface-visibility:hidden;backface-visibility:hidden;z-index:1005}</style>
+        <script type="text/javascript">!function(){var a="${ns}",b=window.mraid,c=function(a){return document.getElementById(a)},d=function(a){var b="https",c=/^https?/;return a.replace(c,b)},e=function(){var c='$tool.jsInline("$htmlContext.optOutUrl")',d=c||"https://www.inmobi.com/page/opt-out";b&&"function"==typeof b.open?b.open(d):window.location.href=d},f=function(a,b,c){var d=0,e=0;if("tap"===b){var f,g=!1;a.addEventListener("touchstart",function(a){a.stopPropagation(),d=a.changedTouches[0].pageX,e=a.changedTouches[0].pageY,g=!0,f=!1}),a.addEventListener("touchmove",function(a){a.stopPropagation(),f=!0}),a.addEventListener("touchend",function(a){a.stopPropagation();var b=a.changedTouches[0].pageY,h=a.changedTouches[0].pageX,i=Math.abs(h-d),j=Math.abs(b-e);g&&(g=!1,f?10>=i&&10>=j&&c.call(null,a):c.call(null,a))})}else a.addEventListener(b,c)},g=function(){var b=c(a+"aci"),d=c(a+"ias"),g=c(a+"dw"),h="";b.style.webkitTransform=h,b.style.transform=h,g.classList.add(a+"f"),f(d,"tap",e)},h=function(){var b=d("https://prod-supply-bucket.oss-cn-beijing.aliyuncs.com/sdk/sdk/banner_template/adR.svg"),h=d("https://prod-supply-bucket.oss-cn-beijing.aliyuncs.com/sdk/sdk/banner_template/AdSettings.png"),i=!1,j="<img id='"+a+"aci' src='"+b+"' style='left:#l#px'/>",k="<img id='"+a+"ias' class='"+a+"b' src='"+h+"'/>",l="";l=j.replace("#l#",0),l+=k;var m=document.createElement("div");m.setAttribute("id",a+"dw"),m.innerHTML=l,document.body.appendChild(m);var n=c(a+"aci");f(n,"tap",function(){i?e():(g(),i=!0)}),m.addEventListener("click",function(){})};h()}();</script>
+        #end
+    #end
+
+<script type="application/javascript">
+    var bodyOnLoad = function () {
+            ${ns}documentBodyLoaded = true;
+        if ($htmlContext.isShouldCheckForMraidOnBodyLoad()) {
+                ${ns}checkForMraid();
+        }
+        if(!$htmlContext.isDisableCreativeResize()) {
+            creativeResize();
+        }
+        if($htmlContext.buildMorphAdMarkup) {
+            resizeMorphAssets();
+        }
+        if (${ns}isMraidViewablePresent() && mraid.isViewable()) {
+            ## var url = "$JS_ESC_BEACON" + "?m=99&action=mraidViewableAndBodyLoaded";
+            ##	 ${ns}fireBeacon(url);
+        }
+        if (${ns}canFireImpBeacons) {
+                ${ns}fireImpressionBeaconOnBodyLoad();
+        }
+    };
+    document.body.onload = bodyOnLoad </script>
+</body>
+</html>
+

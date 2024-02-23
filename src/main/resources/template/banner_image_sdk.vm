@@ -1,0 +1,150 @@
+#if($model.image.url.endsWith(".gif"))
+	#set($primaryViewassetType = "GIF")
+#else
+	#set($primaryViewassetType = "image")
+#end
+
+#set ($primaryViewWidth=$model.parentViewWidth)
+#set ($primaryViewHeight = $math.ceil($math.div($primaryViewWidth, $model.image.aspectRatio)))
+{
+	"ads": [{
+		"pubContent": {
+			"version": 0.1,
+			"orientation": "portrait",
+			"styleRefs": {
+				"cardContainerStyle": {
+					"geometry": [0.0, 0.0, 0.0, 0.0]
+				}
+			},
+			"passThroughJson": {
+			},
+			"adContent": {
+				"title": "$model.title",
+                "description": "$model.description",
+                "iconUrl": "$model.iconUrl",
+                "ctaText": "$model.ctaText",
+                "rating": "",
+                "landingPageUrl": "$model.itemUrl",
+                "isApp": $model.app
+				#if($model.originId != "" && $model.originId)
+                	,"originId": "$model.originId"
+				#else
+				#end
+			},
+			"trackers": $model.ctaTrackers,
+			"eventTrackers": "$model.allTrackers",
+			"onClick": {
+				"itemUrl": "$model.itemUrl",
+                "openMode": "$model.openMode",
+				"appBundleId":"$model.packageName",
+				"appName":"$model.appName",
+				"adName":"$model.adName",
+                "fallbackUrl": "$model.fallbackUrl"
+				#if($model.openMode.endsWith("SKSTORE") && $model.skanVersion != "")
+					,"skAdNetworkParams":{
+						"version": "$model.skanVersion",
+						"network": "$model.network",
+						"campaign": "$model.campaign",
+						"nonce": "$model.nonce",
+						"sourceapp": "$model.sourceapp",
+						"itunesitem": "$model.itunesitem",
+						"timestamp": "$model.timestamp",
+						"ctaSignature": "$model.ctaSignature",
+						"vtaSignature" : "$model.vtaSignature"
+					}
+				#else
+				#end
+			},
+			"rootContainer": {
+				"assetName": "root",
+				"assetType": "container",
+				"assetStyle": {
+					"geometry": [
+					    0.0,
+                        0.0,
+                        $primaryViewWidth,
+                        $primaryViewHeight
+                     ],
+					"backgroundColor": "#00000000"
+				},
+				"trackers": $model.deckTrackers,
+				"assetValue": [{
+					"assetName": "PrimaryViewImage",
+					"assetType": "$primaryViewassetType",
+					"preload": false,
+					"assetStyle": {
+						"contentMode": "aspectFit",
+						"geometry": [
+						    0.0,
+						    0.0,
+						    $primaryViewWidth,
+                            $primaryViewHeight
+                            ]
+					},
+					"assetValue": ["$model.image.url"],
+					"assetOnclick": {
+						"itemUrl": "$model.itemUrl",
+                        "openMode": "$model.openMode",
+                        "fallbackUrl": "$model.fallbackUrl"
+						#if($model.openMode.endsWith("SKSTORE") && $model.skanVersion != "")
+							,"skAdNetworkParams":{
+								"version": "$model.skanVersion",
+								"network": "$model.network",
+								"campaign": "$model.campaign",
+								"nonce": "$model.nonce",
+								"sourceapp": "$model.sourceapp",
+								"itunesitem": "$model.itunesitem",
+								"timestamp": "$model.timestamp",
+								"ctaSignature": "$model.ctaSignature",
+								"vtaSignature" : "$model.vtaSignature"
+							}
+						#else
+						#end
+					},
+					"trackers":$model.ctaTrackers
+				},
+                {
+                    "assetName": "ad_choices_button",
+                    "assetType": "image",
+                    "assetStyle": {
+                          "geometry": [
+                              10,
+                              $math.sub($primaryViewHeight, 25),
+                              103,
+                              20
+                          ]
+                    },
+                    "assetValue": [
+                       "https://prod-supply-bucket.oss-cn-beijing.aliyuncs.com/sdk/sdk/infeed_template/ea5cff559e4246c19dea4f6012c69c80.png"
+                       ],
+                       "assetOnclick": {
+                            "itemUrl": "https://www.inmobi.com/adModel33-opt-out?i=%7B%22O1%22%3A%2250c9cad5392147311f8d84b36a03e044878d0b34%22%2C%22UM5%22%3A%2239779413156e7f026304eab8489c0566%22%7D",
+                            "openMode": "EXTERNAL"
+                       }
+                }]
+			}
+		},
+		"markupType": "inmobiJson",
+		"expiry": 9000,
+		"metaInfo": {
+			"creativeType": "nonvideo",
+			"iasEnabled": false,
+			"adMasterSDKInfo": {
+				"enabled": false
+			},
+			"omsdkInfo": {
+				"omidEnabled": false,
+				"customReferenceData": "",
+				"isolateVerificationScripts": false
+			},
+			"disableIMViewability": false
+		},
+		"creativeId": "$model.encryptedAdId",
+        "impressionId": "$model.requestId",
+		"hasBidEncrypt":  $model.hasBidEncrypt,
+		"bidPassthrough": "$model.bidPassthrough",
+		"bidSharing": $model.bidSharing,
+        "bid": "$model.encryptedBid"
+        }],
+    "requestId":"$model.requestId"
+}

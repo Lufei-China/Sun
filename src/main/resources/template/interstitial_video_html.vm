@@ -1,0 +1,3808 @@
+#set ($hash='#')
+#set ($isPod = false)
+#set ($isSdkPod = false)
+
+#set ($modeText = '查看详情')
+#set ($modeStr = $model.openMode)
+#if($modeStr=="DOWNLOAD")
+    #set($modeText = '立即下载')
+#end
+
+
+##    for single ad
+#set($secure = false)
+## html头部
+${first.prefix}
+
+#set ($adChoicesUrl = 'https://www.inmobi.com/ad-opt-out?i=%7B%7D')
+#set ($supplyWidth = $ad.supplyWidth)
+#set ($supplyHeight = $ad.supplyHeight)
+#set ($rewarded = true)
+#set ($maxPodDuration = 90901)
+#set ($vpaidDisabled = false)
+#set ($sdkVersion = 'i917')
+#set ($soundOn = false)
+#set ($viewabilityEnabledMacro = $ad.creativeList.get(0).viewabilityPartnerListToEnableJs)
+#set ($omidEnabled = false)
+#set ($skipDelay = '2')
+#set ($closeInsteadSkip = true)
+#set ($creativeList =$ad.creativeList)
+#set ($autoClose = false)
+#set ($endCardCloseDelaySec = 10)
+#set ($experience = '1')
+#set ($rvExpEnabled = true)
+#set ($rvExpScale = '50.5')
+#set($incentiveJson = $tool.jsInline("{}"))
+#set ($skOverlayList = [])
+$skOverlayList.add($ad.skOverlayMeta)
+#set($ctrSrc = "https://prod-supply-bucket.oss-cn-beijing.aliyuncs.com/sdk/sdk/700/view.png")
+
+##VMEND##
+<script src="https://prod-supply-bucket.oss-cn-beijing.aliyuncs.com/sdk/sdk/inmobiVideo.28_July_2020_CAS6841.js" type="text/javascript"></script>
+<html><head><style type="text/css" id="adStyles">body,html{width:100%;height:100%;overflow:hidden;font-family:Helvetica}.ad_hidden{display:none}video{background:url(https://prod-supply-bucket.oss-cn-beijing.aliyuncs.com/sdk/sdk/play.svg) center center no-repeat ${hash}000}.ad_pg1{position:absolute;height:100%;width:100%;top:0}${hash}ad_vpaid{width:100%;height:100%;position:relative;top:50%;left:50%;transform:translate(-50%,-50%)}.ad_pg2{position:absolute;height:100%;width:100%;top:0}${hash}ad-cont{width:100%;height:100%;background-color:${hash}000}${hash}ad_pg{-webkit-transform:translate(-50%,-50%);text-align:center;width:100%;height:100%;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}.vol-overlay{position:absolute;top:0;width:100%;height:100%}.endcard-cta{pointer-events:none;background-color:${hash}000}.ad_video,.endcard-img,.vidcta-hs{width:100%;height:100%;object-fit:contain}.endcard-cta{position:absolute;top:0;width:300px;height:170px}.ad_fi{visibility:visible;opacity:1}.ad_fo{visibility:hidden;opacity:0}.dummy-div{width:0;height:0}.vid-replay{cursor:pointer;top:70px;width:40px;height:40px;position:absolute}.vid-replay img{display:block;height:100%;width:100%;pointer-events:none}.cta-btn{height:30px;display:inline-block;margin:auto 0}.endCard-cta-btn{height:384px;width:100%;display:inline-block;position:fixed;bottom:0;left:0;background:${hash}fff;border-radius:10px 10px 0 0;z-index:2147483647;-webkit-border-radius:10px 10px 0 0;-moz-border-radius:10px 10px 0 0;-ms-border-radius:10px 10px 0 0;-o-border-radius:10px 10px 0 0}.endCard-logo{width:88px;height:88px;margin:68px auto 18px;border-radius:10px}.endCard-boxTitle{color:${hash}333;font-size:17px;margin:0 auto;width:88px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.endCard-boxDesc{color:${hash}888;font-size:14px;width:70%;margin:8px auto 0;text-align:center;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:3;line-clamp:3;-webkit-box-orient:vertical}.endCard-boxbtn{width:80%;margin:44px auto 0;height:40px;border-radius:5px;-webkit-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;color:${hash}fff;line-height:40px;background:${hash}DE4345}.block-1{width:100%;height:100%}.block-2{height:120px;position:fixed;z-index:2147483647;bottom:14px;left:50%;transform:translateX(-50%);-webkit-transform:translateX(-50%);-moz-transform:translateX(-50%);-ms-transform:translateX(-50%);-o-transform:translateX(-50%)}.block-2 .inmobiLogo{width:33px;height:13px;margin:0;position:absolute;left:3px;top:0}.block-2 .videoCard-cta-btn{height:60px;padding:20px;background:${hash}fff;border-radius:10px;display:flex;flex-direction:row;margin-top:20px}.videoCard-cta-btn .endCard-logo{width:60px;height:60px;border-radius:10px;margin:0}.videoCard-cta-btn .videotext{width:108px;margin-left:13px}.videoCard-cta-btn .videoTitle{font-size:16px;color:${hash}333;text-align:left;margin:0;font-weight:600;width:88px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.videoCard-cta-btn .videodesc{width:108px;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;color:${hash}888;font-size:13px;margin:3px 0 0;line-height:19px;text-align:left}.videoCard-cta-btn .cta-btn{width:90px;height:34px;margin:15px 0;background:${hash}DE4345;color:${hash}fff;font-size:14px;font-weight:500;text-align:center;line-height:34px;border-radius:5px;-webkit-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px}.block-2 *{pointer-events:none}.ad_choices{width:150px;position:absolute;left:0;bottom:0;z-index:100}.ad_choices_icon{bottom:0;display:inline-block;width:30px;height:100%;padding-left:0}.ad_choices_icon img{width:50%;object-fit:contain;padding-left:5px;pointer-events:none}.ad_choices_text{background:url(https://prod-supply-bucket.oss-cn-beijing.aliyuncs.com/sdk/sdk/white.png);position:absolute;left:2px;bottom:0;display:inline-block;width:55px;margin:0 auto;padding:5px;height:12px;font-size:12px}.block-4{position:absolute;left:2px;top:0;display:inline-block;width:40px;margin:0 auto;padding:0;height:40px;z-index:2147483647}.video-close-btn{position:absolute;left:2px;top:0;display:inline-block;width:25px;margin:0 auto;padding:0;height:25px;z-index:100}.block-5{position:absolute;width:32px;height:32px;right:20px;top:20px;z-index:2899999999}.block-6{position:absolute;width:33px;height:40px;z-index:2147483647;bottom:100%;top:0;right:0}.icons{height:100%;width:100%}.ad_choices_text img{width:100%;position:absolute;top:50%;left:50%;-webkit-transform:translateX(-50%) translateY(-50%);transform:translateX(-50%) translateY(-50%);object-fit:contain;pointer-events:none}.ad_choices_div_trans{-webkit-transition:left .5s ease-out;transition:left .5s ease-out;left:0}.hide{display:none}.endCardBackground,.endCardImage{position:relative;height:100%;width:100%}.ec-img{padding:0;display:block;margin:0 auto;height:100%;width:100%}.ec-img body{margin:0}.pulseEffect{box-shadow:0 0 rgba(0,0,0,1);transform:scale(1);animation:pulse 1s infinite}.timerWrapper{border-radius:5px 0 0 5px;height:22px;position:absolute;z-index:100;right:49px;top:20px;padding:5px 10px;line-height:22px;font-size:12px;background:rgba(0,0,0,.5);-webkit-border-radius:5px 0 0 5px;-moz-border-radius:5px 0 0 5px;-ms-border-radius:5px 0 0 5px;-o-border-radius:5px 0 0 5px}.timerCount{text-align:center;color:${hash}fff;display:block;line-height:1;vertical-align:middle;margin-top:2px;font:12px Helvetica,Verdana,Tahoma}@keyframes pulse{0%{transform:scale(0.95);box-shadow:0 0 rgba(0,0,0,.7)}70%{transform:scale(1.15);box-shadow:0 5px 0 0 transparent}100%{transform:scale(0.95);box-shadow:0 0 transparent}}:root{--fadein-builder:fadeIn ease 3s}.iconFadeIn{animation:var(--fadein-builder)}@keyframes fadeIn{0%{opacity:0}100%{opacity:1}}.modal{display:none;position:fixed;z-index:1;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgba(0,0,0,.5)}.modal-content{flex-direction:column;display:flex;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;background-color:${hash}fff;border-radius:10px;margin:auto;border:1px solid ${hash}888;width:294px;height:182px;-webkit-border-radius:10px;-moz-border-radius:10px;-ms-border-radius:10px;-o-border-radius:10px}.modal-body p{margin:39px auto 20px;width:88%;text-align:center;color:${hash}333;font-size:14px}.clearfix{width:100%}.btn{width:240px;height:40px;outline:0;border-radius:10px;-webkit-border-radius:10px;-moz-border-radius:10px;-ms-border-radius:10px;-o-border-radius:10px;margin:0 auto;font-size:14px;border:0}${hash}continueBtn{background:${hash}DE4345;color:${hash}fff}${hash}skipBtn{background-color:${hash}fff;color:${hash}999;margin-top:8px}</style></head><body><div id="ad-cont" class="ad_hidden"><div id="ad_pg"><div id="commonElements"><div id="skip-close"><div class="block-4 iconsToHide hide" id="skip-btn"><img class="icons" data-action="skipVideo" src="https://prod-supply-bucket.oss-cn-beijing.aliyuncs.com/sdk/sdk/skip.svg"></div><div class="block-5 iconsToHide" id="ecCloseBtn"><img class="icons" id="ecCloseBtnIcon" data-action="closeAd" src="https://prod-supply-bucket.oss-cn-beijing.aliyuncs.com/sdk/sdk/close.svg"></div><div class="block-6 iconsToHide hide" id="skipAll"><img class="icons" data-action="skipAllAd" src="https://prod-supply-bucket.oss-cn-beijing.aliyuncs.com/sdk/sdk/skipAllBtn.svg"></div><div id="timerWrapper" class="timerWrapper hide"><div id="timerCount" class="timerCount">00s后可领取奖励</div></div></div></div>#set($podCount=0) #set($pod= "_pod") #foreach($creative in $creativeList) #set($podName = "$podCount$pod")<div id="${creative.ns}adPage" class="pod-ad"><div id="${creative.ns}ad_pg1" class="ad_pg1"><div id="${creative.ns}video_div" class="block-1 hide"><inmobi-video class="ad_video" id="${creative.ns}ad_video" not-ready="" autoplay="" muted="" hidetimer="true" show-controls="timer, volume" iconsvisible=""></inmobi-video><div class="vol-overlay" data-action="videoCta" style="display:none"></div></div><div id="${creative.ns}ad_vpaid" class="hide"><video id="${creative.ns}ad_vpaidvideo" data-action="vpaidVideoClick" style="width: 100%;height: 100%" webkit-playsinline="" playsinline=""></video></div><div id="${creative.ns}video_cta" class="block-2 hide" data-action="videoCta"><img class="inmobiLogo" src="https://prod-supply-bucket.oss-cn-beijing.aliyuncs.com/sdk/sdk/push.png" alt=""><div class="videoCard-cta-btn" id="${creative.ns}videoCardCtaBtn"><img id="endCardLogo" class="endCard-logo" src="${model.iconUrl}"><div class="videotext"><p class="videoTitle">${model.title}</p><p class="videodesc">${model.description}</p></div><p class="cta-btn" data-action="endCardCta">${modeText}</p></div></div></div><div id="${creative.ns}ad_pg2" class="hide ad_pg2"><div id="${creative.ns}endCardImage" class="endCardImage" data-action="endCardImage" style="pointer-events:none;height: calc(100vh - 364px)"></div><div id="${creative.ns}endCardBackground" class="endCardBackground hide" data-action="endCardBackground"></div><div class="endCard-cta-btn hide" id="${creative.ns}endCardCtaBtn"><img id="endCardLogo" class="endCard-logo" src="${model.iconUrl}"><p class="endCard-boxTitle">${model.title}</p><p class="endCard-boxDesc">${model.description}</p><p class="endCard-boxbtn" data-action="endCardCta">${modeText}</p></div></div></div>#set($podCount=$podCount+1) #end</div><div id="skipVideoModal" class="modal"><div class="modal-content"><div class="modal-body"><p>${htmlContext.popUpText}</p></div><div class="modal-footer"><div class="clearfix"><button type="button" id="continueBtn" class="btn">${htmlContext.continueText}</button> <button type="button" id="skipBtn" class="btn">${htmlContext.skipText}</button></div></div></div></div><div id="act_click" class="hide"></div><script>var decorator = function (vast, adOrientation, pod_ns, beconSuffix, isPod, skan, demandBundleId, skoverlay) {
+    var utilFunc = function (pod_ns) {
+
+        var recordEventFun = window[pod_ns+"recordEvent"];
+        var disableFireReadyFunc = window[pod_ns+"disableAutoFireAdReady"];
+        var fireAdReadyFuc = window[pod_ns+"fireAdReady"];
+        var fireAdFailedFunc = window[pod_ns+"fireAdFailed"];
+        const CLIENT_FILL = 120;
+        var clientFillFired = false;
+
+        var userAgent = navigator.userAgent;
+        var deviceOS = userAgent.match(/iPhone|iPad|iPod/i) ? "ios" : (userAgent.match(/Android/i) ? "android" : "");
+
+        var getTime = function () {
+            return new Date().getTime();
+        };
+
+        var sendBeacon = function (id, extraParams) {
+            var params = {};
+
+            for (var key in extraParams) {
+                if (extraParams.hasOwnProperty(key)) {
+                    params[key] = extraParams[key];
+                }
+            }
+            if (recordEventFun && typeof (recordEventFun) === "function") {
+                recordEventFun(id, params);
+            }
+            //console.log("send beacon\t" + id + "\tparams:\t" + JSON.stringify(extraParams) + "\ttimestamp:\t" + Math.floor(Date.now() / 1000))
+        };
+
+        /* fires ad failed function */
+        var fireAdFailed = function () {
+            if (mraid.getState() !== "loading") {
+                if (typeof (fireAdFailedFunc) !== "undefined") {
+                    fireAdFailedFunc();
+                    sendBeacon(99, {"action": "ad-failed"});
+                }
+            } else {
+                mraid.addEventListener("ready", fireAdFailed);
+            }
+        };
+
+        var byId = function (id) {
+            return document.getElementById(id);
+        };
+
+        mraid.addEventListener("error", function (message, action) {
+            sendBeacon(99, {
+                "action": "mraid-error",
+                "label": message
+            });
+        });
+
+        var getTimeDelaySince = function (startTime) {
+                    /* Return the time delay in secs from a specified timeStamp */
+                    var currentTime = (getTime() - startTime) / 1000;
+                    return Math.round(currentTime);
+                },
+                bySelector = function (queryParam) {
+                    return document.querySelector(queryParam);
+                },
+                setVisibleState = function (element, visible) {
+                    element.style.display = visible ? "block" : "none";
+                },
+                addClass = function (element, className) {
+                    element.classList.add(className);
+                },
+                removeClass = function (element, className) {
+                    element.classList.remove(className);
+                },
+                addEventListener = function (element, eventName, handler) {
+                    var startX = 0;
+                    var startY = 0;
+                    if (eventName === "tap") {
+                        var touchMoved, touchStarted = false;
+                        element.addEventListener("touchstart", function (e) {
+                            e.stopPropagation();
+                            startX = e.changedTouches[0].pageX;
+                            startY = e.changedTouches[0].pageY;
+                            touchStarted = true;
+                            touchMoved = false;
+                        });
+                        element.addEventListener("touchmove", function (e) {
+                            e.stopPropagation();
+                            touchMoved = true;
+                        });
+                        element.addEventListener("touchend", function (e) {
+                            e.stopPropagation();
+                            var endY = e.changedTouches[0].pageY;
+                            var endX = e.changedTouches[0].pageX;
+
+                            var xDelta = Math.abs(endX - startX);
+                            var yDelta = Math.abs(endY - startY);
+
+                            if (touchStarted) {
+                                touchStarted = false;
+                                if (!touchMoved) {
+                                    handler.call(null, e);
+                                } else {
+                                    if (xDelta <= 10 && yDelta <= 10) {
+                                        handler.call(null, e);
+                                    }
+                                }
+                            }
+                        });
+                    } else {
+                        element.addEventListener(eventName, handler);
+                    }
+                };
+
+        var callFireAdReady = function () {
+            // console.log("called callFireAdReady");
+            var sdkVersion = parseInt("$ad.sdkVersion".substr(1), 10) || 0;
+            if (mraid.getState() !== "loading") {
+                if (typeof (fireAdReadyFuc) === "function") {
+                    fireAdReadyFuc();
+                }
+            } else {
+                /* wait for ready event */
+                mraid.addEventListener("ready", callFireAdReady);
+            }
+            if(!clientFillFired) {
+                sendBeacon(CLIENT_FILL);
+                clientFillFired = true;
+            }
+        };
+
+        var getDeviceOS = function () {
+            return deviceOS;
+        };
+
+        var generateRandomNo = function(){
+            var number = Math.floor((Math.random() * 100) + 1);
+            return number
+        }
+
+        var checkExperimentRange = function (range, randomNo) { //this function checks experiement range and return true if random no falls in that range
+            var minimumValue = range.minimum;
+            var maximumValue = range.maximum;
+            return minimumValue <= randomNo && randomNo <= maximumValue
+        };
+
+        var fireBeacon = function (url) {
+            var img = new Image();
+            img.src = url;
+        };
+
+        var fireBeacons = function (trackingUrls) {
+            trackingUrls = trackingUrls || [];
+            trackingUrls.forEach(function (url) {
+                fireBeacon(url);
+            });
+        };
+
+        var sendErrorBeacon = function (errorTrackingUrls, errorCode) {
+            var errorCodeMacro = "ERRORCODE";
+            var errorUrl= [];
+            if(errorTrackingUrls){
+                for (var i = 0; i < errorTrackingUrls.length; i++) {
+                    errorUrl.push(errorTrackingUrls[i].replace(errorCodeMacro, errorCode));
+                }
+            }
+            fireBeacons(errorUrl);
+            /* send error beacons to InMobi also */
+            sendBeacon(99, {
+                "action": "vast-error",
+                "label": errorCode
+            });
+            // console.log("vast error beacon fired:" + errorCode)
+        };
+
+
+        return {
+            fireAdFailed: fireAdFailed,
+            sendBeacon: sendBeacon,
+            byId: byId,
+            getTime: getTime,
+            addEventListener: addEventListener,
+            bySelector: bySelector,
+            setVisibleState: setVisibleState,
+            addClass: addClass,
+            removeClass: removeClass,
+            getTimeDelaySince: getTimeDelaySince,
+            callFireAdReady: callFireAdReady,
+            getDeviceOS: getDeviceOS,
+            generateRandomNo: generateRandomNo,
+            checkExperimentRange: checkExperimentRange,
+            disableFireReadyFunc: disableFireReadyFunc,
+            fireBeacons: fireBeacons,
+            sendErrorBeacon: sendErrorBeacon
+        };
+    };
+    window["utilFunc"] = utilFunc;
+
+
+    var utils = window.utilFunc(pod_ns);
+    var eventTrackers = function(pod_ns, beconSuffix, utils, isPod, vpaidHelper, eventFlags) {
+        var RENDER = 18,
+                CTA = 8,
+                MEDIA_AUTO_PLAY = 10,
+                MEDIA_QUARTILE = 12,
+                MEDIA_END = 13,
+                MEDIA_PAUSE = 14,
+                MEDIA_ERROR = 16,
+                MEDIA_UNPAUSE = 17,
+                CUSTOM = 99,
+                videoFinishBeaconPercent = "90%"
+        ;
+
+        var eventNames = {
+            InitAd: "initAd",
+            StartAd: "startAd",
+            StopAd: "stopAd"
+        };
+        var impressionTrackersFired = false, errorBeaconFired = false, videoCTAFired = false, endCardCTAFired = false, videoCTADelayOver = false;
+
+        var _imraid = imraid,
+                getTime = utils.getTime,
+                getTimeDelaySince = utils.getTimeDelaySince,
+                sendBeacon = utils.sendBeacon,
+                sendErrorBeacon = utils.sendErrorBeacon,
+                fireBeacons = utils.fireBeacons
+        ;
+
+        var fireVideoPlayTrackers = function (videoData, renderTime, isVpaid, impressionTrackers, trackingUrls) {
+            if (!videoData.playStarted) {
+                videoData.playStarted = true;
+                var mediaStartTime = getTime();
+                var renderToPlayTime = mediaStartTime - renderTime;
+                var customAction = isVpaid ? "render-to-play_v" : "render-to-play";
+                var label = Math.round(renderToPlayTime / 1000);
+                if (label >= 10) {
+                    label = 10;
+                }
+                sendBeacon(CUSTOM, {"action": customAction + beconSuffix, "label": label});
+                if (!impressionTrackersFired) {
+                    fireBeacons(trackingUrls["start"]);
+                    sendBeacon(MEDIA_AUTO_PLAY);
+                    sendBeacon(RENDER);
+                    fireBeacons(impressionTrackers);
+                    impressionTrackersFired = true;
+                }
+            } else if (!videoData.mediaPlaying && !videoData.videoCompleted) {
+                /* video resume event */
+                fireBeacons(trackingUrls["resume"]);
+                // id=17 beacons is not consumed, can cleanup
+                sendBeacon(MEDIA_UNPAUSE, {
+                    secs: getTimeDelaySince(mediaStartTime)
+                });
+            }
+            videoData.mediaPlaying = true;
+        };
+
+        var fireAdFailedFunc = function (error) {
+            // console.log("fireAdFailedFunc-------", pod_ns);
+            var label = "";
+            if (error !== undefined && error !== null) {
+                label = error;
+            }
+            sendBeacon(CUSTOM, {
+                "action": "parsing-failed" + beconSuffix, "label": label
+            });
+            var event = new CustomEvent("adFailed", {"detail": pod_ns});
+
+            // trigger event to suffix saying ad has failed
+            document.dispatchEvent(event);
+        };
+
+        var fireVideoClickTrackers = function (trackingUrls) {
+            if (!videoCTAFired) {
+                videoCTAFired = true;
+                sendBeacon(CTA);
+                fireBeacons(trackingUrls["clickTracking"]);
+            }
+        };
+
+        var callFireAdReadyFunc = function () {
+            // if(isPod){
+            //     sendBeacon(CUSTOM, {
+            //         "action": "ad-ready"+ beconSuffix,
+            //     });
+            // }
+            var event = new CustomEvent("adReady", {"detail": pod_ns});
+            // trigger event to suffix saying ad is ready
+            document.dispatchEvent(event);
+            // utils.callFireAdReady();
+        };
+
+        var fireCompanionClickTrackers = function (companionTrackers, trackingUrls) {
+            if (!endCardCTAFired) {
+                endCardCTAFired = true;
+                if (companionTrackers !== undefined && companionTrackers["companionClick"] !== undefined) {
+                    fireBeacons(companionTrackers["companionClick"]);
+                    sendBeacon(CTA);
+                } else if (!videoCTAFired) {
+                    videoCTAFired = true;
+                    fireBeacons(trackingUrls["clickTracking"]);
+                    sendBeacon(CTA);
+                }
+            }
+        };
+
+        window["fireInmCompanionClickTrackers"] = fireCompanionClickTrackers;
+
+        var fireVideoPauseTrackers = function (videoData, trackingUrls) {
+            if (videoData.playStarted && !videoData.videoCompleted) {
+                videoData.mediaPlaying = false;
+                // id=14 beacons is not consumed, can cleanup
+                sendBeacon(MEDIA_PAUSE);
+                fireBeacons(trackingUrls["pause"]);
+            }
+        };
+
+        var fireFirstQuartileTrackers = function (trackingUrls) {
+            // if(isPod){
+            //     sendBeacon(CUSTOM, {"action": "first-quartile"+beconSuffix});
+            // }
+            fireBeacons(trackingUrls["firstQuartile"]);
+            sendBeacon(MEDIA_QUARTILE, {"q": 1});
+        };
+
+        var fireSecondQuartileTrackers = function (trackingUrls) {
+            fireBeacons(trackingUrls["midpoint"]);
+            sendBeacon(MEDIA_QUARTILE, {"q": 2});
+        };
+
+        var fireThirdQuartileTrackers = function (trackingUrls) {
+            fireBeacons(trackingUrls["thirdQuartile"]);
+            sendBeacon(MEDIA_QUARTILE, {"q": 3});
+        };
+
+        var fireVideoCompleteTrackers = function (trackingUrls) {
+            fireBeacons(trackingUrls["complete"]);
+            sendBeacon(MEDIA_END, {});
+        };
+
+        var fireVideoMuteTrackers = function (trackingUrls) {
+            fireBeacons(trackingUrls["mute"]);
+        };
+
+        var fireVideoUnMuteTrackers = function (trackingUrls) {
+            fireBeacons(trackingUrls["unmute"]);
+        };
+
+        var fireIncentiveBecon = function (podData, isRewarded, incentiveJson) {
+            if (podData.playStarted && isRewarded === "true") {
+                console.log("fire incentive becon-----------")
+                try {
+                    _imraid.incentCompleted(JSON.parse(incentiveJson));
+                } catch (e) {
+                    sendBeacon(CUSTOM, {"action": "incentiveJson", "label": "jsonParseError"});
+                }
+
+            }
+        };
+
+        var fireOnViewableBecon = function (isVpaid) {
+            var isPod = beconSuffix === "" ? "" : "-pod";
+            var action = "";
+            if (isVpaid) {
+                action = "on-viewable_v"
+            } else {
+                action = "on-viewable"
+            }
+            sendBeacon(CUSTOM, {
+                "action": action + isPod
+            });
+        };
+
+        var onVideoComplete = function (videoData) {
+            // console.log("onVideoComplete------");
+            videoData.videoCompleted = true;
+            var adContainer = document.getElementById("ad-cont");
+            var evt = new CustomEvent('podVideoEnded', {detail: pod_ns});
+            // console.log("endedevt-------",evt);
+            //firing event to notify suffix that video has ended and if not to show next ad
+            // if(isPod){
+            //     sendBeacon(CUSTOM, {"action": "video-complete"+beconSuffix});
+            // }
+            adContainer.dispatchEvent(evt);
+        };
+
+        var videoCtaVisibilityOn = function (videoDuration, videoSkipDelayInMs, videoLandingUrl) {
+            var ctaDelay = Math.min((videoDuration * 1000 / 4), videoSkipDelayInMs, 3 * 1000);
+            setTimeout(function () { //video cta button visibility delay
+                // Disabling video CTA button for video experience 0,2(Basic, High CTR)
+                if (videoLandingUrl !== "" && window.experienceType === 1) {
+                    var ctaBtnInVideo = document.getElementById(pod_ns + "video_cta");
+                    ctaBtnInVideo.classList.remove("hide");
+                }
+                videoCTADelayOver = true;
+            }, ctaDelay);
+        };
+
+        var videoCallback = function (event, videoData, renderTime, isVpaid, impressionTrackers, trackingUrls, videoLandingUrl, videoDuration, videoSkipDelayInMs, errorTrackingUrls) {
+            var isAdViewable = false;
+            if (typeof (_mraid) !== "undefined") {
+                if (_mraid.isViewable()) {
+                    isAdViewable = true;
+                }
+            } else {
+                isAdViewable = true;
+            }
+            switch (event.type) {
+                case "inmobi-video-play":
+                    // if(isPod){
+                    //     sendBeacon(CUSTOM, {"action": "video-start"+beconSuffix});
+                    // }
+                    // sendBeacon(CUSTOM, {action: "experience-"+ window.experienceType});
+                    fireVideoPlayTrackers(videoData, renderTime, isVpaid, impressionTrackers, trackingUrls);
+                    videoCtaVisibilityOn(videoDuration, videoSkipDelayInMs, videoLandingUrl);
+                    break;
+                case "inmobi-video-pause":
+                    fireVideoPauseTrackers(videoData, trackingUrls);
+                    break;
+                case "inmobi-video-ended":
+                    onVideoComplete(videoData);
+                    break;
+                case "inmobi-video-error":
+                    // id=16 beacons is not consumed, can cleanup
+                    // console.log("inside inmobi-video-error---------")
+                    sendBeacon(MEDIA_ERROR, {errorType: event.detail.errorCode});
+                    if (!errorBeaconFired) {
+                        errorBeaconFired = true;
+                        sendBeacon(CUSTOM, {"action": "media-error-" + beconSuffix + event.detail.errorCode});
+                        // console.log("inside inmobi-video-error before firing---------")
+                        sendErrorBeacon(errorTrackingUrls, event.detail.errorCode);
+                        fireAdFailedFunc("media-error-" + event.detail.errorCode);
+                    }
+                    break;
+                case "inmobi-video-stop":
+                    sendBeacon(CUSTOM, {
+                        action: "video-aborted" + beconSuffix
+                    });
+                    break;
+                case "inmobi-video-quartile":
+                    if (impressionTrackersFired && isAdViewable) {
+                        if (event.detail.quartile === "q3") {
+                            fireThirdQuartileTrackers(trackingUrls);
+                        } else if (event.detail.quartile === "q2") {
+                            fireSecondQuartileTrackers(trackingUrls)
+                        } else if (event.detail.quartile === "q1") {
+                            fireFirstQuartileTrackers(trackingUrls);
+                        } else if (event.detail.quartile === videoFinishBeaconPercent) {
+                            fireVideoCompleteTrackers(trackingUrls);
+                        }
+                    }
+                    break;
+                case "inmobi-video-can-play":
+                    // sendBeacon(CUSTOM, {"action": "inmobi-video-can-play"});
+                    break;
+                case "inmobi-video-showIcons": //show icons
+                    if (videoCTADelayOver && window.experienceType === 2) { // 2 is for HIGH_CTR, in HIGH_CTR whole video is clickable.
+                        console.log('inmobi-video-showIcons')
+                        fireVideoClickTrackers(trackingUrls);
+                        window.openLandingPage(videoLandingUrl);
+                    }
+                    break;
+                case "inmobi-video-mute":
+                    fireVideoMuteTrackers(trackingUrls);
+                    break;
+                case "inmobi-video-unmute":
+                    fireVideoUnMuteTrackers(trackingUrls);
+                    break;
+            }
+        };
+
+        var adStarted = function (videoData, renderTime, isVpaid, impressionTrackers, trackingUrls) {
+            // console.log("inside adStarted fun");
+            eventFlags.AdStarted = true;
+            sendBeacon(CUSTOM, {"action": "VPAID" + beconSuffix, "label": "adStarted"});
+            if (isPod) {
+                sendBeacon(CUSTOM, {"action": "video-start" + beconSuffix});
+            }
+            fireVideoPlayTrackers(videoData, renderTime, isVpaid, impressionTrackers, trackingUrls);
+        };
+
+        var AdLoaded = function () {
+            // console.log("inside adLoaded");
+            callFireAdReadyFunc();
+            eventFlags.AdLoaded = true;
+            sendBeacon(CUSTOM, {"action": "VPAID" + beconSuffix, "label": "AdLoaded"});
+            utils.setVisibleState(utils.byId("ad-cont"), true);
+            utils.setVisibleState(utils.byId(pod_ns + "video_div"), false);
+            utils.setVisibleState(utils.byId(pod_ns + "ad_vpaid"), true);
+            // console.log("done adLoaded");
+        };
+
+        var vpaidCallback = function (vpaidAd, videoData, errorTrackingUrls, adParameters, setVideoLandingUrl, trackingUrls, containerWidth, containerHeight, AdError, renderTime, isVpaid, impressionTrackers, timeout) {
+            console.log("vpaidCallback trigger...");
+            sendBeacon(CUSTOM, {"action": "VPAID" + beconSuffix, "label": "finishedJSLoad"});
+            var AdStarted = function(){
+                adStarted(videoData, renderTime, isVpaid, impressionTrackers, trackingUrls)
+            }
+            // window["vpaidAd"] = vpaidAd;
+            if (vpaidAd == null) {
+                sendBeacon(CUSTOM, {"action": "NO_VPAID" + beconSuffix});
+                sendErrorBeacon(errorTrackingUrls, 901);
+                fireAdFailedFunc("NO_VPAID");
+            } else {
+                if (vpaidHelper.supportedVersion("2.0", vpaidAd.handshakeVersion("1.0"))) {
+                    // console.log("vpaid handshake completed" + "\tvpaidAd.handshakeVersion()" + vpaidAd.handshakeVersion());
+                    var creativeData = {};
+                    creativeData['AdParameters'] = adParameters;
+                    // console.log("creativeData" + JSON.stringify(creativeData));
+                    // console.log("Loading VPAID listeners");
+                    // vpaidAd.subscribe(AdLoaded, 'AdLoaded');
+
+                    vpaidAd.subscribe(AdLoaded, 'AdLoaded');
+
+                    vpaidAd.subscribe(function (event) {
+                        // console.log("got AdImpression event" + JSON.stringify(event));
+                    }, 'AdImpression');
+
+                    vpaidAd.subscribe(AdStarted, 'AdVideoStart');
+
+                    vpaidAd.subscribe(function (event) {
+                        fireFirstQuartileTrackers(trackingUrls);
+                        // sendBeacon(CUSTOM, {"action": "VPAID", "label": "AdVideoFirstQuartile"});
+                    }, 'AdVideoFirstQuartile');
+
+                    vpaidAd.subscribe(function (event) {
+                        fireSecondQuartileTrackers(trackingUrls);
+                        // sendBeacon(CUSTOM, {"action": "VPAID", "label": "AdVideoMidpoint"});
+                    }, 'AdVideoMidpoint');
+
+                    vpaidAd.subscribe(function (event) {
+                        fireThirdQuartileTrackers(trackingUrls);
+                        // sendBeacon(CUSTOM, {"action": "VPAID", "label": "AdVideoThirdQuartile"});
+                    }, 'AdVideoThirdQuartile');
+
+                    vpaidAd.subscribe(function () {
+                        fireVideoCompleteTrackers(trackingUrls);
+                        // moveToEndCard();
+                        onVideoComplete(videoData);
+                        sendBeacon(CUSTOM, {"action": "VPAID" + beconSuffix, "label": "AdVideoComplete"});
+                    }, 'AdVideoComplete');
+
+                    vpaidAd.subscribe(function (url, id, playerHandles) {
+                        // console.log("got AdClickThru");
+                        var videoLandingUrl;
+                        fireVideoClickTrackers(trackingUrls);
+                        if (url !== undefined && playerHandles && (typeof url === 'string' || url instanceof String)) {
+                            videoLandingUrl = url;
+                            setVideoLandingUrl(url)
+                        } else {
+                            var event = url;
+                            if (event !== undefined && event.data !== undefined && event.data.playerHandles !== undefined && event.data.playerHandles) {
+                                if (event.data.url !== undefined && event.data.url !== "") {
+                                    videoLandingUrl = event.data.url;
+                                    setVideoLandingUrl(event.data.url)
+                                }
+                            }
+                        }
+                        console.log("videoLandingUrl",openLandingPage);
+                        window.openLandingPage(videoLandingUrl);
+                    }, 'AdClickThru');
+
+                    vpaidAd.subscribe(function () {
+                        if (!eventFlags.AdStopped) {
+                            sendBeacon(CUSTOM, {"action": "VPAID_AdStopped" + beconSuffix});
+                            // console.log("ad stopped");
+                            //dispatching podend event when video stops which is controlled by vpaid
+                            // console.log("before fring event");
+                            // console.log("!adStopped--------",!adStopped)
+                            if (!adStopped) {
+                                // console.log("firing ad------------")
+                                var adContainer = document.getElementById("ad-cont");
+                                var evt = new CustomEvent('podVideoEnded', {detail: pod_ns});
+                                // if(isPod){
+                                //     sendBeacon(CUSTOM, {"action": "video-complete"+beconSuffix});
+                                // }
+                                adContainer.dispatchEvent(evt);
+                            }
+                            // moveToEndCard();
+                            eventFlags.AdStopped = true;
+                        }
+                    }, 'AdStopped');
+
+                    vpaidAd.subscribe(AdError, 'AdError');
+
+                    var environmentVars = {};
+                    environmentVars.slot = utils.byId(pod_ns + 'ad_vpaid');
+                    environmentVars.videoSlot = utils.byId(pod_ns + 'ad_vpaidvideo');
+                    environmentVars.videoSlot.poster = "https://prod-supply-bucket.oss-cn-beijing.aliyuncs.com/sdk/sdk/poster.gif";
+                    environmentVars.videoSlot.style.height = "100%";
+                    environmentVars.videoSlot.style.width = "100%";
+                    environmentVars.videoSlot.style.position = "center";
+                    environmentVars.videoSlotCanAutoPlay = true;
+                    environmentVars.videoSlot.hidden = false;
+
+                    vpaidAd.initAd(containerWidth, containerHeight, "fullscreen", 8192, creativeData, environmentVars);
+                    timeout(eventNames.InitAd, 5000);
+                } else {
+                    sendBeacon(CUSTOM, {"action": "VPAID_unsupported_version" + beconSuffix});
+                    sendErrorBeacon(errorTrackingUrls, 901);
+                    fireAdFailedFunc("VPAID_unsupported_version");
+                }
+            }
+        };
+
+        return { // public interface
+            videoCallback: videoCallback,
+            vpaidCallback: vpaidCallback,
+            fireVideoPlayTrackers: fireVideoPlayTrackers,
+            fireVideoClickTrackers: fireVideoClickTrackers,
+            fireCompanionClickTrackers: fireCompanionClickTrackers,
+            callFireAdReadyFunc: callFireAdReadyFunc,
+            fireAdFailedFunc: fireAdFailedFunc,
+            fireVideoPauseTrackers: fireVideoPauseTrackers,
+            onVideoComplete: onVideoComplete,
+            videoCtaVisibilityOn: videoCtaVisibilityOn,
+            fireIncentiveBecon: fireIncentiveBecon,
+            fireOnViewableBecon: fireOnViewableBecon
+        };
+    };
+    window["eventTrackers"] = eventTrackers;
+    var pod = function (utils, isPod, pod_ns, timeout, eventNames, beconSuffix, skan, demandBundleId, podData, skoverlay) {
+
+        /* global variables */
+        var modeT = "$modeStr"
+        var CUSTOM = 99,
+                _mraid = mraid,
+                _imraid = imraid,
+                sendBeacon = utils.sendBeacon,
+                fireBeacons = utils.fireBeacons,
+                addEventListener = utils.addEventListener,
+                setVisibleState = utils.setVisibleState,
+                ctrButtonSrc = "$ctrSrc", //get src of cta button from vm file depending on experience
+                byId = utils.byId;
+
+        /* POD variables */
+        var skStoreLoaded = podData.skStoreLoaded,
+                videoCtaVisibilityOn = podData.videoCtaVisibilityOn,
+                companionLandingUrl = podData.companionLandingUrl,
+                videoLandingUrl = podData.videoLandingUrl,
+                smartEndCardExperimentEnabled = podData.smartEndCardExperimentEnabled,
+                endCardFound = podData.endCardFound,
+                fireVideoClickTrackers = podData.fireVideoClickTrackers,
+                fireCompanionClickTrackers = podData.fireCompanionClickTrackers,
+                companionTrackers = podData.companionTrackers,
+                isVpaid = podData.isVpaid,
+                trackingUrls = podData.trackingUrls,
+                vpaidAd = podData.vpaidAd,
+                videoElement = podData.videoElement,
+                videoData = podData.videoData,
+                onVideoComplete = podData.onVideoComplete,
+                eventFlags = podData.eventFlags
+        ;
+        console.log("trackingUrls:", trackingUrls);
+        console.log("fireCompanionClickTrackers:", fireCompanionClickTrackers);
+        console.log("fireVideoClickTrackers:", fireVideoClickTrackers);
+        console.log("videoLandingUrl:", videoLandingUrl);
+        console.log("companionLandingUrl:", companionLandingUrl);
+
+        var handleVolumeButton = function () {
+            if (window.experienceType === 1) { //except for experience 1 for remaining experienceType(high CTR experience) show volume and timer icons always
+                videoElement.iconsvisible = false;
+            }
+        };
+
+        var smartEndCardLandingUrl = function (event) {
+
+            if (event.target.id === "endCardLogo" || event.target.id === "ad_unmute" || event.target.id === "skip-btn" || event.target.id === "ecCloseBtn") {
+                event.stopPropagation();
+            }
+            else {
+
+                var landingUrl = endCardFound ? companionLandingUrl : videoLandingUrl;
+                console.log(landingUrl, 'landingUrl')
+                try { //using try catch since "openEmbedded" not supported by IOS
+                    if (modeT == 'DOWNLOAD') {
+                        _imraid.startDownloader(landingUrl)
+                    } else {
+                        window.isClick=true;
+                        _imraid.openExternal(landingUrl); //open external
+                    }
+                    sendBeacon(8);
+                    sendBeacon(CUSTOM, {"action": "open-landing-page-smartEndCard"});
+                    fireCompanionClickTrackers(companionTrackers, trackingUrls);
+                    _mraid.addEventListener("viewableChange", function (viewable) {
+                        if (!viewable) {
+                            _mraid.removeEventListener("viewableChange", arguments.callee);
+                            _mraid.close(); //closing ads after click on sta button experiment
+                        }
+                    });
+                } catch (e) {
+                    sendBeacon(CUSTOM, {"action": "Error in OpenLanding Page from smartEndCard"});
+                }
+            }
+        };
+
+        var popOutEndCardLandingUrl = function () {
+            var landingUrl = endCardFound ? companionLandingUrl : videoLandingUrl;
+            try {
+                fireCompanionClickTrackers(companionTrackers, trackingUrls);
+                openLandingPage(skStoreLoaded, landingUrl, demandBundleId, skan, fireBeacons, sendBeacon);
+
+                _mraid.addEventListener("viewableChange", function (viewable) {
+                    if (viewable) {
+                        _mraid.removeEventListener("viewableChange", arguments.callee);
+                        _mraid.close();
+                    }
+                });
+            } catch (e) {
+                sendBeacon(CUSTOM, {"action": "Error in OpenLanding Page from popOutBtn"});
+            }
+        };
+
+        var openLandingPageWrapper = function openLandingPageWrapper() {
+            console.log("openLandingPageWrapper companionLandingUrl:" + companionLandingUrl + " videoLandingUrl:" + videoLandingUrl);
+            var companionLandingUrl = companionLandingUrl ? companionLandingUrl : videoLandingUrl;
+            fireVideoClickTrackers(trackingUrls);
+            openLandingPage(skStoreLoaded, companionLandingUrl, demandBundleId, skan, fireBeacons, sendBeacon);
+        };
+
+        window['openLandingPageWrapper'] = openLandingPageWrapper;
+
+        var fireshowIconEvent = function () {
+            // console.log("firing inmobi-video-showIcons----------")
+            var adContainer = document.getElementById("ad-cont");
+            var evt = new CustomEvent('inmobi-video-showIcons', {detail: pod_ns});
+            // console.log("endedevt-------",evt);
+            adContainer.dispatchEvent(evt);
+        };
+
+        var handleClickEvent = function (event) {
+            var target = event.target;
+            var action = target.getAttribute("data-action");
+            // console.log("target-------", target);
+
+            switch (action) {
+                case "videoCta":
+                    console.log("handleClickEvent videoCta happen");
+                    window.isClick=true;
+                    fireVideoClickTrackers(trackingUrls);
+                    openLandingPage(skStoreLoaded, videoLandingUrl, demandBundleId, skan, fireBeacons, sendBeacon);
+                    break;
+                case "endCardCta":
+                    console.log("handleClickEvent endCardCta happen");
+                    companionLandingUrl = companionLandingUrl ? companionLandingUrl : videoLandingUrl;
+                    if (smartEndCardExperimentEnabled && window.experienceType === 2) {
+                        smartEndCardLandingUrl();
+                    } else {
+                        window.isClick=true;
+                        console.log('endCardCta else')
+                        fireCompanionClickTrackers(companionTrackers, trackingUrls);
+                        openLandingPage(skStoreLoaded, companionLandingUrl, demandBundleId, skan, fireBeacons, sendBeacon);
+                    }
+                    break;
+                case "popOutBtn":
+                    console.log("handleClickEvent popOutBtn happen");
+                    popOutEndCardLandingUrl();
+                    break;
+                case "endCardImage":
+                    console.log("handleClickEvent endCardImage happen");
+                    if (smartEndCardExperimentEnabled && window.experienceType === 2) {
+                        smartEndCardLandingUrl();
+                    }
+                    break;
+                case "endCardBackground":
+                    console.log("handleClickEvent endCardBackground happen");
+                    if (window.experienceType === 2 && (videoLandingUrl !== "" || companionLandingUrl !== "")) { //for experienceType 2, end card without image, clicking anywhere should open landingPage
+                        openLandingPageWrapper();
+                    }
+                    break;
+                case "vpaidVideoClick":
+                    console.log("handleClickEvent vpaidVideoClick happen");
+                    //we need to fire show-icon event explicitely because we are not using video library for vpaid
+                    fireshowIconEvent();
+                    break;
+            }
+        };
+
+        function checkIsSdkAdPods() {
+            return $isSdkPod;
+        }
+
+        var smartEndCardCloseClick = function () {
+            console.log("handleClickEvent vpaidVideoClick happen");
+            // sendBeacon(CUSTOM, {"action": "close-button-clicked"});
+            if (smartEndCardExperimentEnabled && window.experienceType === 2) {
+                // console.log("insdie closeAd if smartEndCardExperiementEnabled-----");
+                smartEndCardLandingUrl();
+            } else {
+                if (checkIsSdkAdPods()) {
+                    //close adPod
+                    imraid.closeAll();
+                } else {
+                    _mraid.close();
+                }
+            }
+        };
+
+        var addAdClickHandler = function () {
+            // console.log("inside addAdClickHandler decorator--------")
+            var adElement = byId(pod_ns + "adPage");
+
+            // console.log("adElement-------",adElement);
+            addEventListener(adElement, "tap", handleClickEvent);
+
+            adElement.addEventListener("clicked-close-button", smartEndCardCloseClick)
+        };
+
+        var makepodVisible = function () {
+            // console.log("inside makepodVisible----------");
+            var podToBeShown = document.getElementById(pod_ns + "adPage")
+            podToBeShown.classList.remove("hide");
+        }
+
+        var playVideo = function () {
+            // console.log("InsidePlay video---------")
+            var videoElement = document.getElementById(pod_ns + "ad_video");
+            // console.log("namespace------------","${creative.ns}");
+            var adElement = document.getElementById("ad-cont");
+            setVisibleState(adElement, true);
+            // console.log("videoElement-----------",videoElement)
+            //console.log("calling video play showAd" + Math.floor(Date.now() / 1000));
+            if (isPod) {
+                sendBeacon(CUSTOM, {"action": "show-pod" + beconSuffix});
+            }
+            videoElement.play();
+        };
+
+        var addPulseEffect = function () {
+            if (window.experienceType === 2) { //add heart beat effect for cta button for high ctr experience
+                var ctaImage = document.getElementsByClassName("cta-img");
+                for (var i = 0; i < ctaImage.length; i++) {
+                    ctaImage[i].classList.add("pulseEffect")
+                }
+            }
+        };
+
+        var addCtaButtons = function () {
+            var ctaBtns = document.getElementsByClassName("cta-img");
+            for (var i = 0; i < ctaBtns.length; i++) {
+                if (checkIsSdkAdPods()) {
+                    ctrButtonSrc = window.experienceType === 2 ? "https://prod-supply-bucket.oss-cn-beijing.aliyuncs.com/sdk/sdk/green_CTA.png" : "https://prod-supply-bucket.oss-cn-beijing.aliyuncs.com/sdk/sdk/700/view.png"
+                }
+                ctaBtns[i].src = ctrButtonSrc;
+            }
+        };
+
+        function handleVideoVisibility(isVpaid) {
+            if (isVpaid) {
+                var vpaidVideo = document.getElementById(pod_ns + "ad_vpaid");
+                vpaidVideo.classList.remove("hide");
+            } else {
+                var video = document.getElementById(pod_ns + "video_div");
+                video.classList.remove("hide");
+            }
+        }
+
+        var handleMaxAdDuration = function () {
+            setTimeout(function () {
+                if (videoData.playStarted && !videoData.videoCompleted && !eventFlags.AdStopped) {
+                    sendBeacon(CUSTOM, {"action": "VPAID_forced_adstop" + beconSuffix});
+                    vpaidAd.stopAd();
+                    timeout(eventNames.StopAd, 5000);
+                    onVideoComplete(videoData);
+                }
+            }, 33000)
+        };
+
+        var showPod = function () {
+            // document.getElementById(pod_ns + "ad_pg1").addEventListener("tap", smartEndCardLandingUrl);
+            document.getElementById("main-video").addEventListener("click", smartEndCardLandingUrl);
+            document.getElementById("act_click").addEventListener("click", smartEndCardLandingUrl);
+            // document.getElementById(pod_ns + "ad_pg2").addEventListener("tap", smartEndCardLandingUrl);
+            document.getElementById(pod_ns + "ad_pg2").addEventListener("click", smartEndCardLandingUrl);
+
+            handleVolumeButton();
+            addAdClickHandler();
+            makepodVisible();
+            addPulseEffect();
+            addCtaButtons();
+            handleVideoVisibility(isVpaid);
+            // if(isPod){
+            //     sendBeacon(CUSTOM, {"action": "show-pod-to-videoPlay" + beconSuffix});
+            // }
+            if (!isVpaid) {
+                // console.log("inside this.renderPod---------")
+                playVideo();
+            } else {
+                handleMaxAdDuration();
+                videoCtaVisibilityOn(); //handling vpaid video cta visibility when vpaid is shown
+                //firing showpod becon here to be precise, need to fire just before pod starts playing, added one more in playVideo()
+                if (isPod) {
+                    sendBeacon(CUSTOM, {"action": "show-pod" + beconSuffix});
+                }
+                vpaidAd.startAd();
+                timeout(eventNames.StartAd, 5000);
+                // console.log("else part of Vpaid------------- ");
+            }
+            ;
+        };
+
+        var handleSkOverlay = function () {
+            if (skoverlay) {
+                var _imraid = imraid;
+                var appIdentifier = skoverlay.appIdentifier;
+                var position = skoverlay.position;
+                var userDismissible = skoverlay.userDismissible;
+                var skanParams = skoverlay.skanParams;
+
+                if (typeof (_imraid) !== "undefined") {
+                    if (skanParams && typeof (_imraid.skoverlayWithSkan) === "function") {
+                        var version = skanParams.version;
+                        var network = skanParams.network;
+                        var campaign = skanParams.campaign;
+                        var nonce = skanParams.nonce;
+                        var sourceapp = skanParams.sourceapp;
+                        var timestamp = skanParams.timestamp;
+                        var signature = skanParams.signature;
+                        _imraid.skoverlayWithSkan(appIdentifier, position, userDismissible, sourceapp, campaign, timestamp, version, network, signature, nonce);
+                        _imraid.addEventListener("error", function (message, command) {
+                            if (command && command === "skoverlaywithskan") {
+                                sendBeacon(CUSTOM, {"action": "skOverlayError", "label": appIdentifier});
+                            }
+                        });
+                    } else if (typeof (_imraid.skoverlay) === "function") {
+                        _imraid.skoverlay(appIdentifier, position, userDismissible);
+                        _imraid.addEventListener("error", function (message, command) {
+                            if (command && command === "skoverlay") {
+                                sendBeacon(CUSTOM, {"action": "skOverlayError", "label": appIdentifier});
+                            }
+                        });
+                    }
+                }
+            }
+        };
+        showPod();
+        //setTimeout(handleSkOverlay, 500);
+    };
+
+    var openLandingPage = function (skStoreLoaded, clickUrl, demandBundleId, skan, fireBeacons, sendBeacon) {
+        var modeT = "$modeStr";
+        var itemUrl = "$model.itemUrl";
+        var fallbackUrl = "$model.fallbackUrl";
+        console.log("openLandingPage modelStr:" + modeT)
+        console.log("skStoreLoaded:" + skStoreLoaded + " itemUrl:" + itemUrl + " demandBundleId:" + demandBundleId + " skan:" + skan)
+        var _window = window,
+                _mraid = mraid,
+                _imraid = imraid,
+                _imai = _im_imai;
+        if (skStoreLoaded && itemUrl !== undefined && itemUrl !== null && itemUrl !== "") {
+            _imraid.showSKStore(demandBundleId);
+            _imai.pingInWebView(itemUrl);
+        } else if (itemUrl !== undefined && itemUrl !== null && itemUrl !== "") {
+            //need to encode url as few lp url were not opening on IOS
+            if (skan) { //flag to control sk store opening landing page
+                var skStoreShowBeacons = skan.skStoreShowBeacons;
+                var itunesitem = skan.dspSkanParams.itunesitem;
+                var version = skan.dspSkanParams.version;
+                var network = skan.dspSkanParams.network;
+                var campaign = skan.dspSkanParams.campaign;
+                var nonce = skan.dspSkanParams.nonce;
+                var sourceapp = skan.dspSkanParams.sourceapp;
+                var timestamp = skan.dspSkanParams.timestamp;
+                var signature = skan.dspSkanParams.signature;
+
+                try {
+                    fireBeacons(skStoreShowBeacons);
+                    _imraid.showSKStore(itunesitem, version, network, campaign, nonce, sourceapp, timestamp, signature);
+                    if (skan.interceptSkStoreLandingPage) {
+                        _imraid.asyncPing(itemUrl);
+                    }
+                } catch (e) {
+                    sendBeacon(CUSTOM, {"action": "sk-store-error", "label": e});
+                    _mraid.open(itemUrl);
+                }
+
+            } else {
+                //点击上报
+                sendBeacon(8);
+                //using _im_imai as default to open playstore directly and removing mraid.openExternal as it is not supported anymore
+                if (modeT == 'DOWNLOAD') {
+                    if (typeof (_imraid) !== "undefined" && typeof (_imraid.startDownloader) === "function") {
+                        console.log('走到download _imraid了！！');
+                        _imraid.startDownloader(itemUrl);
+                    } else {
+                        console.log('走到download window.href了！！')
+                        _window.location.href = itemUrl;
+                    }
+
+                } else {
+                    if (typeof (_imraid) !== "undefined" && typeof (_imraid.openExternal) === "function") {
+                        console.log('走到openExternal _imraid了！！')
+                        _imraid.openExternal(itemUrl);
+                    } else {
+                        console.log('走到openExternal _window.location了！！')
+                        _window.location.href = itemUrl;
+                    }
+                }
+            }
+        }
+    };
+
+    window['openLandingPage'] = openLandingPage;
+
+    window["pod"] = pod;
+
+
+    var vpaidHelper = (function () {
+
+        var supportedVersion = function (videoPlayerVersion, advertiserVersion) {
+            // console.log('supportedVersion');
+            // console.log('videoPlayerVersion', videoPlayerVersion);
+            // console.log('advertiserVersion', advertiserVersion);
+            if(advertiserVersion === undefined) {
+                return false;
+            }
+            var videoPlayerVersions = videoPlayerVersion.split(".");
+            var advertisersVersions = advertiserVersion.split(".");
+
+            for (var i = 0; i < advertisersVersions.length; i++) {
+                if (advertisersVersions[i] > videoPlayerVersions[i]) {
+                    return false
+                }
+            }
+            return true;
+        };
+
+        var vpaidInitHandling = function (vpaidCreativeJS, finishLoad, adError, pod_ns) {
+            // console.log("inside vpaidHandling: \t" + vpaidCreativeJS);
+
+            var advertiserJS = document.createElement('script');
+
+            advertiserJS.onerror = function (message, url, lineNumber) {
+                // console.log("Something went wrong loading advertiser's javascript: " + message);
+                adError("AdvertiserJSError");
+            };
+            advertiserJS.onload = function () {
+                // console.log("Advertiser's javascript onload");
+                finishLoad();
+            };
+            advertiserJS.setAttribute('type', 'text/javascript');
+            advertiserJS.setAttribute('src', vpaidCreativeJS);
+
+            var vpaidElement = document.getElementById(pod_ns+"ad_vpaid");
+            vpaidElement.appendChild(advertiserJS);
+        };
+
+        return {
+            vpaidInitHandling: vpaidInitHandling,
+            supportedVersion: supportedVersion
+        };
+    })();
+    var VastUnwrapper = (function () {
+
+        var vastBlob = {},
+                containerWidth, containerHeight, videoHeight, videoWidth, adOrientation, demandOverrideOrientation,
+                errorCode, sendBeacon, successCallback, warningCodes = [], sendErrorBeacon, errorCallback, deviceOS, viewabilityEnabledMacro, omidEnabled, sdkVersion;
+
+        var MAX_WRAPPER_REDIRECTS = 6, MIN_COMPANION_ASPECT_RATIO = 0.2,
+                errorTrackingUrls = [],
+                PROXY_URL = "http://vastproxy.brand.inmobi.com/g/", SECURE_PROXY_URL = "https://vastproxy.brand.inmobi.com/gs/",
+                redirect = 0, iframeEndCardUrl, htmlEndCard,
+                trackingEventsMap = {}, impressionTrackers = [], wrapperCompanionTrackers = {};
+
+        var viewabilityExtensions = [];
+
+        function removeWhiteSpace(string) {
+            return string.replace(/(\r\n|\n|\r|\t)/gm, "").replace(/^ */, "").replace(/ *$/, "");
+        }
+
+        function arrContains(arr, ele){
+            return arr.indexOf(ele) !== -1;
+        }
+
+//    function activeViewRegExTest(vastUrl, proxyPass) {
+//        if (!proxyPass) {
+//            var dbmRegex = /bid\.g\.doubleclick\.net/g;
+//            var dcmRegex = /ad\.doubleclick\.net\/ddm/g;
+//
+//            var queryParamCheck = /\?.+=/g;
+//            var urlContainsQueryParams = queryParamCheck.test(vastUrl);
+//
+//            if (dbmRegex.test(vastUrl)) {
+//                vastUrl = urlContainsQueryParams ? vastUrl.concat('&sdk3p=inmobi&osd=2') : vastUrl.concat('?sdk3p=inmobi&osd=2');
+//                vastUrl = omidEnabled === "true" ? vastUrl.concat('&dc_sdk_apis=7&dc_omid_p=Inmobi/', sdkVersion) : vastUrl;
+//            } else if (dcmRegex.test(vastUrl)) {
+//                vastUrl = vastUrl.concat(';sdk3p=inmobi;dc_osd=2');
+//                vastUrl = omidEnabled === "true" ? vastUrl.concat('&dc_sdk_apis=7&dc_omid_p=Inmobi/', sdkVersion) : vastUrl;
+//            }
+//        }
+//        return vastUrl;
+//    }
+
+        function sendXmlRequest(url, isProxy, successCallback) {
+            var response = "", reqUrl;
+//        url = activeViewRegExTest(url, isProxy);
+// removed activeViewRegExTest because regex parsing failing with ios @ne0
+            var request = new XMLHttpRequest();
+            try {
+                /* make an async call */
+                request.open("GET", url, true);
+                request.onload = function (e) {
+                    if (request.readyState === 4) {
+                        if (request.status === 200) {
+                            //Checking for empty responses
+                            if (request.responseText === "" || request.responseText === null) {
+                                if (isProxy) {
+                                    sendBeacon(99, {
+                                        "action": "cors_empty_response"
+                                    });
+                                } else {
+                                    sendBeacon(99, {
+                                        "action": "vastProxy_empty_response"
+                                    });
+                                }
+                            } else {
+                                response = isProxy ? JSON.parse(request.responseText).content : request.responseText;
+                                //Beacons for CORS/Studio
+                                if (isProxy) {
+                                    sendBeacon(99, {
+                                        "action": "cors_success"
+                                    });
+                                } else {
+                                    //response = JSON.parse(response).content;
+                                    sendBeacon(99, {
+                                        "action": "vastProxy_success"
+                                    });
+                                }
+                            }
+                        } else {
+                            sendErrorBeacon(errorTrackingUrls, 301);
+                            sendBeacon(99, {
+                                "action": "network_error_" + request.status
+                            });
+                        }
+                    }
+                    parseVastXml(response, successCallback);
+                };
+                request.onerror = function () {
+                    var secure = "$secure";
+                    /* Network Error */
+                    if (!isProxy) {
+                        sendBeacon(99, {
+                            "action": "cors_failure"
+                        });
+                        reqUrl = removeWhiteSpace(url);
+                        reqUrl = ((secure === "true") ? SECURE_PROXY_URL : PROXY_URL) + encodeURIComponent(reqUrl);
+                        response = sendXmlRequest(reqUrl, true, successCallback);
+                    } else {
+                        sendBeacon(99, {
+                            "action": "cors_failure",
+                            "label" : "network_error_" + request.status
+                        });
+                        sendErrorBeacon(errorTrackingUrls, 301);
+                        parseVastXml(response, successCallback);
+                    }
+                };
+                request.send();
+            } catch (e) {
+                sendBeacon(99, {
+                    "action": "network_exception_" + request.status
+                });
+                parseVastXml(response, successCallback);
+            }
+        }
+
+        function getVideoTrackers(xmlDocument) {
+            var linearCreative = xmlDocument.querySelector("Linear");
+            var impressionNodes = xmlDocument.getElementsByTagName("Impression") || [];
+            var i;
+
+            /* play is considered as impression for VAST videos */
+            for (i = 0; i < impressionNodes.length; i++) {
+                var iNContent = removeWhiteSpace(impressionNodes[i].textContent);
+                if (!(iNContent === "" || iNContent == null)) {
+                    if (impressionTrackers && impressionTrackers.length > 0) {
+                        impressionTrackers.push(iNContent);
+                    } else {
+                        impressionTrackers = [iNContent];
+                    }
+                }
+            }
+            if (!linearCreative) {
+                return {
+                    "impressionTrackers": impressionTrackers,
+                    "trackingEventsMap": trackingEventsMap
+                };
+            } else {
+                var trackingEventNodes = linearCreative.getElementsByTagName("Tracking") || [];
+                var clickTrackingNodes = linearCreative.getElementsByTagName("ClickTracking") || [];
+                var eventName, eventUrl;
+                for (i = 0; i < trackingEventNodes.length; i++) {
+                    eventName = trackingEventNodes[i].getAttribute("event") || "";
+                    eventUrl = removeWhiteSpace(trackingEventNodes[i].textContent) || "";
+                    if (eventName && eventUrl) {
+                        if (trackingEventsMap[eventName]) {
+                            trackingEventsMap[eventName].push(eventUrl);
+                        } else {
+                            trackingEventsMap[eventName] = [eventUrl];
+                        }
+                    }
+                }
+                for (i = 0; i < clickTrackingNodes.length; i++) {
+                    var cTNContent = removeWhiteSpace(clickTrackingNodes[i].textContent);
+                    if (!(cTNContent === "" || cTNContent == null)) {
+                        if (trackingEventsMap["clickTracking"]) {
+                            trackingEventsMap["clickTracking"].push(cTNContent);
+                        } else {
+                            trackingEventsMap["clickTracking"] = [cTNContent];
+                        }
+                    }
+                }
+            }
+            return {
+                "impressionTrackers": impressionTrackers,
+                "trackingEventsMap": trackingEventsMap
+            };
+        }
+
+        function isValidVideoFormat(videoMimeType) {
+            var androidVideoTypes = ["video/mp4", "video/3gp", "video/webm", "video/x-flv", "application/javascript"];
+            var iOSVideoTypes = ["video/mp4", "video/3gp", "video/quicktime", "application/javascript"];
+            var targetVideoTypeList = [];
+            switch (deviceOS) {
+                case "android":
+                    targetVideoTypeList = androidVideoTypes;
+                    break;
+                case "ios":
+                    targetVideoTypeList = iOSVideoTypes;
+                    break;
+                default:
+                    break;
+            }
+
+            return targetVideoTypeList.indexOf(videoMimeType) !== -1;
+        }
+
+        function getVideoUrl(mediaNodes, durationNode) {
+            var videoDuration, videoOrientation;
+            var maxMediaSize = 30 * Math.pow(10, 6), minMediaSize = 1 * Math.pow(10, 4);
+            if (durationNode !== null) {
+                var maxDuration = 32;
+                videoDuration = durationNode.textContent;
+                videoDuration = videoDuration.replace(/:/g, "-");
+                var durArr = videoDuration.split("-");
+                videoDuration = parseInt(durArr[2], 10);
+                if (!(parseInt(durArr[0], 10) === 0 && parseInt(durArr[1], 10) === 0 && parseInt(durArr[2], 10) <= parseInt(maxDuration, 10))) {
+                    sendErrorBeacon(errorTrackingUrls, 202);
+                    /* Don't show the ad when video duraion is greater than maximum allowed duration */
+                    return "";
+                }
+            } else {
+                /* Ad not shown in case duration node is null */
+                sendBeacon(99, {"action": "duration-node-absent"});
+                sendErrorBeacon(errorTrackingUrls, 202);
+                return "";
+            }
+
+            var pickedVideoObj;
+
+            var typesOfVideo = [];
+            var invalidVideoSize = [];
+            var landscapeVideos = {}, verticalVideos = {};
+            var portraitAd = (adOrientation === "portrait");
+            var vpaidMediaFile;
+
+            function compareVideos(video1, video2, isVertical) {
+                var video1Height = video1.getAttribute("height") || 10;
+                var video1Width = video1.getAttribute("width") || 10;
+                var video2Height = video2.getAttribute("height") || 10;
+                var video2Width = video2.getAttribute("width") || 10;
+                var comp1, comp2;
+                if (!isVertical) {
+                    comp1 = Math.abs(containerWidth - video1Width);
+                    comp2 = Math.abs(containerWidth - video2Width);
+                } else {
+                    comp1 = Math.abs(containerHeight - video1Height);
+                    comp2 = Math.abs(containerHeight - video2Height);
+                }
+                return comp1 > comp2 ? video2 : video1;
+            }
+
+            for (i = 0; i < mediaNodes.length; i++) {
+                // console.log("mediaNodes.length" + mediaNodes.length);
+                var mediaNode = mediaNodes[i];
+                var deliveryType = (mediaNode.getAttribute("delivery") || "").toLowerCase();
+                var bitRate = mediaNode.getAttribute("bitrate") || 100;
+                var width = parseInt(mediaNode.getAttribute("width"), 10) || 10;
+                var height = parseInt(mediaNode.getAttribute("height"), 10) || 10;
+                var videoType = (mediaNode.getAttribute("type") || "").toLowerCase();
+                var apiFramework = (mediaNode.getAttribute("apiFramework") || "").toLowerCase();
+
+                // console.log("deliveryType" + deliveryType + "\tbitRate:" + bitRate + "\tvideoType" + videoType);
+                if (deliveryType === "progressive" && isValidVideoFormat(videoType)) {
+                    // console.log("isValidVideoFormat is true");
+                    if (apiFramework === "vpaid") {
+                        // console.log("got vpaid media node");
+                        vpaidMediaFile = mediaNode;
+                    } else {
+                        var size = (bitRate * videoDuration * 1024) / 8;
+                        if (size >= minMediaSize && size < maxMediaSize) {
+                            var j = videoType === "video/mp4" ? 0 : 1;
+
+                            if (width > height) {
+                                if (landscapeVideos[j]) {
+                                    landscapeVideos[j] = compareVideos(landscapeVideos[j], mediaNode, false);
+                                } else {
+                                    landscapeVideos[j] = mediaNode;
+                                }
+                            } else if (width <= height) {
+                                if (verticalVideos[j]) {
+                                    verticalVideos[j] = compareVideos(verticalVideos[j], mediaNode, true);
+                                } else {
+                                    verticalVideos[j] = mediaNode;
+                                }
+                            }
+                        } else if (size < minMediaSize && size >= maxMediaSize) {
+                            invalidVideoSize.push(size);
+                        }
+                    }
+                } else if (!isValidVideoFormat(videoType)) {
+                    if (typesOfVideo.indexOf(videoType) === -1) {
+                        typesOfVideo.push(videoType);
+                    }
+                }
+            }
+
+            var landscapeVideoOriObj = landscapeVideos[0] ? landscapeVideos[0] : landscapeVideos[1];
+            var verticalVideoOriObj = verticalVideos[0] ? verticalVideos[0] : verticalVideos[1];
+
+            if (!portraitAd) {
+                if (landscapeVideoOriObj) {
+                    videoOrientation = "landscape";
+                    pickedVideoObj = landscapeVideoOriObj;
+                } else if (verticalVideoOriObj) {
+                    videoOrientation = "portrait";
+                    pickedVideoObj = verticalVideoOriObj;
+                }
+            } else {
+                //console.log("vertical video");
+                if (verticalVideoOriObj) {
+                    videoOrientation = "portrait";
+                    pickedVideoObj = verticalVideoOriObj;
+                } else if (landscapeVideoOriObj) {
+                    pickedVideoObj = landscapeVideoOriObj;
+                    videoOrientation = "landscape";
+                }
+            }
+
+            if (pickedVideoObj || vpaidMediaFile) {
+                // console.log("calling getVideoMeta");
+                return getVideoMeta(pickedVideoObj, videoOrientation, videoDuration, vpaidMediaFile);
+            } else {
+                if (typesOfVideo.length > 0) {
+                    for (var i = 0; i < typesOfVideo.length; i++) {
+                        sendBeacon(99, {
+                            "action": "invalid_format_" + typesOfVideo[i]
+                        });
+                    }
+                    sendErrorBeacon(errorTrackingUrls, 403);
+                }
+                if (invalidVideoSize.length > 0) {
+                    for (var i = 0; i < invalidVideoSize.length; i++) {
+                        sendBeacon(99, {
+                            "action": "invalid_size_" + invalidVideoSize[i]
+                        });
+                    }
+                    sendErrorBeacon(errorTrackingUrls, 203);
+                }
+
+                return "";
+            }
+        }
+
+        function getVideoMeta(pickedVideoObj, videoOrientation, videoDuration, vpaidMediaFile) {
+            // console.log("Initial containerHeight" + containerHeight);
+            // console.log("Initial containerWidth" + containerWidth);
+            // console.log("demandOverrideOrientation" + demandOverrideOrientation);
+            var videoUrl = "";
+            var vpaidCreativeJS = "";
+            if (pickedVideoObj) {
+
+                if (demandOverrideOrientation) {
+                    adOrientation = videoOrientation;
+                }
+
+                if ((adOrientation === "portrait" && containerHeight < containerWidth) ||
+                        (adOrientation === "landscape" && containerHeight > containerWidth)) {
+                    // console.log("swapping h & w");
+                    swapContainerDimension();
+                }
+
+                if (adOrientation !== videoOrientation) {
+                    // console.log("adOrientation mismatch");
+                    if (adOrientation === "landscape") {
+                        videoHeight = containerHeight;
+                        videoWidth = containerHeight * (containerHeight / containerWidth);
+                    } else {
+                        videoHeight = containerWidth * (containerWidth / containerHeight);
+                        videoWidth = containerWidth;
+                    }
+                } else {
+                    videoHeight = containerHeight;
+                    videoWidth = containerWidth;
+                }
+                videoUrl = removeWhiteSpace(pickedVideoObj.textContent);
+            } else if (vpaidMediaFile) {
+                vpaidCreativeJS = removeWhiteSpace(vpaidMediaFile.textContent);
+            }
+            // console.log("containerHeight" + containerHeight);
+            // console.log("containerWidth" + containerWidth);
+
+            return {
+                "vidUrl": videoUrl,
+                "videoWidth": videoWidth,
+                "videoHeight": videoHeight,
+                "containerHeight": containerHeight,
+                "containerWidth": containerWidth,
+                "videoOrientation": videoOrientation,
+                "videoDuration" : videoDuration,
+                "vpaidCreativeJS" : vpaidCreativeJS
+            };
+        }
+
+        function swapContainerDimension() {
+            containerHeight = "$supplyWidth";
+            containerWidth = "$supplyHeight";
+        }
+
+        function getStaticCompanion(staticCompanionNodes) {
+            var selected = null,
+                    staticNode = null,
+                    regEx = /^image/i; /* creativeType begins with image & do a case insensitive search */
+
+            staticCompanionNodes = staticCompanionNodes || [];
+
+            for (var i = 0, len = staticCompanionNodes.length; i < len; i++) {
+                staticNode = staticCompanionNodes[i];
+                if (regEx.test(staticNode.getAttribute("creativeType"))) {
+                    selected = staticNode;
+                    //console.log("static selected");
+                    break;
+                }
+            }
+            return selected;
+        }
+
+        function getCompanionAd(xmlDocument) {
+            var inlineNode = xmlDocument.querySelector("InLine"),
+                    companionAdRoot = inlineNode.querySelector("CompanionAds"),
+                    companionAds = companionAdRoot ? companionAdRoot.querySelectorAll("Companion") : [],
+                    selectedCompanionNode = null,
+                    selectedCompanion = null,
+                    staticResourceFound = false,
+                    videoAspectRatio = videoWidth / videoHeight,
+                    bestFitCompanionAspectRatio = -99,
+                    bestFitCompanionWidth = videoWidth,
+                    bestFitCompanionHeight = videoHeight;
+
+            if (companionAds.length > 0) {
+                for (var i = 0, len = companionAds.length; i < len; i++) {
+                    var companionAdNode = companionAds[i];
+                    var companionWidth = parseInt(companionAdNode.getAttribute("assetWidth"))
+                            || parseInt(companionAdNode.getAttribute("width")) || videoWidth;
+                    var companionHeight = parseInt(companionAdNode.getAttribute("assetHeight")) ||
+                            parseInt(companionAdNode.getAttribute("height")) || videoHeight;
+                    if (companionWidth && companionHeight) {
+                        var companionAspectRatio = companionWidth / companionHeight;
+                        var staticResource = getStaticCompanion(companionAdNode.querySelectorAll("StaticResource"));
+                        /* select only image type static companion ads */
+                        if (staticResource) {
+                            staticResourceFound = true;
+
+                            // console.log("videoHeight" + videoHeight);
+                            // console.log("videoWidth" + videoWidth);
+                            // console.log("videoAspectRatio" + videoAspectRatio);
+                            // console.log("companionAspectRatio" + companionAspectRatio);
+                            var comp1 = Math.abs(videoAspectRatio - bestFitCompanionAspectRatio),
+                                    comp2 = Math.abs(videoAspectRatio - companionAspectRatio);
+                            if (companionWidth >= videoWidth && companionHeight >= videoHeight) {
+                                // console.log("h& w more than video h&w");
+                                // console.log("comp2" + comp2);
+                                // console.log("comp1" + comp1);
+                                if (comp2 < comp1) {
+                                    bestFitCompanionAspectRatio = companionAspectRatio;
+                                    selectedCompanionNode = companionAdNode;
+                                    if (Math.abs(videoAspectRatio - companionAspectRatio) <= MIN_COMPANION_ASPECT_RATIO) {
+                                        // console.log("diff less than MIN_COMPANION_ASPECT_RATIO");
+                                        bestFitCompanionWidth = videoWidth;
+                                        bestFitCompanionHeight = videoHeight;
+                                    } else {
+                                        bestFitCompanionWidth = companionWidth;
+                                        bestFitCompanionHeight = companionHeight;
+                                    }
+                                }
+                            } else if (comp2 < comp1 && (selectedCompanionNode == null ||
+                                    (bestFitCompanionHeight * bestFitCompanionHeight > companionHeight * companionWidth))) {
+                                bestFitCompanionAspectRatio = companionAspectRatio;
+                                selectedCompanionNode = companionAdNode;
+                                bestFitCompanionWidth = companionWidth;
+                                bestFitCompanionHeight = companionHeight;
+                            }
+
+                            // console.log("bestFitCompanionWidth" + bestFitCompanionWidth);
+                            // console.log("bestFitCompanionHeight" + bestFitCompanionHeight);
+                            // console.log("companionWidth" + companionWidth);
+                            // console.log("companionHeight" + companionHeight);
+                        }
+                    }
+                }
+            }
+            if (htmlEndCard === "" && iframeEndCardUrl === "" && ((staticResourceFound && selectedCompanionNode == null) || (!staticResourceFound && companionAds.length > 0))) {
+                warningCodes.push(601);
+            }
+            if (selectedCompanionNode) {
+                var companionClickThrough = selectedCompanionNode.querySelector("CompanionClickThrough");
+                companionClickThrough = companionClickThrough ? removeWhiteSpace(companionClickThrough.textContent) : '';
+                selectedCompanion = {
+                    width: bestFitCompanionWidth <= videoWidth ? bestFitCompanionWidth : videoWidth,
+                    height: bestFitCompanionHeight <= videoHeight ? bestFitCompanionHeight : videoHeight,
+                    url: removeWhiteSpace(getStaticCompanion(selectedCompanionNode.querySelectorAll("StaticResource")).textContent) || "",
+                    compTrackers: getCompanionTrackers(selectedCompanionNode),
+                    companionClickThrough: companionClickThrough
+                };
+            }
+            return selectedCompanion;
+        }
+
+        function getCompanionTrackers(companionRoot) {
+            var compTrackers = {};
+            if (!companionRoot) {
+                return compTrackers;
+            }
+            var trackingEventNodes = companionRoot.querySelectorAll("Tracking[event='creativeView']") || [];
+            var clickTrackingNodes = companionRoot.querySelectorAll("CompanionClickTracking") || [];
+            var cTNContent, eventUrl, i, eventName = "companionView";
+
+            for (i = 0; i < trackingEventNodes.length; i++) {
+                eventUrl = removeWhiteSpace(trackingEventNodes[i].textContent) || "";
+                if (eventUrl) {
+                    if (compTrackers[eventName]) {
+                        compTrackers[eventName].push(eventUrl);
+                    } else {
+                        compTrackers[eventName] = [eventUrl];
+                    }
+                }
+            }
+            for (i = 0; i < clickTrackingNodes.length; i++) {
+                cTNContent = removeWhiteSpace(clickTrackingNodes[i].textContent);
+                if (cTNContent) {
+                    if (compTrackers["companionClick"]) {
+                        compTrackers["companionClick"].push(cTNContent);
+                    } else {
+                        compTrackers["companionClick"] = [cTNContent];
+                    }
+                }
+            }
+            return compTrackers;
+        }
+
+        function getRichEndCardUrl(inlineNode) {
+            var richEndCardNode = inlineNode.querySelector("CompanionAds IFrameResource");
+            iframeEndCardUrl = richEndCardNode ? removeWhiteSpace(richEndCardNode.textContent) : "";
+            var htmlEndCardNode = inlineNode.querySelector("CompanionAds HTMLResource");
+            htmlEndCard = htmlEndCardNode ? removeWhiteSpace(htmlEndCardNode.textContent) : "";
+        }
+
+        function mergeWrapperTrackers(trackers) {
+            var compKey = '', i, j;
+            var keys = Object.keys(wrapperCompanionTrackers);
+            if (!keys.length) {
+                wrapperCompanionTrackers = trackers;
+            } else {
+                for (compKey in trackers) {
+                    if (keys.indexOf(compKey) !== -1) {
+                        for (j = 0; j < trackers[compKey].length; j++) {
+                            wrapperCompanionTrackers[compKey].push(trackers[compKey][j]);
+                        }
+                    }
+                }
+            }
+            return wrapperCompanionTrackers;
+        }
+
+        /**
+         * TODO: Parse Vast Extensions from the Vast xml.
+         * This should do the following
+         * 1. Parse the extensions for MOAT
+         * 2. Parse the extensions for omsdk
+         * 3. Parse the extensions for ias
+         * 4. Return a struct encapsulating all these.
+         */
+
+        function getViewabilityTrackersFromVast(node) {
+            // console.log("Will start parsing viewability vendors");
+            function VastExtensionObj(trackerType, vendor, url, urlType, type, value, verParams, apiFramework, browserOptional, verificationParams)  {
+                this.trackerType = trackerType;
+                this.vendor = vendor;
+                this.url = url;
+                this.urlType = urlType;
+                this.type = type;
+                this.value = value;
+                this.verParams = verParams;
+                this.apiFramework = apiFramework;
+                this.browserOptional = browserOptional;
+                this.verificationParams = verificationParams;
+            }
+
+            var extensionNodes, extensionNode, querySelectorNodes, i, j, k, l, vendor, adVerificationsNodes;
+            var vastExtensionObjs = [];
+
+            var parseMoatAndGoogleExtensions = function(extensionNode) {
+
+                var moatAndGoogleExtentionObjs = [];
+
+                var parseMoatVerificationNode = function(verificationNode, vendor) {
+
+                    // console.log("Will start parsing moat trackers");
+
+                    if (vendor && vendor.toLowerCase() === "moat") {
+                        vendor = "moat";
+                        var viewableImpNode = verificationNode.querySelector("ViewableImpression");
+                        if (viewableImpNode) {
+                            viewableImpNode = viewableImpNode.outerHTML.replace(/\n\s+/g, "");
+                            var vastExtnObj = new VastExtensionObj("viewability", vendor, null, null, "xmlNode", removeWhiteSpace(viewableImpNode));
+                            moatAndGoogleExtentionObjs.push(vastExtnObj)
+                        }
+                    }
+                };
+
+                var parseGoogleVerificationNode = function(verificationNode, vendor) {
+                    // console.log("Will start parsing google trackers");
+                    if(vendor && vendor.toLowerCase() === "doubleclickbygoogle.com"){
+                        vendor = "doubleclickbygoogle.com";
+                        var javascriptResourceNode = verificationNode.querySelector("JavaScriptResource");
+                        var verParamsNode = verificationNode.querySelector("VerificationParameters");
+                        if (javascriptResourceNode && verParamsNode) {
+                            var extensionUrl = removeWhiteSpace(javascriptResourceNode.textContent);
+                            var vastExtnObj = new VastExtensionObj("viewability", vendor, extensionUrl, "script", "url", null, removeWhiteSpace(verParamsNode.textContent));
+                            moatAndGoogleExtentionObjs.push(vastExtnObj)
+                        }
+                    }
+                };
+
+
+                //Parse Extension node for Moat ViewableImpression node.
+                querySelectorNodes = extensionNode.querySelectorAll("AdVerifications Verification");
+                for (j = 0; j < querySelectorNodes.length; j++) {
+                    var verificationNode = querySelectorNodes[j];
+                    vendor = verificationNode? verificationNode.getAttribute("vendor") : "";
+
+                    moatAndGoogleExtentionObjs.concat(parseMoatVerificationNode(verificationNode, vendor));
+                    moatAndGoogleExtentionObjs.concat(parseGoogleVerificationNode(verificationNode, vendor));
+                }
+
+                return moatAndGoogleExtentionObjs;
+            };
+
+            var parseIASExtensions = function(extensionNode) {
+                // console.log("Will start parsing ias trackers");
+                var iasExtentionObjs = [];
+                // Parse Extension node for IAS
+                querySelectorNodes = extensionNode.querySelectorAll("AVID AdVerifications JavaScriptResource");
+                for (j = 0; j < querySelectorNodes.length; j++) {
+                    var javascriptResourceNode = querySelectorNodes[j];
+                    if (javascriptResourceNode) {
+                        vendor = "ias";
+                        var extensionUrl = removeWhiteSpace(javascriptResourceNode.textContent);
+                        var vastExtnObj = new VastExtensionObj("viewability", vendor, extensionUrl, "script", "url", null);
+                        iasExtentionObjs.push(vastExtnObj)
+                    }
+                }
+
+                return iasExtentionObjs;
+            };
+
+            var parseOMExtensions = function(extensionNode) {
+                // console.log("Will start parsing omsdk trackers");
+                var extensionNodes = extensionNode.querySelectorAll("Extension");
+                var adVerificationsNodes = node.querySelectorAll("InLine > AdVerifications");
+                var vastObjs = [];
+                for (var i = 0; i < extensionNodes.length; i++) {
+                    vastObjs = vastObjs.concat(getOmsdkObjectHelper(extensionNodes[i],"extension"));
+                }
+
+                if(adVerificationsNodes.length > 0){
+                    vastObjs = vastObjs.concat(getOmsdkObjectHelper(adVerificationsNodes,"adverification"));
+                }
+                return vastObjs;
+            };
+
+            // function VastExtensionObj(trackerType, vendor, url, urlType, type, value, verParams, apiFramework, browserOptional, verificationParams)
+
+            function getOmsdkObjectHelper(nodes,nodeType){
+                var omExtentionObjs = [];
+                var querySelectorNodes = nodeType === "extension" ? nodes.querySelectorAll("AdVerifications") : nodes;
+                for (var j = 0; j < querySelectorNodes.length; j++) {
+                    var verificationNodes = querySelectorNodes[j].querySelectorAll("Verification");
+                    for(var k=0; k < verificationNodes.length; k++){
+
+                        var javascriptResourceNode = verificationNodes[k].querySelectorAll("JavaScriptResource");
+                        var verificationParameterNode = verificationNodes[k].querySelectorAll("VerificationParameters");
+
+                        var url =  null, apiFrameWork = null, browserOptional = null, vendor = null, trackerType = null, type = null, value = null, urlType = null;
+                        vendor = verificationNodes[k].getAttribute("vendor");
+
+                        var verificationParams = verificationParameterNode.length > 0 && verificationParameterNode[0].textContent? verificationParameterNode[0].textContent.trim(): "";
+
+                        if (javascriptResourceNode.length > 0) {
+                            url =javascriptResourceNode[0].textContent?javascriptResourceNode[0].textContent.trim(): "";
+                            browserOptional = javascriptResourceNode[0].getAttribute("browserOptional");
+                            apiFrameWork = javascriptResourceNode[0].getAttribute("apiFramework");
+
+                            if(javascriptResourceNode[0].getAttribute("apiFramework") && javascriptResourceNode[0].getAttribute("apiFramework").indexOf("omid") === 0) {
+                                trackerType = "omsdk-viewability";
+                            } else {
+                                trackerType = "viewability";
+                                type = "xmlNode";
+                                value = verificationNodes[k].querySelector("ViewableImpression") ? verificationNodes[k].querySelector("ViewableImpression").outerHTML.replace(/\n\s+/g, "").trim() : "";
+                            }
+                            var vastExtnObj = new VastExtensionObj(trackerType, vendor, url, urlType, type, value, null, apiFrameWork, browserOptional, verificationParams);
+                            omExtentionObjs.push(vastExtnObj);
+                        }
+                    }
+                }
+                return omExtentionObjs;
+            }
+
+            // Process all the extension node.
+            extensionNodes = node.querySelectorAll("Extension");
+            //Parse Extension Nodes for OMSDK
+            var OMSDKObjects = parseOMExtensions(node);
+            vastExtensionObjs = vastExtensionObjs.concat(OMSDKObjects);
+            for (i = 0; i < extensionNodes.length; i++) {
+                var extensionNode = extensionNodes[i];
+                vastExtensionObjs = vastExtensionObjs.concat(parseMoatAndGoogleExtensions(extensionNode));
+                vastExtensionObjs = vastExtensionObjs.concat(parseIASExtensions(extensionNode));
+            }
+
+            return vastExtensionObjs;
+        }
+
+        function parseVastXml(xml, successCallback) {
+
+            var parsedXml, errorNodes, vastAdTagUrl, url, parseErrorNodes, vastVersion = '', videoMeta, companionAd,
+                    inlineNodes, linearNodes, vastAdTag, clickThroughUrl = '';
+            var impressionTrackers = [];
+            var trackingEventsMap = {};
+            var companionAdsNode;
+            var compTrackers = [];
+
+            /* used to track response errors during parsing */
+            var unwrappingSuccess = false;
+
+            if (xml) {
+                parsedXml = (new DOMParser()).parseFromString(xml, "text/xml");
+                parseErrorNodes = parsedXml.getElementsByTagName("parsererror");
+                if (parseErrorNodes.length === 0) {
+                    vastAdTag = parsedXml.querySelector("VAST");
+                    if (!vastAdTag) {
+                        sendBeacon(99, {"action": "no-vast-tag"});
+                        errorCallback(405);
+                        return;
+                    } else {
+                        errorNodes = parsedXml.getElementsByTagName("Error");
+                        vastVersion = vastAdTag.getAttribute("version");
+                        if (errorNodes.length > 0) {
+                            /* collect all error URL's */
+                            for (var i = 0; i < errorNodes.length; i++) {
+                                var eNContent = removeWhiteSpace(errorNodes[i].textContent);
+                                if (!(eNContent === "" || eNContent == null)) {
+                                    errorTrackingUrls.push(eNContent);
+                                }
+                            }
+                        }
+                        if (vastVersion !== "2.0" && vastVersion !== "3.0" && vastVersion !== "4.0" && vastVersion !== "4.1") {
+                            sendErrorBeacon(errorTrackingUrls, 102);
+                            errorCallback(102);
+                            return;
+                        }
+
+                        var trackersObj = getVideoTrackers(parsedXml);
+                        impressionTrackers = trackersObj.impressionTrackers;
+                        trackingEventsMap = trackersObj.trackingEventsMap;
+
+                        vastAdTagUrl = parsedXml.getElementsByTagName("VASTAdTagURI");
+                        if (vastAdTagUrl.length > 0) {
+                            /* Wrapper Ad : get XML from URL specified in <VASTAdTagURI> */
+
+                            viewabilityExtensions = viewabilityExtensions.concat(getViewabilityTrackersFromVast(parsedXml));
+
+                            url = removeWhiteSpace(vastAdTagUrl[0].textContent);
+                            if (redirect < MAX_WRAPPER_REDIRECTS) {
+                                redirect++;
+                                sendXmlRequest(url, false, successCallback);
+                                return;
+                            }
+                        } else {
+                            inlineNodes = parsedXml.getElementsByTagName("InLine");
+                            if (inlineNodes.length > 0) {
+                                linearNodes = inlineNodes[0].getElementsByTagName("Linear");
+                                if (linearNodes.length > 0) {
+                                    /* found an inline ad */
+                                    unwrappingSuccess = true;
+
+                                    if (!compTrackers.length) {
+                                        companionAdsNode = parsedXml.querySelector("CompanionAds");
+                                        compTrackers = getCompanionTrackers(companionAdsNode);
+                                        compTrackers = mergeWrapperTrackers(compTrackers);
+                                    }
+
+                                    var adParametersNode = parsedXml.querySelector("AdParameters");
+                                    var adParameters = (adParametersNode != null) ? adParametersNode.textContent : "";
+                                    var mediaNodes = parsedXml.querySelectorAll("Linear MediaFile"),
+                                            durationNode = parsedXml.querySelector("Duration");
+                                    /* get asset urls */
+                                    var clickThroughNode = linearNodes[0].querySelector("ClickThrough");
+
+                                    if (null != clickThroughNode && null != clickThroughNode.textContent) {
+                                        clickThroughUrl = removeWhiteSpace(clickThroughNode.textContent);
+                                    } else {
+                                        sendBeacon(99, {
+                                            "action": "missingClickThrough"
+                                        });
+                                    }
+
+                                    videoMeta = getVideoUrl(mediaNodes, durationNode);
+                                    if (videoMeta === "" || typeof videoMeta === "undefined") {
+                                        unwrappingSuccess = false;
+                                        errorCode = 405;
+                                    }
+                                    // console.log("videoMeta" + JSON.stringify(videoMeta));
+
+                                    getRichEndCardUrl(inlineNodes[0]);
+
+                                    viewabilityExtensions = viewabilityExtensions.concat(getViewabilityTrackersFromVast(parsedXml));
+
+                                    companionAd = getCompanionAd(parsedXml);
+
+                                    vastBlob = {
+                                        "version": vastVersion,
+                                        "videoData": videoMeta,
+                                        "companionAd": companionAd,
+                                        "trackingUrls": trackingEventsMap,
+                                        "impressionTracker": impressionTrackers,
+                                        "errorTrackingUrls": errorTrackingUrls,
+                                        "vidClickThrough": clickThroughUrl,
+                                        "richEndCardUrl": iframeEndCardUrl,
+                                        "htmlEndCard": htmlEndCard,
+                                        "companionTrackers": compTrackers,
+                                        "warningCodes": warningCodes,
+                                        "viewabilityExtensions": viewabilityExtensions,
+                                        "adParameters": adParameters
+                                    }
+
+                                } else {
+                                    errorCode = 201;
+                                }
+                            } else {
+                                /* ERROR 303: No ads in VAST response after one or more wrappers */
+                                errorCode = 303;
+                            }
+                        }
+                    }
+                } else {
+                    /* ERROR 100: XML Parsing Error */
+                    errorCode = 100;
+                }
+            } else {
+                /* ERROR 900: Undefined Error like "NetworkError" */
+                errorCode = 900;
+            }
+            if (redirect === MAX_WRAPPER_REDIRECTS && !unwrappingSuccess) {
+                /* ERROR 302: Wrapper limit as defined by player reached */
+                errorCode = 302;
+            }
+            if (unwrappingSuccess) {
+                successCallback(vastBlob);
+            } else {
+                sendErrorBeacon(errorTrackingUrls, errorCode);
+                errorCallback(errorCode);
+            }
+        }
+
+        function getVastXmlData(options) {
+
+            var vastContent = options.vastContent;
+            sendBeacon = options.beaconFunc;
+            sendErrorBeacon = options.sendErrorBeacon;
+            errorCallback = options.errorCallback;
+            successCallback = options.successCallback;
+            adOrientation = options.adOrientation;
+            containerHeight = options.adHeight;
+            containerWidth = options.adWidth;
+            demandOverrideOrientation = options.demandOverrideOrientation;
+            deviceOS = options.deviceOS;
+            viewabilityEnabledMacro = options.viewabilityEnabledMacro;
+            omidEnabled = options.omidEnabled;
+            sdkVersion = options.sdkVersion;
+            // console.log("Will start parsing xml.");
+
+            if (vastContent.url) {
+                redirect++;
+                sendXmlRequest(vastContent.url, false, successCallback);
+            } else {
+                parseVastXml(vastContent.xml, successCallback);
+            }
+        }
+
+        return {
+            getVastXmlData: getVastXmlData
+        }
+    });
+
+    window.VastUnwrapper = VastUnwrapper;
+    var vpaidAd = window.vpaidAd = {};
+    var podData = {playStarted : false, mediaPlaying : false, videoCompleted: false};
+
+    var eventFlags = {
+        AdLoaded: false,
+        AdStarted: false,
+        AdStopped: false
+    };
+
+    var eventNames = {
+        InitAd: "initAd",
+        StartAd: "startAd",
+        StopAd: "stopAd"
+    };
+
+    var eventTrackers = window.eventTrackers(pod_ns, beconSuffix, utils, isPod, vpaidHelper, eventFlags);
+
+    /*functions from handwritten utils*/
+    var getTime = utils.getTime,
+            bySelector = utils.bySelector,
+            addClass = utils.addClass,
+            companionTrackers,
+            byId = utils.byId,
+            randomNo = utils.generateRandomNo();
+
+    var vastExtensionFunction = window[pod_ns+'vastExtension'];
+
+    /* global variables */
+    var _window = window,
+            _imraid = imraid,
+            deviceOS = utils.getDeviceOS(),
+            sendBeacon = utils.sendBeacon,
+            sendErrorBeacon = utils.sendErrorBeacon,
+            fireBeacons = utils.fireBeacons,
+            adNamespace = pod_ns+"ad_",
+            videoElement = byId(adNamespace + "video"),
+            renderTime,
+            impressionTrackers,
+            trackingUrls,
+            companionLandingUrl="",
+            videoLandingUrl="",
+            skipDelay = parseInt("$skipDelay", 10),
+            videoSkipDelayInMs = !isNaN(skipDelay) ? skipDelay * 1000 : 5 * 1000,
+            soundOn = "$soundOn",
+            incentiveJson = "$incentiveJson",
+            demandOverrideOrientation = true,
+            containerWidth = "$supplyWidth",
+            containerHeight = "$supplyHeight",
+            endCardImageSrc = "",
+            endCardIframeResource = "",
+            isRewarded = "$rewarded",
+            endCardHtml = "",
+            viewabilityEnabledMacro = "$viewabilityEnabledMacro",
+            videoDuration,
+            smartEndCardExperimentEnabled = false,
+            isVpaid = false,
+            vpaidDisabled = "$vpaidDisabled",
+            omidEnabled = "$omidEnabled",
+            demandBundleId = demandBundleId,
+            skStoreLoaded = false,
+            sdkVersion = "$sdkVersion",
+            adStopped = false,
+            orientationForPod,
+            errorTrackingUrls,
+            rvCloseButtonExperimentEnabled = false,
+            skStoreExp = false,
+            rvExpEnabled = (function () {
+                var rvExpEnabled = "$rvExpEnabled";
+                rvExpEnabled = (rvExpEnabled === "true");
+                return rvExpEnabled;
+            })(),
+            rvExpScale = (function (){
+                var rvExpScale = parseInt("$rvExpScale", 10);
+                return !isNaN(rvExpScale) ? rvExpScale: 0;
+            })();
+    window.isClick=false;
+
+    var experimentHelper = function () { //make sure the min and max range do not overlap wrt each experiment
+        var smartEndCardExperimentRange = { //enabling 5% traffic to smartendcard experiement
+            "minimum": 95,
+            "maximum": 99
+        };
+        if (utils.checkExperimentRange(smartEndCardExperimentRange, randomNo)) { //check if random no generated falls in experimentRange
+            smartEndCardExperimentEnabled = true; //enabling global variable to conduct experiment
+            // experimentBeacon("ExperimentSmartEndCard-10%"); //firing Experiment beacon
+        }
+
+        var skStoreExperimentRange = { //enabling 50% traffic to skStoreExp experiment
+            "minimum": 0,
+            "maximum": 49
+        };
+        if (utils.checkExperimentRange(skStoreExperimentRange, randomNo)) { //check if random no generated falls in experimentRange
+            skStoreExp = true; //enabling global variable to conduct experiment
+            experimentBeacon("ExperimentSkStore-50%"); //firing Experiment beacon
+        }
+
+        var rvCloseButtonExperimentRanges = {
+            "minimum": 0,
+            "maximum": rvExpScale
+        };
+
+        // removing experienceType === 2 condition and making it applicable for all experienceTypes
+        if (utils.checkExperimentRange(rvCloseButtonExperimentRanges, randomNo) && isRewarded === "true"  && rvExpEnabled) {
+            rvCloseButtonExperimentEnabled = true;
+            experimentBeacon("ExperimentRVExpCloseButton");
+        }
+    };
+
+    function experimentBeacon(experiment_Beacon) {
+        sendBeacon(CUSTOM, {
+            "action": experiment_Beacon
+        });
+    }
+
+    /* enums for beacon Ids */
+    var LOAD = 1,
+            CUSTOM = 99;
+
+    /* boolean variables */
+    var endCardFound = false;
+
+    var videoCtaVisibilityOn = function(){
+        eventTrackers.videoCtaVisibilityOn(videoDuration, videoSkipDelayInMs, videoLandingUrl);
+    }
+
+    this.showPod = function(){
+        renderTime = getTime();
+        const videoData = {
+            skStoreLoaded: skStoreLoaded,
+            videoCtaVisibilityOn: videoCtaVisibilityOn,
+            companionLandingUrl: companionLandingUrl,
+            videoLandingUrl: videoLandingUrl,
+            smartEndCardExperimentEnabled: smartEndCardExperimentEnabled,
+            endCardFound: endCardFound,
+            fireVideoClickTrackers: eventTrackers.fireVideoClickTrackers,
+            fireCompanionClickTrackers: eventTrackers.fireCompanionClickTrackers,
+            companionTrackers: companionTrackers,
+            isVpaid: isVpaid,
+            trackingUrls: trackingUrls,
+            vpaidAd: vpaidAd,
+            videoElement: videoElement,
+            videoData: podData,
+            eventFlags: eventFlags,
+            onVideoComplete: eventTrackers.onVideoComplete
+        };
+        window.pod(utils, isPod, pod_ns, timeout, eventNames, beconSuffix, skan, demandBundleId, videoData, skoverlay);
+    }
+
+    this.getPodDuration = function () {
+        return videoDuration;
+    }
+
+    this.getAdOrientattion = function () {
+        // console.log("orientationForPod--------",orientationForPod);
+        return{
+            orientationForPod : orientationForPod
+        }
+    }
+    this.getbeconSuffix = function () {
+        return beconSuffix;
+    }
+
+    this.loadSkStore = function () {
+        if (skan) { //check if skan params are present to fire load skstore
+            var skStoreLoadBeacons = skan.skStoreLoadBeacons;
+            var itunesitem = skan.dspSkanParams.itunesitem;
+            var version = skan.dspSkanParams.version;
+            var network = skan.dspSkanParams.network;
+            var campaign = skan.dspSkanParams.campaign;
+            var nonce = skan.dspSkanParams.nonce;
+            var sourceapp = skan.dspSkanParams.sourceapp;
+            var timestamp = skan.dspSkanParams.timestamp;
+            var signature = skan.dspSkanParams.signature;
+            fireBeacons(skStoreLoadBeacons);
+            _imraid.loadSKStore(itunesitem, version, network, campaign, nonce, sourceapp, timestamp, signature)
+        }
+    }
+
+    this.fireIncentiveBecon = function () {
+        eventTrackers.fireIncentiveBecon(podData, isRewarded, incentiveJson);
+    }
+
+    function dismissSkOverlay() {
+        if (imraid && typeof (imraid.dismissSKOverlay) === "function") {
+            imraid.dismissSKOverlay();
+        }
+    }
+
+    var resumeVideo = function () {
+        if(skoverlay){
+            dismissSkOverlay();
+        }
+        // console.log("inside resumeVideo");
+        if (!isVpaid) {
+            videoElement.play();
+        } else {
+            vpaidAd.resumeAd();
+            eventTrackers.fireVideoPlayTrackers(podData, renderTime, isVpaid, impressionTrackers, trackingUrls);
+            // sendBeacon(CUSTOM, {"action": "VPAID", "label": "AdVideoResume"});
+        }
+    };
+
+    function pauseVideo() {
+        if (!isVpaid) {
+            videoElement.pause();
+            // sendBeacon(CUSTOM, {"action": "Video", "label": "AdVideoPause"});
+        } else {
+            if (vpaidAd.pauseAd && (typeof (vpaidAd.pauseAd) === "function")) { //checking if vpaid is available
+                vpaidAd.pauseAd();
+                eventTrackers.fireVideoPauseTrackers(podData, trackingUrls);
+                // sendBeacon(CUSTOM, {"action": "VPAID", "label": "AdVideoPause"});
+            }
+        }
+    }
+
+    this.stopVideoFromPod = function () {
+        stopVideo();
+    };
+
+    function stopVideo() {
+        adStopped = true;
+        pauseVideo();
+        if (isVpaid) {
+            vpaidAd.stopAd();
+        }
+    }
+
+    var setContainerDimension = function () {
+        if (!demandOverrideOrientation && ((adOrientation === "portrait" && containerHeight < containerWidth) ||
+                (adOrientation === "landscape" && containerHeight > containerWidth))) {
+            containerHeight = "$supplyWidth";
+            containerWidth = "$supplyHeight";
+        }
+    };
+    var updateDeviceOrientation = function (adOrientation) {
+        // setting orientation in suffix with mraid function "orientationForPod"
+        if (adOrientation === "portrait") {
+            orientationForPod = "portrait"
+        } else {
+            orientationForPod = "landscape"
+        }
+    };
+
+    var setElementDimensions = function (elementWidth, elementHeight, elementId) {
+        // console.log("elementId-----",elementId);
+
+        var htmlElement = document.getElementById(elementId);
+        htmlElement.style.width = (elementWidth / containerWidth) * 100 + "%";
+        htmlElement.style.height = (elementHeight / containerHeight) * 100 + "%";
+
+        if (elementWidth !== containerWidth) {
+            htmlElement.style.left = ((1 - (elementWidth / containerWidth)) / 2) * 100 + "%";
+        }
+
+        if (elementHeight !== containerHeight) {
+            htmlElement.style.top = ((1 - (elementHeight / containerHeight)) / 2) * 100 + "%";
+        }
+
+        // console.log("elementHeight.style" + JSON.stringify(elementHeight.style));
+    };
+
+    this.viewableChangeForResumeAndPlay = function (viewable) { //handle resume and play of specific pod from pod manager
+        // console.log("inside viewableChange---");
+        if (!viewable && podData.mediaPlaying) {
+            pauseVideo();
+        } else if (viewable && !podData.mediaPlaying && podData.playStarted && !podData.videoCompleted) {
+            resumeVideo();
+        }
+    }
+
+    var videoCallback = function(event){
+        eventTrackers.videoCallback(event, podData, renderTime, isVpaid, impressionTrackers, trackingUrls, videoLandingUrl, videoDuration, videoSkipDelayInMs, errorTrackingUrls);
+    }
+
+    this.displayEndCard = function () {
+        podData.videoCompleted = true;
+        var vastData = {
+            endCardImageSrc: endCardImageSrc,
+            endCardIframeResource: endCardIframeResource,
+            endCardHtml: endCardHtml,
+            companionLandingUrl: companionLandingUrl,
+            videoLandingUrl: videoLandingUrl,
+            companionTrackers: companionTrackers,
+        };
+        //   console.log("displayEndCard ---->", endCardData);
+        window.endCard(utils, pod_ns, endCardFound, rvCloseButtonExperimentEnabled, vastData);
+    }
+
+    this.fireOnViewableBecon = function () {
+        eventTrackers.fireOnViewableBecon(isVpaid);
+    }
+
+    this.openAdChoicesText = function () {
+        var adChoicesTextDiv = bySelector(".ad_choices");
+        addClass(adChoicesTextDiv, 'ad_choices_div_trans');
+    }
+
+    function enableSound() {
+        if (soundOn === "true") {
+            videoElement.muted = false;
+        }
+    }
+
+    this.fireReady = function () {
+        // console.log("fireAdready--------------")
+        if (isPod) {
+            sendBeacon(CUSTOM, {
+                "action": "fire-ready" + beconSuffix,
+            });
+        }
+        utils.callFireAdReady();
+    };
+
+    this.fireFailed = function () {
+        // console.log("fireReadyFailed--------------")
+        utils.fireAdFailed();
+    };
+
+    this.fireCustomBecon = function (action, label) {
+        // console.log("action-----"+action+" label------------"+label);
+        sendBeacon(CUSTOM, {"action": action, "label": label});
+    }
+    this.firePodNotEligableDueToDurationBecon = function () {
+        // console.log("podNotEligableDueToDuration------",beconSuffix);
+        sendBeacon(CUSTOM, {"action": "podNotEligableDueToDuration" + beconSuffix})
+    }
+
+    function getVastData(vastBlob) {
+
+        sendBeacon(CUSTOM, {"action": "completed-parsing-xml" + beconSuffix});
+        var videoData = vastBlob.videoData;
+        var videoUrl = videoData.vidUrl,
+                warningCodes = vastBlob.warningCodes,
+                companionData = vastBlob.companionAd,
+                vpaidCreativeJS = videoData.vpaidCreativeJS,
+                errorTrackingUrls = vastBlob.errorTrackingUrls;
+        videoDuration = videoData.videoDuration;
+
+        // _imraid.saveContent("randomMediaId", videoData.vidUrl, function (a, b) {
+        //     console.log("a: " + a + "\tb: " + JSON.stringify(b));
+        // });
+        // console.log("vpaidDisabled" + vpaidDisabled);
+        if (videoUrl === "" || typeof (videoUrl) === undefined) {
+            if (vpaidDisabled === "true" || vpaidCreativeJS === "" || typeof (vpaidCreativeJS) === undefined) {
+                // console.log("inside vpaidDisabled ===------------")
+                sendErrorBeacon(errorTrackingUrls, 405);
+                eventTrackers.fireAdFailedFunc("no-media-file");
+                return;
+            } else {
+                isVpaid = true;
+                // utils.sendBeacon(CUSTOM, {"action": "vpaidAd-position" + beconSuffix});
+            }
+        }
+        // console.log("isVpaid" + isVpaid);
+        //Pass the viewability extenstions to the vast function.
+        try {
+            if (typeof vastExtensionFunction === "function") {
+                for (var i = 0; i < vastBlob.viewabilityExtensions.length; i++) {
+                    vastExtensionFunction(vastBlob.viewabilityExtensions[i]);
+                }
+            }
+        } catch (e) {
+            var pod = "";
+            if (isPod) {
+                pod = "_pod"
+            }
+            utils.sendBeacon(CUSTOM, {"action": "vastExtensionFunction_Error" + pod});
+        }
+
+        if (!isVpaid) {
+            //console.log("Will call fire ad ready after this");
+            videoElement.src = videoUrl;
+            /* Calling fireAdReady after loading the video url itself because iOS doesn't fire canplay event until the webview is on the view. This might still have media errors. Need to have a better way.*/
+            eventTrackers.callFireAdReadyFunc();
+            var helixVideoEvents = ["inmobi-video-play", "inmobi-video-pause", "inmobi-video-time-update", "inmobi-video-ended", "inmobi-video-error", "inmobi-video-stop", "inmobi-video-quartile", "inmobi-video-can-play", "inmobi-video-showIcons", "inmobi-video-mute", "inmobi-video-unmute"];
+            helixVideoEvents.forEach(function (event) {
+                videoElement.addEventListener(event, videoCallback);
+            });
+
+            setTimeout(function () {
+                if (omidEnabled === "true") {
+                    try {
+                        var videoDomElement = videoElement.video;
+                        if (videoDomElement !== undefined && videoDomElement !== null && videoDomElement.src !== null) {
+                            videoRefCallback(videoDomElement);
+                        } else {
+                            sendBeacon(CUSTOM, {"action": "videoDom" + beconSuffix, "label": "failed"});
+                        }
+                    } catch (e) {
+                        sendBeacon(CUSTOM, {"action": "videoDom" + beconSuffix, "label": "errorAccess"});
+                    }
+                }
+            }, 0);
+        } else if (vpaidDisabled !== "true") {
+            window.experienceType = 0;
+            sendBeacon(CUSTOM, {"action": "VPAID-AD" + beconSuffix});
+            vpaidHandling(vpaidCreativeJS, vastBlob.adParameters);
+        } else {
+            // console.log("inside else condition-----------")
+            sendErrorBeacon(errorTrackingUrls, 901);
+            eventTrackers.fireAdFailedFunc("vpaid-disabled-pub");
+        }
+
+        /* send error beacons for all warning codes*/
+        if (warningCodes.length) {
+            //console.log("warningCodes" + JSON.stringify(warningCodes));
+            for (i = 0; i < warningCodes.length; i++) {
+                sendErrorBeacon(errorTrackingUrls, warningCodes[i])
+            }
+        }
+
+        var videoWidth = videoData.videoWidth,
+                videoHeight = videoData.videoHeight;
+        var companionHeight = videoHeight,
+                companionWidth = videoWidth;
+        if (demandOverrideOrientation) {
+            adOrientation = videoData.videoOrientation;
+            containerHeight = videoData.containerHeight;
+            containerWidth = videoData.containerWidth;
+        }
+
+        updateDeviceOrientation(adOrientation);
+        //console.log("got video url " + videoUrl +  + "time"+ Math.floor(Date.now() / 1000))
+        // console.log("vastBlob-----",vastBlob);
+        if (vastBlob.richEndCardUrl) {
+            endCardFound = true;
+            companionTrackers = vastBlob.companionTrackers;
+            endCardIframeResource = vastBlob.richEndCardUrl;
+        } else if (vastBlob.htmlEndCard) {
+            endCardFound = true;
+            companionTrackers = vastBlob.companionTrackers;
+            endCardHtml = vastBlob.htmlEndCard;
+        } else if (companionData && companionData.url) {
+            endCardFound = true;
+            endCardImageSrc = companionData.url;
+            // console.log("companionData.url-------",companionData.url)
+            companionTrackers = vastBlob.companionTrackers;
+            companionLandingUrl = companionData.companionClickThrough;
+            companionHeight = companionData.height;
+            companionWidth = companionData.width;
+        }
+        if (vastBlob.vidClickThrough !== "") {
+            videoLandingUrl = vastBlob.vidClickThrough;
+        } else if (!isVpaid) {
+            // SERV-15172 : If no video landing page found, set video experience as high VCR and do not show video CTA. more details found on ticket.
+            if (window.experienceType > 1) {
+                window.experienceType = 1;
+            }
+
+            if (!endCardFound) {
+                var adContainer = document.getElementById("ad-cont");
+                var evt = new CustomEvent('show-close-instead-of-skip-true');
+                // console.log("endedevt-------",evt);
+                adContainer.dispatchEvent(evt);
+                // showCloseInsteadOfSkip = true;
+            }
+        }
+        if (companionLandingUrl === "" && videoLandingUrl !== "") {
+            companionLandingUrl = videoLandingUrl
+        }
+        if (videoLandingUrl === "" && companionLandingUrl !== "") {
+            videoLandingUrl = companionLandingUrl;
+        }
+        setElementDimensions(videoWidth, videoHeight, pod_ns + "ad_pg1");
+        setElementDimensions(companionWidth, companionHeight, pod_ns + "ad_pg2");
+        trackingUrls = vastBlob.trackingUrls;
+        impressionTrackers = vastBlob.impressionTracker;
+        impressionTrackers = impressionTrackers.concat(trackingUrls["creativeView"]);
+        enableSound();
+    }
+
+    videoElement.addEventListener("inmobi-video-attached", function (event) {
+        var videoDomElement = event.detail.videoDomElement;
+        if (omidEnabled !== "true" && videoDomElement) {
+            videoRefCallback(videoDomElement);
+        }
+    })
+
+    var AdError = function (customLabel) {
+        // console.log("inside AdError" + JSON.stringify(customLabel));
+        // sendBeacon("99", {"action": "AdError" + beconSuffix, "label": JSON.stringify(customLabel)});
+        sendBeacon("99", {"action": "AdError" + beconSuffix});
+        // console.log("inside AdError-----------")
+        eventTrackers.fireAdFailedFunc("AdError");
+        sendErrorBeacon(errorTrackingUrls, 901);
+        stopVideo();
+    };
+
+    var timeout = function (event, millis) {
+        // console.log("Time before timeout: \t" + getTime());
+        // console.log("timeout in mills:\t" + millis);
+        setTimeout(function () {
+            var timeoutFlag = false;
+            if (event === eventNames.InitAd) {
+                timeoutFlag = eventFlags.AdLoaded;
+            } else if (event === eventNames.StartAd) {
+                timeoutFlag = eventFlags.AdStarted;
+            } else if (event === eventNames.StopAd) {
+                timeoutFlag = eventFlags.AdStopped;
+            }
+            // console.log("timeout, event: " + event + ", timeoutFlag: " + timeoutFlag);
+            if (!timeoutFlag) {
+                AdError(event + " timeout.");
+                // console.log("Time after timeout: \t" + getTime());
+            }
+        }, millis)
+    };
+
+    var setVideoLandingUrl = function(url){
+        videoLandingUrl = url;
+    }
+
+    var vpaidHandling = function (vpaidCreativeJS, adParameters) {
+        var finishLoad = function(){
+            vpaidAd = window.getVPAIDAd();
+            eventTrackers.vpaidCallback(vpaidAd, podData, errorTrackingUrls, adParameters, setVideoLandingUrl, trackingUrls, containerWidth, containerHeight, AdError, renderTime, isVpaid, impressionTrackers, timeout);
+        }
+        vpaidHelper.vpaidInitHandling(vpaidCreativeJS, finishLoad, AdError, pod_ns);
+    }
+
+
+    function parseVastXml(vast) {
+        var regEx = /^https?.*/;
+        var vastAdTagResponse = vast;
+        if (regEx.test(vastAdTagResponse)) {
+            /* vast URL  */
+            vastContent = {
+                url: vastAdTagResponse
+            }
+        } else {
+            /* vast inline creative */
+            vastContent = {
+                xml: vastAdTagResponse
+            }
+        }
+
+        //console.log("containerWidth\t" + containerWidth + "containerHeight\t" + containerHeight);
+        vastUnwrapper = window.VastUnwrapper();
+        // console.log("viewabilityEnabledMacro" + viewabilityEnabledMacro);
+        vastUnwrapper.getVastXmlData({
+            vastContent: vastContent,
+            beaconFunc: sendBeacon,
+            sendErrorBeacon: sendErrorBeacon,
+            errorCallback: eventTrackers.fireAdFailedFunc,
+            adHeight: containerHeight,
+            adWidth: containerWidth,
+            successCallback: getVastData,
+            adOriBasedOnVid: false,
+            adOrientation: adOrientation,
+            demandOverrideOrientation: demandOverrideOrientation,
+            deviceOS: deviceOS,
+            viewabilityEnabledMacro: viewabilityEnabledMacro,
+            omidEnabled: omidEnabled,
+            sdkVersion: sdkVersion
+        });
+    }
+
+    var videoRefCallback = function (videoDomElement) {
+        if (typeof window[pod_ns + "videoRefCallback"] === "function") {
+            window[pod_ns + "videoRefCallback"](videoDomElement);
+        }
+    };
+
+    //error handler code:
+    window.onerror = function (msg, url, lineNo) {
+        var httpRegEx = /^https?/,
+                label = "m:" + msg + ",l:" + lineNo + ",isvpaid:" + isVpaid;
+
+        var suffix = "";
+        if (isPod) {
+            suffix = "-pod"
+        }
+
+        if (httpRegEx.test(url)) {
+            label += ",u:" + url;
+        } else {
+            label += ",u:non-http";
+        }
+        sendBeacon(99, {
+            "action": "javascript-error",
+            "label": label + suffix
+        });
+    };
+
+
+    /* send load beacon */
+    if (beconSuffix === "_0" || beconSuffix === "") { //firing load becon only first time for first pod alone beconSuffix
+        // console.log("loadadbecon-----------")
+        sendBeacon(LOAD);
+        sendBeacon(CUSTOM, {
+            "action": "ad-load", "eventData": {
+                "skippable": isRewarded === "false",
+                "skipOffset": videoSkipDelayInMs / 1000,
+                "autoPlay": true,
+                "position": "standalone"
+            }, "label": beconSuffix
+        });
+    }
+    if (isPod) {
+        sendBeacon(CUSTOM, {
+            "action": "ad-load-pod" + beconSuffix,
+        })
+    }
+
+    parseVastXml(vast);
+    //conditions
+    if (skStoreExp && demandBundleId !== null && demandBundleId !== "" && !isNaN(demandBundleId) && deviceOS === "ios" && !isPod) {
+        _imraid.loadSKStore(demandBundleId);
+        _imraid.addEventListener('SKStoreContentLoaded', function (listenedBundleId)
+        {
+            if (listenedBundleId.toString() === demandBundleId.toString()) {
+                skStoreLoaded = true;
+                sendBeacon(CUSTOM, {"action": "SKStoreLoaded", "label" : demandBundleId});
+            }
+        });
+        _imraid.addEventListener("error", function (message, command) {
+            if (command && command === "openitunesproductview") {
+                sendBeacon(CUSTOM, {"action": "SKStoreLoadingFail", "label" : demandBundleId});
+            }
+        });
+    }
+    setContainerDimension();
+    experimentHelper();
+    //removed utils.disableFireReadyFunc since undefined for both platforms @ne0
+//    utils.disableFireReadyFunc();
+};
+window["decorator"] = decorator;</script><script>var endCard = function (utils, pod_ns, endCardFound, rvCloseButtonExperimentEnabled, vastData ) {
+    /* global variables */
+    var CUSTOM = 99,
+            _mraid = mraid,
+            sendBeacon = utils.sendBeacon,
+            fireBeacons = utils.fireBeacons,
+            closeButtonFadeInDelay = 0.1, //FadeIn delay of close button visibility in seconds
+            closeBtnDelay = 3000, //delay for close button to become visible
+            rvCloseDelay = 5000; //delay for auto close for rv exps
+
+    var endCardImageSrc = vastData.endCardImageSrc,
+            endCardIframeResource= vastData.endCardIframeResource,
+            endCardHtml = vastData.endCardHtml,
+            companionLandingUrl = vastData.companionLandingUrl,
+            videoLandingUrl = vastData.videoLandingUrl,
+            companionTrackers = vastData.companionTrackers;
+
+    var handleEndCardCloseButtonVisibility = function (isShow, delay, isFadeIn) {
+        var ecCloseBtn = document.getElementById("ecCloseBtn");
+        ecCloseBtn.classList.add("hide");
+        if (isFadeIn) { //adding fadein and close delay effect for experience !== 0
+            var value = "fadeIn ease " + closeButtonFadeInDelay + "s";
+            ecCloseBtn.classList.add("iconFadeIn");
+            ecCloseBtn.style.setProperty('--fadein-builder', value);
+        }
+        if (isShow) {
+            if (delay) {
+                setTimeout(function () {
+                    // sendBeacon(CUSTOM, {action: "close-button-appeared"});
+                    ecCloseBtn.classList.remove("hide");
+                }, delay);
+            } else {
+                // sendBeacon(CUSTOM, {action: "close-button-appeared"});
+                ecCloseBtn.classList.remove("hide");
+            }
+        }
+    };
+
+    function getPopOutBtn() {
+        // create pop-out icon element
+        var popOutImg = document.createElement("img");
+        popOutImg.setAttribute("src", "https://prod-supply-bucket.oss-cn-beijing.aliyuncs.com/supply/reward_video/popOut.svg");
+        popOutImg.setAttribute("data-action", "popOutBtn");
+        popOutImg.style.height = "100%";
+        popOutImg.style.width = "100%";
+        popOutImg.classList.add("pulseEffect");
+
+        var popOutBtn = document.createElement("div");
+        popOutBtn.setAttribute("id", "popOutBtn");
+        popOutBtn.style.position = "absolute";
+        popOutBtn.style.right = "5px";
+        popOutBtn.style.top = "5px";
+        popOutBtn.style.width = "50px";
+        popOutBtn.style.height = "50px";
+        popOutBtn.style.zIndex = 2147483647;
+        popOutBtn.appendChild(popOutImg);
+        return popOutBtn;
+    }
+
+    var displayEndCard = function() {
+        addEndCard();
+        var endCardCloseDelaySec = parseInt("$endCardCloseDelaySec", 10);
+        var endCardCloseDelayMilliSec = isNaN(endCardCloseDelaySec) ? 3 * 1000 : endCardCloseDelaySec * 1000;
+        if (!endCardFound && videoLandingUrl === "") {
+            setTimeout(_mraid.close, 1000);
+        } else {
+            var videoPage = document.getElementById(pod_ns + "ad_pg1");
+            var endCardPage = document.getElementById(pod_ns + "ad_pg2");
+            var autoClose = "$autoClose";
+            var video = document.getElementById(pod_ns + "ad_video");
+            video.setAttribute("muted", false); //muting the video when land on end card page
+            videoPage.classList.add("hide");
+            endCardPage.classList.remove("hide");
+            if (autoClose === "true") {
+                setTimeout(_mraid.close, endCardCloseDelayMilliSec);
+            }
+            if (endCardFound) {
+                fireBeacons(companionTrackers["companionView"]);
+            }
+            var ecCloseBtn = document.getElementById("ecCloseBtn");
+            var ecCloseBtnIcon = document.getElementById("ecCloseBtnIcon")
+            ecCloseBtnIcon.setAttribute("data-action", "endCardcloseAd");
+            ecCloseBtn.classList.remove("hide");
+
+            // if (rvCloseButtonExperimentEnabled) {
+            //     handleEndCardCloseButtonVisibility(true, rvCloseDelay, true);
+            //     // endCardPage.appendChild(getPopOutBtn());
+            // } else {
+            //     if (window.experienceType !== 0) { //adding fadein and close delay effect for experience !== 0
+            //         handleEndCardCloseButtonVisibility(true, closeBtnDelay, true);
+            //     } else {
+            //         handleEndCardCloseButtonVisibility(true, 0, false);
+            //     }
+            // }
+        }
+    }
+
+    var addEndCard = function () {
+        //create endcard image
+        if (endCardFound === true) {
+            //console.log("entered endCard present")
+            var endCardImage = document.getElementById(pod_ns + "endCardImage");
+            var element;
+            var endCardCta = document.getElementById(pod_ns + "endCardCtaBtn");
+            endCardCta.classList.remove("hide");
+            if (endCardImageSrc !== "") { //check for image resource for endcard
+                element = document.createElement("img");
+                element.src = endCardImageSrc;
+                element.setAttribute("data-action", "endCardCta");
+                endCardImage.appendChild(element);
+                sendBeacon(CUSTOM, {"action": "staticCompanion"});
+            } else if (endCardIframeResource !== "") { //check for iframe resource endcard
+                element = document.createElement("iframe");
+                element.src = endCardIframeResource;
+                endCardImage.appendChild(element);
+                sendBeacon(CUSTOM, {"action": "iframeCompanion"});
+            } else if (endCardHtml !== "") { //check for html resource endcard
+                var testdiv = document.createElement("script");
+                testdiv.innerText = "function setUpFrame() { \n" +
+                        "    var frame = window.frames['endCardHtmlIframe'];\n" +
+                        "    frame.getMraid(mraid);\n" +
+                        "}";
+                window.document.body.appendChild(testdiv);
+
+                //removed endcard script @ne0
+
+                element = document.createElement("iframe");
+                element.name="endCardHtmlIframe";
+                endCardImage.appendChild(element);
+                element.contentWindow.document.open();
+                element.contentWindow.document.write(endCardHtml);
+                element.contentWindow.document.close();
+                // element.contentWindow.document.onclick = fireCompanionClickTrackers;
+                sendBeacon(CUSTOM, {"action": "htmlCompanion"});
+
+            }
+            element.classList.add("ec-img");
+        } else if (videoLandingUrl !== "" || companionLandingUrl !== "") {
+            //cta button shown for end card only when end card is not present
+            //  var endCardCta = document.getElementById(pod_ns + "endCardCtaBtn");
+            //  endCardCta.classList.remove("hide");
+            //show background and hide endcardimage when we show only CTA button. Background is used to track click on end card
+            var endCard = document.getElementById(pod_ns + "endCardImage");
+            var endCardBackground = document.getElementById(pod_ns + "endCardBackground");
+            endCard.classList.add("hide");
+            endCardBackground.classList.remove("hide")
+            sendBeacon(CUSTOM, {"action": "NoEndCard"});
+        }
+    };
+    displayEndCard();
+}
+
+window["endCard"] = endCard;</script><script>var podsInitializr = function (isSdkAdPodResponse, deviceOS, setOrientation) {
+    this.pods = {}; //stores all instance of decorator where all function are available wrt each decorator
+    this.currentAd = ""; //stores id of currentPod, id is nothing but namespaced id
+    var that = this;
+    this.allPods = []; //stores array of object with id and status eg: [{id:100,status:undefined}], status is to check if ad is ready to show without any error after parsing or anywhere else while parsing
+    var isPod = $isPod;
+    var podManagerReady = false; //to handle firead ready which chouls not be fired multiple times
+    var beaconSuffix = "";
+
+
+    this.initiatePods = function (podList) {
+        for (var i = 0; i < podList.length; i++) {
+            var ns = podList[i].ns;
+            if (isPod) {//add becon suffix only for pod else send becon as empty ""
+                beaconSuffix = "_" + i;
+            }
+            that.allPods.push({
+                id: ns,
+                status: undefined
+            });
+            var experienceConfig = {orientation: podList[i].orientation, isPod: isPod};
+            var experienceRequest = {
+                vast: podList[i].vast,
+                demandBundleId: podList[i].demandBundleId,
+                ns: ns,
+                skan: podList[i].skan,
+                beaconSuffix: beaconSuffix,
+                skoverlay: podList[i].skoverlay
+            };
+            var expeienceObject = window.experienceFactory();
+            that.pods[ns] = expeienceObject(experienceRequest, experienceConfig);
+        }
+    };
+
+    //adding eventListeners for adready and adfailed
+    var readyFailureEvents = ["adReady", "adFailed"]
+    for (var i = 0; i < readyFailureEvents.length; i++) {
+        document.addEventListener(readyFailureEvents[i], callBackForReadyFailureEvents);
+    }
+
+    function callBackForReadyFailureEvents(event) {
+        var podId = event.detail;
+        switch (event.type) {
+            case "adReady":
+                changeValueInAllPods(podId, true);
+                document.dispatchEvent(new CustomEvent("validDecorator", {"detail": podId}));
+                break;
+            case "adFailed":
+                changeValueInAllPods(podId, false);
+                document.dispatchEvent(new CustomEvent("inValidDecorator", {"detail": podId}));
+                break;
+        }
+        ;
+    };
+
+    function changeValueInAllPods(id, status) {
+        //update the status true or false of pod in allpods array
+        var getAllPods = that.allPods;
+        for (var i in getAllPods) {
+            if (getAllPods[i].id == id) {
+                getAllPods[i].status = status;
+                break;
+            }
+        }
+    }
+
+    this.fireSuccess = function () {
+        // this function has logic for fireadready
+        var fireSuccessReady = true;
+        var getAllPods = that.allPods;
+        var thatPods = that.pods;
+        var validIndex = 0;
+        for (var i in getAllPods) {
+            if (getAllPods[i].status === undefined) {
+                fireSuccessReady = false
+                break;
+            } else {
+                if (getAllPods[i].status === true) {
+                    validIndex = i;
+                    break;
+                }
+                ;
+            }
+            ;
+        }
+        ;
+        if (fireSuccessReady) {
+            if (podManagerReady === false) {
+                podManagerReady = true;
+                that.currentAd = that.allPods[validIndex].id;
+                // var timeDiff = Math.round(((new Date().getTime()) - initTime)/1000);
+                // var firsPodId = this.allPods[0].id;
+                // var firstDecorator = this.pods[firsPodId];
+                // var isItpod = "";
+                // if(isPod){
+                //     isItpod = "-pod"
+                // }
+                // firstDecorator.fireCustomBecon("duration-init-fireReady"+isItpod, timeDiff)
+                thatPods[that.allPods[validIndex].id].loadSkStore(); //need to load sk store for
+                if (!isSdkAdPodResponse || deviceOS === "ios") {
+                    // IOS doesnt support setting orientation midway, need to set before calling fireAdready, once orientation set , its retained across sdkAdpoda and cannot be changed
+                    // Android doesnt support retaining orientation across ads for ad pods,
+                    // Setting orientation fo ios, pod and video4.1
+                    // Handling updating of orientation in setSdkadPodContext for android
+                    setOrientation(); //set orientation of landscape or portrait before calling first ad;
+                }
+                thatPods[that.allPods[validIndex].id].fireReady();
+            }
+        }
+    };
+
+    this.fireFailure = function () {
+        //logic to fire adfailed, here we are firing ad ready here even if one ad has status true
+        var allPods = that.allPods;
+        var allAdsFailure = true; //variable to check if all ads failed
+        var validStartIndex;
+        var thatPods = that.pods;
+        var fireAdFailedEvent = true;
+        for (var i = 0; i < allPods.length; i++) {
+            if (allPods[i].status === true || allPods[i].status === false) {
+                if (allPods[i].status === true && validStartIndex !== undefined) {
+                    validStartIndex = i;
+                    fireAdFailedEvent = false;
+                    break;
+                }
+            } else {
+                fireAdFailedEvent = false;
+                break;
+            }
+        }
+        if (!fireAdFailedEvent) {
+            if (validStartIndex !== undefined) {
+                if (podManagerReady === false) {
+                    podManagerReady = true;
+                    that.currentAd = that.allPods[validStartIndex].id;
+                    if (!isSdkAdPodResponse || deviceOS === "ios") {
+                        // IOS doesnt support setting orientation midway, need to set before calling fireAdready, once orientation set , its retained across adpoda and cannot be changed
+                        // Android doesnt support retaining orientation across ads for ad pods,
+                        // Setting orientation fo ios, pod and video4.1
+                        // Handling updating of orientation in setSdkadPodContext for android
+                        setOrientation(); //set orientation of landscape or portrait before calling first ad;
+                    }
+                    thatPods[that.allPods[validStartIndex].id].loadSkStore(); //need to load sk store for
+                    thatPods[that.allPods[validStartIndex].id].fireReady();
+                }
+            }
+        } else {
+            for (var i = 0; i < allPods.length; i++) {
+                if (allPods[i].status !== false) {
+                    allAdsFailure = false;
+                }
+            }
+            if (allAdsFailure === true) {
+                // fire ad failed only when all ads in creative list has failed
+                thatPods[that.allPods[0].id].fireFailed();
+            }
+        }
+    }
+
+    var decoratorEvents = ["validDecorator", "inValidDecorator"]
+    for (var i = 0; i < decoratorEvents.length; i++) {
+        document.addEventListener(decoratorEvents[i], callBackForDecoratorEvents);
+    }
+
+    function callBackForDecoratorEvents(event) {
+        // call bask function to fireSuccess, added timeout here of 0 seconds to have ignorable delay. without time out event gets fired by listener not able to capture event
+        var podId = event.detail;
+        switch (event.type) {
+            case "validDecorator":
+                setTimeout(function () {
+                    that.fireSuccess(podId);
+                }, 0);
+                break;
+            case "inValidDecorator":
+                setTimeout(function () {
+                    that.fireFailure(podId);
+                }, 0);
+                break;
+        }
+    }
+};
+
+window["podsInitializr"] = podsInitializr;
+
+var adListener = function (isPod, globalPodManager, isRewarded, skipDelayTimeForRewarded, isSdkAdPodResponse, hasNextAd) {
+    var skipDelay = parseInt("$skipDelay", 10);
+    var videoSkipDelayInMs = !isNaN(skipDelay) ? skipDelay * 1000 : 5 * 1000;
+    var skipDelayOver = false;
+    var optOutUrl = "$adChoicesUrl";
+    var enabled_icons;
+    var timerControl;
+    var timerControlForMaxDuration;
+    var skipAllDelayControl; //control skipall btn setimer timer
+    var skipSkipAllDelayForAllPods = false; //control skip delay functionlaity for all pods
+    var orderOfPods = "";
+    var maxTimeForPod = parseInt("$maxPodDuration", 10);
+    var skipDelayForRewarded = false;
+    var endCardShown = false;
+
+    var showCloseInsteadOfSkip = (function () {
+        var closeInsteadSkip = "$closeInsteadSkip";
+        return closeInsteadSkip === "true";
+    })();
+
+    function getCurrentRenderingIndex() {
+        var renderinIndex = imraid.getCurrentRenderingIndex().toString();
+        return renderinIndex;
+    }
+
+    function getRenderableAdIndexes() {
+        var renderableIndex = imraid.getRenderableAdIndexes().replace("[", "").replace("]", "").split(",")
+        return renderableIndex;
+    }
+
+    function imraidShowAd(index) {
+        imraid.showAd(index)
+    }
+
+    function getNextAdIndex() { //returns valid index of next ad or else returns nothing
+        var currentAd = getCurrentRenderingIndex();
+        var renderableAds = getRenderableAdIndexes();
+        var indexOfcurrentAdInRenderableAds = renderableAds.indexOf(currentAd);
+        var renderableAdsLength = renderableAds.length;
+        if (indexOfcurrentAdInRenderableAds < renderableAdsLength - 1) {
+            var index = renderableAds[indexOfcurrentAdInRenderableAds + 1]
+            return parseInt(index);
+        } //returning -1 when we dont have next ad
+        return -1;
+    }
+
+    function fireIncentiveBeconIfRewarded(decoratorObj) { //since user will not be able to sikip video in rewarded when user goes to last video and moves to end card incentive becon is fired
+        decoratorObj.fireIncentiveBecon();
+    }
+
+    function timerVisibilityOff() {
+        var timer = document.getElementById("timerWrapper");
+        timer.classList.add("hide");
+    }
+
+    var skipBtnVisibilityOff = function () {
+        var skipBtn = document.getElementById("skip-btn");
+        skipBtn.classList.add("hide");
+    }
+
+    var skipAllAdVisibilityOff = function () {
+        var skipAllAdBtn = document.getElementById("skipAll");
+        skipAllAdBtn.classList.add("hide");
+    }
+
+    var stopVideo = function (nsPodId) {
+        globalPodManager.pods[nsPodId].stopVideoFromPod();
+    }
+
+    function stopTimer() {
+        clearInterval(timerControl);
+    }
+
+    function stopTimerForMaxDuration() {
+        clearInterval(timerControlForMaxDuration);
+    }
+
+    function timerVisibilityOff() {
+        var timer = document.getElementById("timerWrapper");
+        timer.classList.add("hide");
+    }
+
+    var showEndCard = function () {
+        var currentPod = globalPodManager.currentAd;
+        var currentDecorator = globalPodManager.pods[currentPod];
+        fireIncentiveBeconIfRewarded(currentDecorator);
+        skipBtnVisibilityOff();
+        skipAllAdVisibilityOff();
+        hideSkipVideoPopup();
+        stopVideo(currentPod);
+        stopTimer();
+        /*uncomment this when we push new library*/
+        stopTimerForMaxDuration();
+        timerVisibilityOff();
+        /*uncomment this when we push new library*/
+        endCardShown = true;
+        // endCard auto trigger DP
+        var mode = "$modeStr";
+        //if (mode === "DEEPLINK"){
+        console.log("showEndCard and not autoOpenExternal...");
+        // showEndCard
+        currentDecorator.displayEndCard();
+        /*if(window.isClick){
+            currentDecorator.displayEndCard();
+        }else{
+            window.openLandingPageWrapper()
+            currentDecorator.displayEndCard();
+        }*/
+        // document.getElementById("act_click").dispatchEvent(new Event('click'))
+        //}
+    }
+
+    function handleNextAdForSdkAdPods() {
+        if (hasNextAd) {
+            var nextAdIndex = getNextAdIndex();
+            if (typeof (mraid.isViewable) === "function" && mraid.isViewable()) { // fireCustomBecon("sdkAdPodsViewable-----","if_condition");
+                if (nextAdIndex != -1) {
+                    imraidShowAd(nextAdIndex);
+                }
+            } else {
+                mraid.addEventListener("viewableChange", function (viewable) {
+                    if (viewable) {
+                        mraid.removeEventListener("viewableChange", arguments.callee);
+                        if (nextAdIndex != -1) {
+                            imraidShowAd(nextAdIndex);
+                        }
+                    }
+                });
+            }
+        } else { // move to end card if we dont have next ad
+            showEndCard();
+        }
+    }
+
+    var skipSkipAllBtnVisibilityOff = function () { // make both skip and skipall button invisible
+        skipBtnVisibilityOff();
+        skipAllAdVisibilityOff();
+    }
+
+    function getIndexOfPod(podId) {
+        var allPods = globalPodManager.allPods;
+        for (var i = 0; i < allPods.length; i++) {
+            if (globalPodManager.allPods[i].id === podId) {
+                return i;
+            }
+        }
+    }
+
+    function getValidNextAd(currentAd, allPods) { //returns valid next pod, If there is no valid next pod returns current pod id
+        var lastPod = false; // skipAllFlag : this flag will be true when we click on skip, false when we handle show-icons when experience=1, this is to avoiding incrementing of time "podsDurationCompleted"
+        var currentPodIndex = getIndexOfPod(currentAd);
+        if (currentPodIndex === allPods.length - 1) { //handles if there is only one pod
+            lastPod = true;
+        }
+        if (!lastPod) {
+            for (var i = currentPodIndex + 1; i < allPods.length; i++) {
+                if (allPods[i].status === true) { //check for status true in allpods
+                    return allPods[i].id;
+                } else {
+                    if (i !== allPods.length - 1) {
+                        continue;
+                    } else {
+                        return globalPodManager.currentAd;
+                    }
+                }
+            }
+        } else { //this is when valid pod is last pod we return currentPodId
+            var currentPod = allPods[currentPodIndex];
+            return currentPod.id;
+        }
+    }
+
+    function enableSkipAllBtnIfSinglePod() {
+        var currentAd = globalPodManager.currentAd;
+        var allPods = globalPodManager.allPods;
+        var nextAd = getValidNextAd(currentAd, allPods); //this returns boolean after checking for duration as well, eg: returns nextAd whose adtime+podsDurationCompleted < maxPodsDuration
+        var enableSkipAllBtn = true;
+        if (nextAd === currentAd) {
+            enableSkipAllBtn = false;
+        }
+        if (isSdkAdPodResponse && hasNextAd) { // enable skip all button for sdkAdPods when it has next ad
+            enableSkipAllBtn = true;
+        }
+        return enableSkipAllBtn;
+    }
+
+    function skipSkipAllVisibilityOn(buttonToShow, enableSkipSkipAllBtn) {
+//        if (window.experienceType !== 1) { //TODO check skip
+        if (buttonToShow === "skip") {
+            skipBtnVisibilityOn(true);
+        }
+        if (enableSkipSkipAllBtn) {
+            if (buttonToShow === "skipAll") {
+                skipAllAdVisibilityOn();
+            }
+        }
+        //      }
+        skipDelayOver = true;
+        skipDelayForRewarded = true; // 1 is for HIGH_CVR, in HIGH_CVR skip button will be disabled at start, which is default.
+    }
+
+    function handleSkipBtnVisibilityOnViewable() { //has logic to handle skipdelay as soon as ad becomes visible
+        var enableSkipSkipAllBtn = enableSkipAllBtnIfSinglePod();
+        showTimer();
+
+        if ((isRewarded === "false")) {
+            console.log("Showing timer for non rewarder video China");
+            // 0 is for BASIC & 2 is for HIGH_CVR
+            if (!endCardShown) { //using seperate time out for skip and skip all as we need to control skipall button visibilty when we move to last valid pod "skipAllDelayControl"
+                setTimeout(skipSkipAllVisibilityOn, videoSkipDelayInMs, "skip", enableSkipSkipAllBtn);
+                skipAllDelayControl = setTimeout(skipSkipAllVisibilityOn, videoSkipDelayInMs, "skipAll", enableSkipSkipAllBtn);
+            }
+        } else {
+            console.log("Is pod ::", isPod);
+            console.log("Is sdkpod> ::", isSdkAdPodResponse);
+            console.log("isRewarded> ::", isSdkAdPodResponse);
+
+            if ((isRewarded === "true")) { //TODO && (isPod || isSdkAdPodResponse)
+                console.log("Inside isRewarded> ::", isRewarded);
+                setTimeout(skipSkipAllVisibilityOn, skipDelayTimeForRewarded, "skip", true);
+                skipAllDelayControl = setTimeout(skipSkipAllVisibilityOn, skipDelayTimeForRewarded, "skipAll", enableSkipSkipAllBtn);
+            }
+        }
+    };
+
+    var hideAllPods = function () { //function to hideall pods in html;
+        var pods = document.getElementsByClassName("pod-ad");
+        for (var i = 0; i < pods.length; i++) {
+            pods[i].classList.add("hide")
+        }
+        ;
+    }
+
+    function getPodDurationTime(podId) {
+        var currentDecorator = globalPodManager.pods[podId];
+        return currentDecorator.getPodDuration();
+    }
+
+    function showTimer() {
+        var videoDuration = getPodDurationTime(globalPodManager.currentAd);
+        if (videoDuration == 0) { //not showing timer when we get duration as 0 from decorator
+            timerVisibilityOff();
+        } else {
+            document.getElementById("timerCount").innerHTML = videoDuration + 's后可领取奖励';
+            var timerWrapper = document.getElementById("timerWrapper");
+            timerWrapper.classList.remove("hide");
+            timerControl = setInterval(function () {
+                document.getElementById("timerCount").innerHTML = videoDuration - 1 + 's后可领取奖励'; //puting -1 to keep timer in syns with actual timer got
+                videoDuration = videoDuration - 1;
+                if (videoDuration == 0) {
+                    timerVisibilityOff();
+                    stopTimer();
+                }
+            }, 1000);
+        }
+    }
+
+    function updatePodPlayOrder(currentDecorator) {
+        var beconSuffix = currentDecorator.getbeconSuffix();
+        orderOfPods = orderOfPods + beconSuffix;
+    }
+
+    var showAd = function (podToShow) {//function to call showPod in specific decorator as per podid
+        //making pod visible is taken care in decorator in this.showPod
+        var currentDecorator = globalPodManager.pods[podToShow];
+        updatePodPlayOrder(currentDecorator);
+        currentDecorator.showPod();
+    };
+
+    var showNextad = function () {
+        var currentAd = globalPodManager.currentAd;
+        var allPods = globalPodManager.allPods;
+        var podToShow = getValidNextAd(currentAd, allPods);
+        if (podToShow === currentAd) {
+            showEndCard();
+        } else {
+            hideAllPods();
+            stopVideo(currentAd);
+            globalPodManager.currentAd = podToShow; //update next ad in global current ad
+            if (window.experienceType === 0) {
+                showTimer();
+            }//need to add viewable change for individual pod seperately to retain context for resume and pause video
+            showAd(podToShow);
+        }
+    }
+
+    function disableSkipAllForLastValidAd() {
+        var showSkipBtn = enableSkipAllBtnIfSinglePod();
+        if (!showSkipBtn) {
+            clearTimeout(skipAllDelayControl);
+            skipAllAdVisibilityOff();
+        }
+    }
+
+    function moveToNextAd() {
+        stopTimer();
+        /*uncomment this when we push new library*/
+        if (skipSkipAllDelayForAllPods) {
+            skipSkipAllBtnVisibilityOff();
+            handleSkipBtnVisibilityOnViewable();
+        }
+        showNextad();
+        disableSkipAllForLastValidAd();
+    }
+
+    function handleNextAd() {
+        if (isSdkAdPodResponse) {
+            handleNextAdForSdkAdPods();
+        } else {
+            moveToNextAd();
+        }
+    }
+
+    var skipBtnVisibilityOn = function (persist) { // pass true for persistent skip button
+        if (showCloseInsteadOfSkip) {
+            var videoCloseBtn = document.getElementById("ecCloseBtn");
+            videoCloseBtn.classList.remove("hide");
+        }
+        // else {
+        //     var skipBtn = document.getElementById("skip-btn");
+        //     skipBtn.classList.remove("hide");
+        // }
+        if (!persist) {
+            clearTimeout(enabled_icons);
+            enabled_icons = setTimeout(skipSkipAllBtnVisibilityOff, 3 * 1000);
+        }
+    };
+
+    var skipAllAdVisibilityOn = function () {
+        var skipAllAdBtn = document.getElementById("skipAll");
+        skipAllAdBtn.classList.remove("hide");
+    }
+
+    function handleBehaviourOnTap() {//handling two tap behaviours skip and skip all button for experience 1
+        var enableSkipAllBtn = true;// TODO enableSkipAllBtnIfSinglePod();
+        if (isRewarded === "false") {
+            if (skipDelayOver && window.experienceType === 1) { // 1 is for HIGH_CVR, in HIGH_CVR skip button will be visible on tap.
+                skipBtnVisibilityOn(false);
+                if (enableSkipAllBtn) { //check condtion to enable skipAll,
+                    skipAllAdVisibilityOn();
+                }
+            }
+        } else {
+            console.log("Is pod ::", isPod);
+            console.log("window.experienceType> ::", window.experienceType);
+            console.log("skipDelayForRewarded> ::", skipDelayForRewarded);
+
+            if (isPod && skipDelayForRewarded && window.experienceType === 1) {
+                skipBtnVisibilityOn(false);
+                if (enableSkipAllBtn) { //check condtion to enable skipAll,
+                    skipAllAdVisibilityOn();
+                }
+            }
+        }
+    }
+
+    var adContainerCallBack = function (event) {//call back for container level events
+        var podId = event.detail;
+        switch (event.type) {
+            case "podVideoEnded": //pull out eaxt time and increment time
+                handleNextAd();
+                break;
+            case "inmobi-video-showIcons":
+                handleBehaviourOnTap();
+                break;
+            case "show-close-instead-of-skip-true":
+                showCloseInsteadOfSkip = true;
+                break;
+        }
+    };
+
+    function getFirstValidPod() {
+        var validPod;
+        for (var i = 0; i < globalPodManager.allPods.length; i++) {
+            if (globalPodManager.allPods[i].status) {
+                validPod = globalPodManager.allPods[i].id;
+                break;
+            }
+        }
+        return validPod;
+    }
+
+    var openAdChoicesTextFunc = function () {
+        var firstValidPod = getFirstValidPod();
+        if (globalPodManager.pods[firstValidPod].openAdChoicesText !== undefined) {
+            globalPodManager.pods[firstValidPod].openAdChoicesText();
+        }
+    };
+
+    function fireSkipBecon() {
+        var pod_ns = globalPodManager.currentAd; //fire becons from here test
+        var currentDecorator = globalPodManager.pods[pod_ns];
+        var beconSuffix = currentDecorator.getbeconSuffix();
+        currentDecorator.fireCustomBecon("skip-btn-clicked" + beconSuffix);
+    }
+
+    var skipAllFunc = function () { //skipp all functionality
+        var currentPod = globalPodManager.currentAd;
+        var beconSuffix = globalPodManager.pods[currentPod].getbeconSuffix();
+        showEndCard();
+        globalPodManager.pods[currentPod].fireCustomBecon("skipAll" + beconSuffix, "clicked-on-skipAll");
+    }
+
+    function fireCLickOnCloseButton() {
+        var pod_ns = globalPodManager.currentAd;
+        var adContainer = document.getElementById(pod_ns + "adPage"); //firing below event to handle smart end card functionality in specific decorator
+        var evt = new CustomEvent('clicked-close-button', {detail: pod_ns});
+        adContainer.dispatchEvent(evt);
+    }
+
+    var handleClickEventCommonElements = function (event) { //call back for all tap events
+        var target = event.target;
+        var action = target.getAttribute("data-action");
+        switch (action) {
+            case "showAdChoices":
+                openAdChoicesTextFunc();
+                break;
+            case "openAdChoicesLink":
+                mraid.open(optOutUrl);
+                break;
+            case "skipVideo": //pull out eaxt time and increment time
+                fireSkipBecon();
+
+                if (isRewarded === "false") {
+                    handleNextAd();
+                }
+                if (isRewarded === "true") {
+                    showSkipVideoPopup();
+                }
+
+                break;
+            case "skipAllAd":
+                skipAllFunc();
+                break;
+            case "closeAd":
+                showSkipVideoPopup();
+                // console.log("fireCLickOnCloseButton--->", action)
+                // fireCLickOnCloseButton();
+                break;
+            case "endCardcloseAd":
+                console.log("fireCLickOnCloseButton--->", action)
+                fireCLickOnCloseButton();
+                break;
+        }
+    };
+
+    var addEventListener = function (element, eventName, handler) {
+        if (element && element.addEventListener) {
+            var startX = 0;
+            var startY = 0;
+            if (eventName === "tap") {
+                var touchMoved, touchStarted = false;
+                element.addEventListener("touchstart", function (e) {
+                    e.stopPropagation();
+                    startX = e.changedTouches[0].pageX;
+                    startY = e.changedTouches[0].pageY;
+                    touchStarted = true;
+                    touchMoved = false;
+                });
+                element.addEventListener("touchmove", function (e) {
+                    e.stopPropagation();
+                    touchMoved = true;
+                });
+                element.addEventListener("touchend", function (e) {
+                    e.stopPropagation();
+                    var endY = e.changedTouches[0].pageY;
+                    var endX = e.changedTouches[0].pageX;
+
+                    var xDelta = Math.abs(endX - startX);
+                    var yDelta = Math.abs(endY - startY);
+
+                    if (touchStarted) {
+                        touchStarted = false;
+                        if (!touchMoved) {
+                            handler.call(null, e);
+                        } else {
+                            if (xDelta <= 10 && yDelta <= 10) {
+                                handler.call(null, e);
+                            }
+                        }
+                    }
+                });
+            } else {
+                element.addEventListener(eventName, handler);
+            }
+        }
+    };
+
+    var addAdClickHandler = function () { // add click listeners at container level
+        var adElement = document.getElementById("ad-cont");
+        var adContEvents = ["podVideoEnded", "inmobi-video-showIcons", "show-close-instead-of-skip-true"];
+        for (var i = 0; i < adContEvents.length; i++) {
+            adElement.addEventListener(adContEvents[i], adContainerCallBack);
+        }
+        addEventListener(adElement, "tap", handleClickEventCommonElements);
+    };
+
+    function fireSkLoadForRemainingAds() { //here we fire skload for remianing ads except the first ad, firing for first ad is been done at fireready level
+        var currentAd = globalPodManager.currentAd;
+        var allpods = globalPodManager.allPods;
+        var validPodIds = []; //get valid pod ids except first one "allpods[i].id !== currentAd"
+        for (var i = 0; i < allpods.length; i++) {
+            if (allpods[i].status && allpods[i].id !== currentAd) {
+                validPodIds.push(allpods[i].id);
+            }
+        } //fire loadSdkfor remaining valid pods
+        for (var i = 0; i < validPodIds.length; i++) {
+            globalPodManager.pods[validPodIds[i]].loadSkStore();
+        }
+    }
+
+    function startTimerForMaxDuration() { //starting timer foe an ad to show duration
+        timerControlForMaxDuration = setInterval(function () {
+            maxTimeForPod = maxTimeForPod - 1;
+            if (maxTimeForPod < 0) {
+                stopTimerForMaxDuration();
+                console.log("showEndCard ....");
+                showEndCard();
+            }
+        }, 1000)
+    }
+
+    var showFirstAd = function () { //here we check for duration as well and the set first ad and show the same
+        var firstAdId;
+        console.log("showFirstAd-globalPodManager --->>>>", globalPodManager)
+        for (var i = 0; i < globalPodManager.allPods.length; i++) {
+            if (globalPodManager.allPods[i].status === true) { //check in pods with status true
+                var podId = globalPodManager.allPods[i].id;
+                firstAdId = podId;
+                break;
+            }
+        }
+        globalPodManager.currentAd = firstAdId; //set first ad in global variable
+        startTimerForMaxDuration(); //start timer to control max duration of ad shown
+        if (window.experienceType === 0) {
+            showTimer();
+        }
+        handleSkipBtnVisibilityOnViewable();
+        fireSkLoadForRemainingAds();
+        showAd(firstAdId); //passparameter to play next ad
+    }
+
+    function showSkipVideoPopup() { // showing the skip video popup
+        const skipModal = document.getElementById('skipVideoModal');
+        const continueBtn = document.getElementById('continueBtn');
+        const skipBtn = document.getElementById('skipBtn');
+        skipModal.style.display = 'block';
+        continueBtn.addEventListener('click', function (event) {
+            skipModal.style.display = 'none';
+        });
+        skipBtn.addEventListener('click', function (event) {
+            skipModal.style.display = 'none';
+            fireCLickOnCloseButton();
+        });
+    }
+
+    function hideSkipVideoPopup() {
+        const skipModal = document.getElementById('skipVideoModal');
+        skipModal.style.display = 'none';
+    }
+
+
+    return {
+        addAdClickHandler: addAdClickHandler,
+        showFirstAd: showFirstAd,
+        getRenderableAdIndexes: getRenderableAdIndexes,
+        getCurrentRenderingIndex: getCurrentRenderingIndex,
+        hideAllPods: hideAllPods,
+        getFirstValidPod: getFirstValidPod,
+        getPodDurationTime: getPodDurationTime,
+    }
+
+}
+window["adListener"] = adListener;
+
+
+var experienceManager = function (podList) {
+    var isPod = $isPod;
+    var isRewarded = "$rewarded";
+    var adExperience = "$experience"; //getting experience from .vm file
+    var skipDelayTimeForRewarded = 5000; //TODO parameterize skipdelay
+    var isFirstAd = false;
+    var hasNextAd = false;
+    var sdkAdPodOrientation = "";
+    var isSdkAdPodResponse = $isSdkPod;
+    var userAgent = navigator.userAgent;
+    var deviceOS = userAgent.match(/iPhone|iPad|iPod/i) ? "ios" : (userAgent.match(/Android/i) ? "android" : "");
+
+    var globalPodManager = new window.podsInitializr(isSdkAdPodResponse, deviceOS, setOrientation); //initialize new podManger
+
+    (function experienceType() { //stores experience Type at global level
+        var expType = parseInt(adExperience, 10);
+        const expSet = new Set([0, 1, 2]);
+        if (!expSet.has(expType)) {
+            expType = 1;
+        } // attaching experience to window as it can be read from common place for decorator
+        window.experienceType = expType;
+    })();
+
+    globalPodManager.initiatePods(podList); //initiating the pods
+
+    var adListener = window.adListener(isPod, globalPodManager, isRewarded, skipDelayTimeForRewarded, isSdkAdPodResponse, hasNextAd);
+
+    var checkForMraid = function () {
+        adListener.hideAllPods(); //hide all pods before starting the first pod
+        if (typeof (mraid) !== "undefined") {
+            if (mraid.getState() === "loading") {
+                mraid.addEventListener("ready", onMraidReady);
+            } else {
+                onMraidReady();
+            }
+        } else {
+            onViewable();
+        }
+    };
+
+    function setOrientation() {
+        var orientation = getAdOrientation();
+        mraidSetOrientation(orientation)
+    }
+
+    function mraidSetOrientation(orientation) {
+        if (orientation === "portrait") {
+            mraid.setOrientationProperties({allowOrientationChange: false, forceOrientation: "portrait"});
+        } else {
+            mraid.setOrientationProperties({allowOrientationChange: false, forceOrientation: "landscape"});
+        }
+    }
+
+    function getAdOrientation() {
+        var firstValidPod = adListener.getFirstValidPod();
+        var currentDecorator = globalPodManager.pods[firstValidPod];
+        var adDimensions = currentDecorator.getAdOrientattion();
+        var orientation = adDimensions.orientationForPod;
+        return orientation;
+    }
+
+    function fireOnViewableBecon() {
+        var validPod = adListener.getFirstValidPod();
+        var currentDecorator = globalPodManager.pods[validPod];
+        currentDecorator.fireOnViewableBecon();
+    }
+
+    function checkHasNextAd() { //check if we have next ad based on currentad and renderable indexes
+        var currentAdIndex = adListener.getCurrentRenderingIndex();
+        var renderableAdIndexes = adListener.getRenderableAdIndexes();
+        var indexOfAdInRenderableAds = renderableAdIndexes.indexOf(currentAdIndex);
+        var renderableAdsLength = renderableAdIndexes.length;
+        if (indexOfAdInRenderableAds < renderableAdsLength - 1) {
+            return true;
+        }
+        return false;
+    }
+
+    function imraidSetAdContext(adContext) {
+        adContext = JSON.stringify(adContext);
+        imraid.setAdContext(adContext);
+    }
+
+    function imraidGetAdContext() {
+        var context = JSON.parse(imraid.getAdContext());
+        return context;
+    }
+
+    function checkIsFirstSdkAdPod() {
+        var adIndex = adListener.getCurrentRenderingIndex();
+        var arenderableAdIndex = adListener.getRenderableAdIndexes();
+        if (arenderableAdIndex.indexOf(adIndex) == "0") {
+            return true;
+        }
+        return false;
+    }
+
+    function updateExperienceType(experience) { //update experience on global level so that it can be accessed everywhere across decorator and podmanager
+        window.experienceType = parseInt(experience, 10);
+    }
+
+    function setSdkAdPodContext() { //we are setting necessary addetails context which can be used across ad pods
+        if (isSdkAdPodResponse) {
+            hasNextAd = checkHasNextAd(); //check if we have next ad
+            isFirstAd = checkIsFirstSdkAdPod();
+            var videoDuration = adListener.getPodDurationTime(globalPodManager.currentAd);
+            var skipDelayForNextAd;
+            if (isFirstAd) { //for firstSdkadPod setorientation, experienceType is already set by default when Sdkadpod is initialized
+                if (deviceOS === "android") {
+                    var adOrientation = getAdOrientation();
+                    sdkAdPodOrientation = adOrientation;
+                } //setting context for 2nd and subsequent ads, since hasNextAd will change accordingly
+                if (isRewarded === "true") {
+                    //handle skip delay for non rewarded
+                    //update skip delay when we have first video and second ad interstitial, when skip delay is greater than first video
+                    //handling skipRewarded delay for rewarded
+                    var skipDelayRewarded = skipDelayTimeForRewarded / 1000;
+                    if (skipDelayRewarded > videoDuration) { //passing skip delay difference to next ad
+                        skipDelayForNextAd = skipDelayRewarded - videoDuration;
+                    } else {
+                        skipDelayForNextAd = 0
+                    }
+                }
+            } else if (hasNextAd) { //for 2nd ad in SdkadPods get experience and orientation from context and set for current context
+                var adContext = imraidGetAdContext();
+                if (deviceOS === "android") {
+                    sdkAdPodOrientation = adContext.orientation;
+                }
+                updateExperienceType(adContext.experience);
+                if (isRewarded === "false") {
+                    removeSkipDelay() // need to show skip skipall from ad start for second and third ad
+                } else { // for rewarded get skip delay from context and set to current ad
+                    skipDelayTimeForRewarded = adContext.skipDelay * 1000; // pass remaning skip delay to next ad if skip delay is more than current runnning ad
+                    var skipDelayRewarded = skipDelayTimeForRewarded / 1000
+                    if (skipDelayRewarded > videoDuration) { //passing skip delay difference to next ad
+                        skipDelayForNextAd = skipDelayRewarded - videoDuration;
+                    } else {
+                        skipDelayForNextAd = 0;
+                    }
+                }
+            } else { // handling 3rd ad in ad pod
+                var adContext = imraidGetAdContext();
+                if (deviceOS === "android") {
+                    sdkAdPodOrientation = adContext.orientation;
+                }
+                updateExperienceType(adContext.experience);
+                if (isRewarded === "false") {
+                    removeSkipDelay() // need to show skip skipall from ad start for second and third ad
+                } else { // for rewarded get skip delay from context and set to current ad
+                    skipDelayTimeForRewarded = adContext.skipDelay * 1000;
+                }
+            }
+            var adContext = {
+                orientation: sdkAdPodOrientation,
+                experience: window.experienceType,
+                skipDelay: skipDelayForNextAd
+            }
+            imraidSetAdContext(adContext);
+        }
+    }
+
+    function removeSkipDelay() { // setting skipdelay as 0 globally for second and third ad
+        videoSkipDelayInMs = 0
+    }
+
+    function setSdkAdOrientation() { // for video4.1 and video pods orientation is set at the time of fireadready
+        if (isSdkAdPodResponse) { // wrt sdkadpods only for android we will be setting orientation here, for IOS we have to set orientation before fireready. refer fireready comments for further explanation
+            if (isFirstAd) {//for AdResponseFlow
+                //setOrientation only for first ad
+                //need to set experience as well only for first ad in adPod
+                setOrientation();
+            } else { //for 2nd and 3rd ad set orientation from 1st ad
+                mraidSetOrientation(sdkAdPodOrientation);
+            }
+        }
+    }
+
+    var onViewable = function () {
+        setSdkAdPodContext();
+        setSdkAdOrientation();
+        adListener.addAdClickHandler();
+        viewableChangeHandlerForPlayAndResume();
+        fireOnViewableBecon();
+        adListener.showFirstAd();
+    };
+
+    function viewableChangeHandlerForPlayAndResume() { // need to removelistener and add again to retain context with individual pods
+        mraid.removeEventListener("viewableChange", arguments.callee);
+        mraid.addEventListener("viewableChange", function (viewable) { //pause and resume video only in current pod
+            var currentPod = globalPodManager.currentAd;
+            var currentDecorator = globalPodManager.pods[currentPod];
+            currentDecorator.viewableChangeForResumeAndPlay(viewable);
+        });
+    }
+
+    var disableSdkClose = function () {
+        mraid.useCustomClose(true);
+        /* disableCloseRegion works on SDK >= 450 */
+        if (imraid && typeof (imraid.disableCloseRegion) === "function") {
+            imraid.disableCloseRegion(true);
+        }
+    };
+
+    var onMraidReady = function () {
+        /* disable SDK close hotspot */
+        disableSdkClose();
+        /* add imraid error listener */
+        imraid.addEventListener("error", function (message) {
+            var firstValidPod = adListener.getFirstValidPod(); //we can fire from any pod, picking the first valid pod to fire becon
+            globalPodManager.pods[firstValidPod].fireCustomBecon("imraid-error")
+        });
+        /* add ad click handler */
+        /* Wait for the ad to become visible for the first time */
+        if (typeof (mraid.isViewable) === "function" && mraid.isViewable()) {
+            onViewable();
+        } else {
+            mraid.addEventListener("viewableChange", function (viewable) {
+                if (viewable) {
+                    mraid.removeEventListener("viewableChange", arguments.callee);
+                    onViewable();
+                }
+            });
+        }
+        /* disable back button */
+        if (imraid && typeof (imraid.disableBackButton) === "function") {
+            imraid.disableBackButton(true);
+        }
+        /* hide status bar */
+        if (deviceOS === "ios" && imraid && typeof (imraid.hideStatusBar) === "function") {
+            imraid.hideStatusBar();
+        }
+    };
+    // starting function
+    checkForMraid();
+}
+window["experienceManager"] = experienceManager;</script><script>var defaultExperience = function (experienceRequestData, experienceConfig) {
+
+    // TODO: fetch this data from experienceRequestData & experienceConfig
+    // vast, adOrientation, pod_ns, beconSuffix, isPod, skan, demandBundleId
+
+    var vast = experienceRequestData.vast, orientation = experienceConfig.orientation, ns = experienceRequestData.ns, beaconSuffix = experienceRequestData.beaconSuffix,
+            isPod = experienceConfig.isPod, skan = experienceRequestData.skan, demandBundleId = experienceRequestData.demandBundleId, skoverlay = experienceRequestData.skoverlay;
+
+
+    return new window.decorator(vast, orientation, ns, beaconSuffix, isPod, skan, demandBundleId, skoverlay);
+};
+
+// module.exports = defaultExperience;
+window["defaultExperience"] = defaultExperience;
+
+
+var experienceFactory = function (experienceConfig) {
+
+    var experienceObjectMap = {
+        "DEFAULT" : window.defaultExperience
+    };
+
+    //TODO : Implement Logic to select Experience according to bitmap provided in configuration
+    var selectedExperience = "DEFAULT";
+
+
+    return experienceObjectMap[selectedExperience];
+};
+window["experienceFactory"] = experienceFactory;</script>${first.suffix}</div></body></html>
+<script type="text/javascript">
+
+    var podList = [];
+    var i=0;
+        #foreach($creative in $creativeList)
+        var beaconSuffix = "";
+        var pod = {};
+            #set($video = ${tool.evalJsonPath($creative.jsonObject,"video")})
+            #if ($video.vast.vastUrl)
+                #set($vast = $tool.jsInline($video.vast.vastUrl))
+            #else
+                #set($vast = $tool.jsInline($video.vast.vastXml))
+            #end
+            #set($adOrientation = $!{tool.evalJsonPath($creative.jsonObject,'$.vastVideoOrientation')})
+            #set($demandBundleId = $!{tool.evalJsonPath($creative.jsonObject,'$.bundleId')})
+        pod.vast = "$vast";
+        pod.orientation = "$adOrientation";
+            #if ($demandBundleId)
+            pod.demandBundleId = "$demandBundleId"
+            #else
+            pod.demandBundleId = null
+            #end
+        pod.ns = "${creative.ns}";
+        podList.push(pod);
+        #end
+
+        #foreach($skan in $skanList)
+        var pod = podList[i];
+        //check for null values
+            #if ($skan)
+                    pod.skan = $skan
+            #else
+                    pod.skan = null
+            #end
+        i = i+1
+        #end
+    var j=0;
+        #foreach($skoverlay in $skOverlayList)
+        var pod = podList[j];
+        //check for null values
+            #if ($skoverlay)
+                    pod.skoverlay = $skoverlay
+            #else
+                    pod.skoverlay = null
+            #end
+        j = j+1
+        #end
+
+    window.experienceManager(podList);
+</script>
+
+
+

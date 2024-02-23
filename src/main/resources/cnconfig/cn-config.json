@@ -1,0 +1,1922 @@
+{
+  "customApiIntegrations": {
+    "zhihu": {
+      "placementMapping": [
+        {
+          "os": "android",
+          "placementId": "1559184856923",
+          "tagId": "20",
+          "width": "3",
+          "templateId": "3",
+          "dealId": "1809051825481001299",
+          "height": "2",
+          "adformat": "NATIVE_STATIC"
+        },
+        {
+          "os": "android",
+          "placementId": "1564825727984",
+          "tagId": "105",
+          "width": "16",
+          "templateId": "2",
+          "dealId": "1809051825481001298",
+          "height": "9",
+          "adformat": "NATIVE_STATIC"
+        },
+        {
+          "os": "android",
+          "placementId": "1532512189739",
+          "tagId": "8",
+          "width": "16",
+          "templateId": "2",
+          "dealId": "1905061053301001300",
+          "height": "9",
+          "adformat": "NATIVE_STATIC"
+        },
+        {
+          "os": "iOS",
+          "placementId": "1554953931226",
+          "tagId": "8",
+          "width": "16",
+          "templateId": "2",
+          "dealId": "1905061053301001300",
+          "height": "9",
+          "adformat": "NATIVE_STATIC"
+        },
+        {
+          "os": "android",
+          "placementId": "1531442514338",
+          "tagId": "8",
+          "width": "16",
+          "templateId": "8",
+          "dealId": "1905061053301001301",
+          "height": "9",
+          "adformat": "NATIVE_VIDEO"
+        },
+        {
+          "os": "iOS",
+          "placementId": "1554312980479",
+          "tagId": "8",
+          "width": "16",
+          "templateId": "8",
+          "dealId": "1905061053301001301",
+          "height": "9",
+          "adformat": "NATIVE_VIDEO"
+        },
+        {
+          "os": "iOS",
+          "placementId": "1533827838054",
+          "tagId": "105",
+          "width": "16",
+          "templateId": "2",
+          "dealId": "1809051825481001298",
+          "height": "9",
+          "adformat": "NATIVE_STATIC"
+        },
+        {
+          "os": "iOS",
+          "placementId": "1533018048462",
+          "tagId": "20",
+          "width": "3",
+          "templateId": "3",
+          "dealId": "1809051825481001299",
+          "height": "2",
+          "adformat": "NATIVE_STATIC"
+        },
+        {
+          "os": "iOS",
+          "placementId": "1544605443537",
+          "tagId": "105",
+          "width": "16",
+          "templateId": "8",
+          "dealId": "1905061053301001302",
+          "height": "9",
+          "adformat": "NATIVE_VIDEO"
+        },
+        {
+          "os": "android",
+          "placementId": "1531043683309",
+          "tagId": "105",
+          "width": "16",
+          "templateId": "8",
+          "dealId": "1905061053301001302",
+          "height": "9",
+          "adformat": "NATIVE_VIDEO"
+        },
+        {
+          "os": "iOS",
+          "placementId": "1558301567806",
+          "tagId": "30",
+          "width": "3",
+          "templateId": "2",
+          "dealId": "1810231811321002175",
+          "height": "2",
+          "adformat": "NATIVE_STATIC"
+        },
+        {
+          "os": "android",
+          "placementId": "1557119480106",
+          "tagId": "30",
+          "width": "3",
+          "templateId": "2",
+          "dealId": "1810231811321002175",
+          "height": "2",
+          "adformat": "NATIVE_STATIC"
+        },
+        {
+          "os": "iOS",
+          "placementId": "1560470144869",
+          "tagId": "21",
+          "width": "9",
+          "templateId": "7",
+          "dealId": "1906142053301001234",
+          "height": "16",
+          "adformat": "SPLASH_STATIC"
+        }
+      ]
+    },
+    "toutiao": {
+      "withpublisherPDBDeals": [],
+      "placementMapping": [
+        {
+          "appId": [
+            13
+          ],
+          "adType": [
+            "TOUTIAO_FEED_LP_LARGE",
+            "TOUTIAO_FEED_APP_LARGE",
+            "TOUTIAO_FEED_LP_GIF"
+          ],
+          "os": "ios",
+          "placementId": "1546002696210",
+          "bundleId": "com.ss.iphone.article.News",
+          "height": "720",
+          "width": "1280",
+          "adformat": "NATIVE_STATIC"
+        },
+        {
+          "appId": [
+            26
+          ],
+          "adType": [
+            "TOUTIAO_FEED_LP_LARGE",
+            "TOUTIAO_FEED_APP_LARGE",
+            "TOUTIAO_FEED_LP_GIF"
+          ],
+          "os": "ios",
+          "placementId": "1546002696210",
+          "bundleId": "com.ss.iphone.article.Explore",
+          "height": "720",
+          "width": "1280",
+          "adformat": "NATIVE_STATIC"
+        },
+        {
+          "appId": [
+            13
+          ],
+          "adType": [
+            "TOUTIAO_FEED_LP_LARGE",
+            "TOUTIAO_FEED_APP_LARGE",
+            "TOUTIAO_FEED_LP_GIF"
+          ],
+          "os": "android",
+          "placementId": "1546441722322",
+          "bundleId": "com.ss.android.article.news",
+          "height": "720",
+          "width": "1280",
+          "adformat": "NATIVE_STATIC"
+        },
+        {
+          "appId": [
+            35
+          ],
+          "adType": [
+            "TOUTIAO_FEED_LP_LARGE",
+            "TOUTIAO_FEED_APP_LARGE",
+            "TOUTIAO_FEED_LP_GIF"
+          ],
+          "os": "android",
+          "placementId": "1546441722322",
+          "bundleId": "com.ss.android.article.lite",
+          "height": "720",
+          "width": "1280",
+          "adformat": "NATIVE_STATIC"
+        },
+        {
+          "appId": [
+            1128
+          ],
+          "adType": [
+            "AWEME_FEED_LP_VERTICAL_VIDEO",
+            "AWEME_FEED_APP_VERTICAL_VIDEO"
+          ],
+          "os": "ios",
+          "placementId": "1559271644734",
+          "bundleId": "com.ss.iphone.ugc.Aweme",
+          "height": "720",
+          "width": "1280",
+          "adformat": "NATIVE_VIDEO"
+        },
+        {
+          "appId": [
+            1128
+          ],
+          "adType": [
+            "AWEME_FEED_LP_VERTICAL_VIDEO",
+            "AWEME_FEED_APP_VERTICAL_VIDEO"
+          ],
+          "os": "android",
+          "placementId": "1559484182827",
+          "bundleId": "com.ss.android.ugc.aweme",
+          "height": "720",
+          "width": "1280",
+          "adformat": "NATIVE_VIDEO"
+        }
+      ]
+    },
+    "netease": {
+      "placementMapping": [
+        {
+          "placementId": "1587331007674",
+          "dealId": "041346",
+          "assetUrlNeeded": true,
+          "os": "ios",
+          "bundleId": "com.netease.news",
+          "style": 1040005,
+          "price": 3000,
+          "adformat": "SPLASH_STATIC",
+          "repeatImgNeeded": true,
+          "advertiserId": "111319",
+          "industry": "16",
+          "subIndustry": "1602",
+          "businessType": "PD"
+        },
+        {
+          "placementId": "1587331007674",
+          "dealId": "042417",
+          "assetUrlNeeded": true,
+          "os": "ios",
+          "bundleId": "com.netease.news",
+          "style": 1040005,
+          "price": 3500,
+          "adformat": "SPLASH_STATIC",
+          "repeatImgNeeded": true,
+          "advertiserId": "111319",
+          "industry": "16",
+          "subIndustry": "1602",
+          "businessType": "PD"
+        },
+        {
+          "placementId": "1560012897276",
+          "dealId": "041344",
+          "assetUrlNeeded": true,
+          "os": "ios",
+          "price": 3000,
+          "bundleId": "com.netease.news",
+          "style": 1010021,
+          "adformat": "NATIVE_STATIC",
+          "repeatImgNeeded": false,
+          "advertiserId": "111319",
+          "industry": "16",
+          "subIndustry": "1602",
+          "businessType": "PD"
+        },
+        {
+          "placementId": "1561211956807",
+          "dealId": "2022",
+          "assetUrlNeeded": false,
+          "os": "ios",
+          "bundleId": "com.netease.news",
+          "style": 1010019,
+          "adformat": "NATIVE_VIDEO",
+          "repeatImgNeeded": false,
+          "businessType": "PD"
+        },
+        {
+          "placementId": "1559290332232",
+          "dealId": "2023",
+          "assetUrlNeeded": false,
+          "os": "ios",
+          "bundleId": "com.netease.news",
+          "style": 1010020,
+          "adformat": "NATIVE_STATIC",
+          "repeatImgNeeded": false,
+          "businessType": "PD"
+        },
+        {
+          "placementId": "1587259624617",
+          "dealId": "041347",
+          "price": 3000,
+          "assetUrlNeeded": true,
+          "os": "android",
+          "bundleId": "com.netease.newsreader.activity",
+          "style": 1040005,
+          "adformat": "SPLASH_STATIC",
+          "repeatImgNeeded": true,
+          "advertiserId": "111319",
+          "industry": "16",
+          "subIndustry": "1602",
+          "businessType": "PD"
+        },
+        {
+          "placementId": "1587259624617",
+          "dealId": "042416",
+          "price": 3500,
+          "assetUrlNeeded": true,
+          "os": "android",
+          "bundleId": "com.netease.newsreader.activity",
+          "style": 1040005,
+          "adformat": "SPLASH_STATIC",
+          "repeatImgNeeded": true,
+          "advertiserId": "111319",
+          "industry": "16",
+          "subIndustry": "1602",
+          "businessType": "PD"
+        },
+        {
+          "placementId": "1560036663868",
+          "dealId": "2020",
+          "assetUrlNeeded": false,
+          "os": "android",
+          "bundleId": "com.netease.newsreader.activity",
+          "style": 1040008,
+          "adformat": "SPLASH_VIDEO",
+          "repeatImgNeeded": false,
+          "businessType": "PD"
+        },
+        {
+          "placementId": "1558624311428",
+          "dealId": "2022",
+          "assetUrlNeeded": false,
+          "os": "android",
+          "bundleId": "com.netease.newsreader.activity",
+          "style": 1010019,
+          "adformat": "NATIVE_VIDEO",
+          "repeatImgNeeded": false,
+          "businessType": "PD"
+        },
+        {
+          "placementId": "1559213919054",
+          "dealId": "2023",
+          "assetUrlNeeded": false,
+          "os": "android",
+          "bundleId": "com.netease.newsreader.activity",
+          "style": 1010020,
+          "adformat": "NATIVE_STATIC",
+          "repeatImgNeeded": false,
+          "businessType": "PD"
+        },
+        {
+          "placementId": "1577497480704",
+          "dealId": "666",
+          "assetUrlNeeded": true,
+          "os": "android",
+          "bundleId": "com.netease.news",
+          "adformat": "NATIVE_STATIC",
+          "repeatImgNeeded": false,
+          "style": 1010013,
+          "price": 3000,
+          "advertiserId": "111319",
+          "industry": "16",
+          "subIndustry": "1602",
+          "businessType": "PD"
+        },
+        {
+          "placementId": "1576542123615",
+          "dealId": "666",
+          "assetUrlNeeded": true,
+          "os": "ios",
+          "bundleId": "com.netease.news",
+          "adformat": "NATIVE_STATIC",
+          "repeatImgNeeded": false,
+          "style": 1010013,
+          "price": 3000,
+          "advertiserId": "111319",
+          "industry": "16",
+          "subIndustry": "1602",
+          "businessType": "PD"
+        },
+        {
+          "placementId": "1561447075613",
+          "dealId": "041345",
+          "assetUrlNeeded": true,
+          "os": "android",
+          "bundleId": "com.netease.newsreader.activity",
+          "adformat": "NATIVE_STATIC",
+          "repeatImgNeeded": false,
+          "price": 3000,
+          "style": 1010017,
+          "advertiserId": "111319",
+          "industry": "16",
+          "subIndustry": "1602",
+          "businessType": "PD"
+        },
+        {
+          "placementId": "1560012897276",
+          "dealId": "040612",
+          "assetUrlNeeded": true,
+          "os": "ios",
+          "bundleId": "com.netease.newsreader.activity",
+          "adformat": "NATIVE_STATIC",
+          "repeatImgNeeded": false,
+          "price": 3000,
+          "style": 1010021,
+          "advertiserId": "111319",
+          "industry": "16",
+          "subIndustry": "1602",
+          "businessType": "PD"
+        },
+        {
+          "placementId": "1560012897276916",
+          "dealId": "916",
+          "assetUrlNeeded": true,
+          "os": "ios",
+          "style": 1040005,
+          "bundleId": "com.netease.newsreader.activity",
+          "adformat": "SPLASH_STATIC",
+          "repeatImgNeeded": true,
+          "price": 3000,
+          "advertiserId": "111319",
+          "industry": "16",
+          "subIndustry": "1602",
+          "businessType": "PD"
+        },
+        {
+          "placementId": "1588838860608",
+          "tagId": "20839",
+          "dealId": "RTB",
+          "assetUrlNeeded": true,
+          "os": "android",
+          "style": 1040005,
+          "bundleId": "com.netease.newsreader.activity",
+          "adformat": "SPLASH_STATIC",
+          "repeatImgNeeded": true,
+          "price": 2000,
+          "advertiserId": "111319",
+          "industry": "16",
+          "subIndustry": "1602",
+          "businessType": "RTB"
+        },
+        {
+          "placementId": "1589034246952",
+          "tagId": "20839",
+          "dealId": "RTB",
+          "assetUrlNeeded": true,
+          "os": "ios",
+          "style": 1040005,
+          "bundleId": "com.netease.newsreader.activity",
+          "adformat": "SPLASH_STATIC",
+          "repeatImgNeeded": true,
+          "price": 2000,
+          "advertiserId": "111319",
+          "industry": "16",
+          "subIndustry": "1602",
+          "businessType": "RTB"
+        },
+        {
+          "placementId": "1587061827310",
+          "tagId": "500015,500014,500007,500006,500005,500004,500003,500002,32414",
+          "dealId": "RTB",
+          "assetUrlNeeded": true,
+          "os": "android",
+          "style": 1010017,
+          "bundleId": "com.netease.newsreader.activity",
+          "adformat": "SPLASH_STATIC",
+          "repeatImgNeeded": false,
+          "price": 800,
+          "advertiserId": "111319",
+          "industry": "16",
+          "subIndustry": "1602",
+          "businessType": "RTB"
+        },
+        {
+          "placementId": "1588811480392",
+          "tagId": "500015,500014,500007,500006,500005,500004,500003,500002,32414",
+          "dealId": "RTB",
+          "assetUrlNeeded": true,
+          "os": "ios",
+          "style": 1010021,
+          "bundleId": "com.netease.newsreader.activity",
+          "adformat": "SPLASH_STATIC",
+          "repeatImgNeeded": false,
+          "price": 800,
+          "advertiserId": "111319",
+          "industry": "16",
+          "subIndustry": "1602",
+          "businessType": "RTB"
+        }
+      ]
+    },
+    "mango": {
+      "placementMapping": [
+        {
+          "placementId": "1553760078447",
+          "os": "iOS",
+          "bundleId": "com.hunantv.imgotv",
+          "location": 1,
+          "channel_id": 0,
+          "adformat": "PREROLL_VIDEO"
+        },
+        {
+          "placementId": "1556008190502",
+          "os": "android",
+          "bundleId": "com.hunantv.imgo.activity",
+          "location": 1,
+          "channel_id": 0,
+          "adformat": "PREROLL_VIDEO"
+        },
+        {
+          "placementId": "1559745865274",
+          "os": "iOS",
+          "bundleId": "com.hunantv.imgotv",
+          "location": 4,
+          "channel_id": 0,
+          "adformat": "PAUSE_STATIC"
+        },
+        {
+          "placementId": "1557761145858",
+          "os": "android",
+          "bundleId": "com.hunantv.imgo.activity",
+          "location": 4,
+          "channel_id": 0,
+          "adformat": "PAUSE_STATIC"
+        },
+        {
+          "placementId": "1567006164785",
+          "os": "android",
+          "bundleId": "com.hunantv.imgo.activity",
+          "location": 7,
+          "endcard": "https://i.l.inmobicdn.cn/ifctpads/IFC/CCN/assets/1280720_1566283310.jpg",
+          "channel_id": 0,
+          "style": 7,
+          "adformat": "NATIVE_VIDEO"
+        },
+        {
+          "placementId": "1566325691128",
+          "os": "iOS",
+          "bundleId": "com.hunantv.imgotv",
+          "location": 7,
+          "endcard": "https://i.l.inmobicdn.cn/ifctpads/IFC/CCN/assets/1280720_1566283310.jpg",
+          "channel_id": 0,
+          "style": 7,
+          "adformat": "NATIVE_VIDEO"
+        },
+        {
+          "placementId": "1567058254790",
+          "os": "android",
+          "bundleId": "com.hunantv.imgo.activity",
+          "location": 9,
+          "channel_id": 0,
+          "adformat": "SPLASH_VIDEO"
+        },
+        {
+          "placementId": "1564395936190",
+          "os": "iOS",
+          "bundleId": "com.hunantv.imgotv",
+          "location": 9,
+          "channel_id": 0,
+          "adformat": "SPLASH_VIDEO"
+        }
+      ]
+    },
+    "youku": {
+      "withinmobiPDDeals": [
+        310221,
+        310271,
+        310332,
+        310515
+      ],
+      "withpublisherPDBDeals": [],
+      "placementMapping": [
+        {
+          "imp.video.linearity": "1",
+          "imp.video.startdelay": 0,
+          "os": "ios",
+          "placementId": "1542444663133",
+          "bundleId": "com.youku.YouKu",
+          "adformat": "PREROLL_VIDEO"
+        },
+        {
+          "imp.video.linearity": "1",
+          "imp.video.startdelay": 0,
+          "os": "android",
+          "placementId": "1546052520295",
+          "bundleId": "com.youku.YouKu",
+          "adformat": "PREROLL_VIDEO"
+        }
+      ]
+    },
+    "tencent": {
+      "placementMapping": [
+        {
+          "os": "ios",
+          "placementId": "1582129424306",
+          "tagId": "LV_1001_LDVi_LD",
+          "bundleId": "com.tencent.live4iphone",
+          "adformat": "PREROLL_VIDEO",
+          "isPDB": false,
+          "dealId": "123"
+        },
+        {
+          "os": "ios",
+          "placementId": "1579356589433",
+          "tagId": "LV_1001_LDVi_LD",
+          "bundleId": "com.tencent.live4iphone",
+          "adformat": "PREROLL_VIDEO",
+          "isPDB": false,
+          "dealId": "234"
+        },
+        {
+          "os": "android",
+          "placementId": "1579793167186",
+          "tagId": "LV_1001_LDVi_LD",
+          "bundleId": "com.tencent.qqlive",
+          "adformat": "PREROLL_VIDEO",
+          "isPDB": false,
+          "dealId": "456"
+        },
+        {
+          "os": "android",
+          "placementId": "1581313760096",
+          "tagId": "LV_1001_LDVi_LD",
+          "bundleId": "com.tencent.qqlive",
+          "adformat": "PREROLL_VIDEO",
+          "isPDB": false,
+          "dealId": "567"
+        },
+        {
+          "os": "android",
+          "placementId": "1581293073930",
+          "tagId": "LV_1001_YDLDVi_zt",
+          "bundleId": "com.tencent.qqlive",
+          "adformat": "PREROLL_VIDEO",
+          "isPDB": false,
+          "dealId": "678"
+        },
+        {
+          "os": "ios",
+          "placementId": "1583434682107",
+          "tagId": "LV_1001_YDLDVi_zt",
+          "bundleId": "com.tencent.live4iphone",
+          "adformat": "PREROLL_VIDEO",
+          "isPDB": false,
+          "dealId": "789"
+        },
+        {
+          "os": "ios",
+          "placementId": "1582766815052",
+          "tagId": "QQlive_APPWeb_MB_JDT",
+          "bundleId": "com.tencent.live4iphone",
+          "adformat": "PREROLL_VIDEO",
+          "isPDB": false,
+          "dealId": "890"
+        },
+        {
+          "os": "android",
+          "placementId": "1582554720656",
+          "tagId": "QQlive_APPWeb_MB_JDT",
+          "bundleId": "com.tencent.qqlive",
+          "adformat": "PREROLL_VIDEO",
+          "isPDB": false,
+          "dealId": "9100"
+        },
+        {
+          "os": "android",
+          "placementId": "1582030791037",
+          "tagId": "App_Stream_news_news",
+          "bundleId": "com.tencent.news",
+          "adformat": "PREROLL_STATIC",
+          "isPDB": false,
+          "dealId": "6982758"
+        },
+        {
+          "os": "ios",
+          "placementId": "1583110105758",
+          "tagId": "App_Stream_news_news",
+          "bundleId": "com.tencent.info",
+          "adformat": "PREROLL_STATIC",
+          "isPDB": false,
+          "dealId": "6982758"
+        }
+      ]
+    },
+    "iqiyi": {
+      "withpublisherPDBDeals": [],
+      "channels": [
+        2
+      ],
+      "placementMapping": [
+        {
+          "os": "ios",
+          "adZone": 1000000000381,
+          "adType": 1,
+          "channel": 0,
+          "placementId": "1558099709023",
+          "bundleId": "com.qiyi.iphone",
+          "adformat": "PREROLL_VIDEO",
+          "describe": "iospreroll"
+        },
+        {
+          "os": "ios",
+          "adZone": 1000000000381,
+          "adType": 1,
+          "channel": 2,
+          "placementId": "1558099709023",
+          "bundleId": "com.qiyi.iphone",
+          "adformat": "PREROLL_VIDEO",
+          "describe": "iospreroll2"
+        },
+        {
+          "os": "android",
+          "adZone": 1000000000381,
+          "adType": 1,
+          "channel": 0,
+          "placementId": "1557942210655",
+          "bundleId": "com.qiyi.video",
+          "adformat": "PREROLL_VIDEO",
+          "describe": "androidpreroll"
+        },
+        {
+          "os": "ios",
+          "adZone": 1000000000669,
+          "adType": 6,
+          "channel": 0,
+          "placementId": "1550654410578",
+          "bundleId": "com.qiyi.iphone",
+          "adformat": "PAUSE_STATIC",
+          "describe": "iospause"
+        },
+        {
+          "os": "android",
+          "adZone": 1000000000669,
+          "adType": 6,
+          "channel": 0,
+          "placementId": "1560020905644",
+          "bundleId": "com.qiyi.video",
+          "adformat": "PAUSE_STATIC",
+          "describe": "androidpause"
+        }
+      ]
+    },
+    "vivo": {
+      "packageMap": {
+        "openapp.jdmobile": "com.jingdong.app.mall",
+        "cuxiao.m.suning.com": "com.suning.package",
+        "vipshop": "com.achievo.vipshop"
+      },
+      "advertiserId": 1490717,
+      "category": 220039,
+      "placementMapping": [
+        {
+          "tagid": [
+            "6f63bd4df1114804a8ebacf4a2ba1ab7"
+          ],
+          "placementId": "1567029158286",
+          "templateId": "3040",
+          "os": "android",
+          "price": 1600,
+          "adformat": "NATIVE_STATIC",
+          "bundleId": "com.vivo.browser",
+          "test": false,
+          "testCreative": "e088170530e94811877094af5ed466b1",
+          "nonCheck": true
+        },
+        {
+          "tagid": [
+            "1d9d5c5758274ea394b88a3d7651eeac"
+          ],
+          "placementId": "1567506747673",
+          "templateId": "3042",
+          "os": "android",
+          "price": 1600,
+          "adformat": "NATIVE_STATIC",
+          "bundleId": "com.vivo.browser",
+          "test": false,
+          "testCreative": "e088170530e94811877094af5ed466b1",
+          "nonCheck": true
+        },
+        {
+          "tagid": [
+            "7d66516ecb2944d6a62bfccb7739f975"
+          ],
+          "placementId": "2000000000000157",
+          "templateId": "3040",
+          "os": "android",
+          "price": 2000,
+          "adformat": "NATIVE_STATIC",
+          "bundleId": "com.vivo.browser",
+          "test": false,
+          "testCreative": "e088170530e94811877094af5ed466b1",
+          "nonCheck": true
+        },
+        {
+          "tagid": [
+            "294ffda5722049439cae8bf65fac3d5b"
+          ],
+          "placementId": "1567982762668",
+          "templateId": "3040",
+          "os": "android",
+          "price": 2000,
+          "adformat": "NATIVE_STATIC",
+          "bundleId": "com.vivo.browser",
+          "test": false,
+          "testCreative": "e088170530e94811877094af5ed466b1",
+          "nonCheck": true
+        },
+        {
+          "tagid": [
+            "0f957424764a4390aafe9f906e202f4e"
+          ],
+          "placementId": "1602876006915",
+          "templateId": "3040",
+          "os": "android",
+          "price": 3000,
+          "adformat": "NATIVE_STATIC",
+          "bundleId": "com.vivo.browser",
+          "test": false,
+          "testCreative": "",
+          "nonCheck": true
+        },
+        {
+          "tagid": [
+            "22058f9fb4464296ae5a622bb7c09420"
+          ],
+          "placementId": "1570335884113",
+          "templateId": "3040",
+          "os": "android",
+          "price": 1600,
+          "adformat": "NATIVE_STATIC",
+          "bundleId": "com.vivo.browser",
+          "test": false,
+          "testCreative": "e088170530e94811877094af5ed466b1"
+        },
+        {
+          "tagid": [
+            "2929fc61d4f54a60ab3bcbd3baf6a594"
+          ],
+          "placementId": "1567069638073",
+          "templateId": "3014",
+          "os": "android",
+          "price": 3000,
+          "adformat": "NATIVE_STATIC",
+          "bundleId": "com.android.VideoPlayer",
+          "test": false,
+          "testCreative": ""
+        },
+        {
+          "tagid": [
+            "fbae26fd6c3a40989d945fe15f25fba2"
+          ],
+          "placementId": "1570183019897",
+          "templateId": "3040",
+          "os": "android",
+          "price": 3000,
+          "adformat": "NATIVE_STATIC",
+          "bundleId": "com.android.VideoPlayer",
+          "test": false,
+          "testCreative": ""
+        },
+        {
+          "tagid": [
+            "6f6b948eadef4dd79f5baa2871fcdb37"
+          ],
+          "placementId": "1570109981087",
+          "templateId": "3040",
+          "os": "android",
+          "price": 3000,
+          "adformat": "NATIVE_VIDEO",
+          "bundleId": "com.android.VideoPlayer",
+          "test": false,
+          "testCreative": ""
+        },
+        {
+          "tagid": [
+            "352104cd802d4b43aadb402f62860dc2"
+          ],
+          "placementId": "1567668840966",
+          "templateId": "3040",
+          "os": "android",
+          "price": 3000,
+          "adformat": "SPLASH_STATIC",
+          "bundleId": "com.vivo.browser",
+          "test": false,
+          "testCreative": ""
+        },
+        {
+          "tagid": [
+            "f09f43a794a346a29b295ab63538f776"
+          ],
+          "placementId": "1572835781569",
+          "templateId": "4022",
+          "os": "android",
+          "price": 3000,
+          "adformat": "NATIVE_STATIC",
+          "bundleId": "com.happyelements.AndroidAnimal",
+          "test": false,
+          "testCreative": "535f57f8f9944ea2bb360da5538523fe"
+        }
+      ]
+    },
+    "bobo": {
+      "placementMapping": [
+        {
+          "tagId": "1",
+          "dealId": "78",
+          "placementId": "1579581120124",
+          "isVideo": false,
+          "os": "android",
+          "adformat": "NATIVE_STATIC",
+          "price": 500,
+          "bundleId": "tv.yixia.bobo"
+        },
+        {
+          "tagId": "0",
+          "dealId": "79",
+          "placementId": "1585587478414",
+          "isVideo": false,
+          "os": "android",
+          "adformat": "SPLASH_STATIC",
+          "price": 2000,
+          "bundleId": "ctv.yixia.bobo"
+        }
+      ]
+    },
+    "baidu": {
+      "placementMapping": [
+        {
+          "dealId": "9048017",
+          "adid": "9086369",
+          "placementId": "1580075529464",
+          "isVideo": false,
+          "os": "ios",
+          "adformat": "NATIVE_STATIC",
+          "price": 3000
+        },
+        {
+          "dealId": "9048017",
+          "adid": "9086369",
+          "placementId": "1580067144581",
+          "isVideo": false,
+          "os": "android",
+          "adformat": "NATIVE_STATIC",
+          "price": 3000
+        }
+      ]
+    },
+    "uc": {
+      "placementMapping": [
+        {
+          "placementId": "1603076538255",
+          "os": "ios",
+          "jd": false,
+          "price": 200000,
+          "adformat": "VIDEO",
+          "templateIds":[24,25],
+          "bundle": "com.ucweb.iphone.lowversion"
+        },
+        {
+          "placementId": "1600081852701",
+          "os": "ios",
+          "jd": true,
+          "price": 800000,
+          "adformat": "VIDEO",
+          "templateIds":[24,25],
+          "bundle": "com.ucweb.iphone.lowversion"
+        },
+        {
+          "placementId": "1600928180216",
+          "os": "ios",
+          "jd": true,
+          "price": 800000,
+          "adformat": "NATIVE_STATIC",
+          "templateIds":[1,4],
+          "bundle": "com.ucweb.iphone.lowversion"
+        },
+        {
+          "placementId": "1602928724595",
+          "os": "ios",
+          "jd": false,
+          "price": 1500000,
+          "adformat": "NATIVE_STATIC",
+          "templateIds":[1,4],
+          "bundle": "com.ucweb.iphone.lowversion"
+        },
+        {
+          "placementId": "1601258260383",
+          "os": "android",
+          "jd": false,
+          "price": 200000,
+          "adformat": "VIDEO",
+          "templateIds":[24,25],
+          "bundle": "com.UCMobile"
+        },
+        {
+          "placementId": "1601647323905",
+          "os": "android",
+          "jd": true,
+          "price": 800000,
+          "adformat": "VIDEO",
+          "templateIds":[24,25],
+          "bundle": "com.UCMobile"
+        },
+        {
+          "placementId": "1602050075511",
+          "os": "android",
+          "jd": true,
+          "price": 800000,
+          "adformat": "NATIVE_STATIC",
+          "templateIds":[1,4],
+          "bundle": "com.UCMobile"
+        },
+        {
+          "placementId": "1602925264448",
+          "os": "android",
+          "jd": false,
+          "price": 1500000,
+          "adformat": "NATIVE_STATIC",
+          "templateIds":[1,4],
+          "bundle": "com.UCMobile"
+        },
+        {
+          "placementId": "1597286253067",
+          "os": "ios",
+          "jd": false,
+          "price": 2500000,
+          "adformat": "NATIVE_STATIC",
+          "templateIds":[85],
+          "dealId": 1492,
+          "w": 9,
+          "bundle": "com.ucweb.iphone.lowversion"
+        },
+        {
+          "placementId": "1599752120736",
+          "os": "ios",
+          "jd": false,
+          "price": 2500000,
+          "adformat": "NATIVE_STATIC",
+          "templateIds":[85],
+          "dealId": 1492,
+          "w": 2,
+          "bundle": "com.ucweb.iphone.lowversion"
+        },
+        {
+          "placementId": "1598293489348",
+          "os": "android",
+          "jd": false,
+          "price": 2500000,
+          "adformat": "NATIVE_STATIC",
+          "templateIds":[85],
+          "dealId": 1492,
+          "w": 9,
+          "bundle": "com.UCMobile"
+        },
+        {
+          "placementId": "1597683589829",
+          "os": "android",
+          "jd": false,
+          "price": 2500000,
+          "adformat": "NATIVE_STATIC",
+          "templateIds":[85],
+          "dealId": 1492,
+          "w": 2,
+          "bundle": "com.UCMobile"
+        }
+      ]
+    },
+    "meituan": {
+      "url": [
+        "openapp.jdmobile",
+        "img-x.jd.com",
+        "img1.360buyimg.com",
+        "ccc-x.jd.com",
+        "linkst.m.jd.com"
+      ],
+      "withOutScreenStrTagIds": [
+        117,
+        114
+      ],
+      "creativeId": "0",
+      "dropCreativeIds": [],
+      "placementMapping": [
+        {
+          "dspId": "1244458061297360952",
+          "tagId": "115",
+          "placementId": "1592687741943",
+          "isVideo": "false",
+          "os": "android",
+          "screenStr": "720*1280",
+          "adformat": "SPLASH_STATIC",
+          "price": 4500,
+          "bundleId": "com.sankuai.meituan.takeoutnew",
+          "advertiserId": 100,
+          "desc": "美团外卖-andr-spl"
+        },
+        {
+          "dspId": "1244458061297360952",
+          "tagId": "115",
+          "placementId": "1592972792926",
+          "isVideo": "false",
+          "os": "android",
+          "screenStr": "640*960",
+          "adformat": "SPLASH_STATIC",
+          "price": 4500,
+          "bundleId": "com.sankuai.meituan.takeoutnew",
+          "advertiserId": 100,
+          "desc": "美团外卖-andr-splX"
+        },
+        {
+          "dspId": "1244458061297360952",
+          "tagId": "117",
+          "placementId": "1582118522495",
+          "isVideo": "false",
+          "os": "android",
+          "screenStr": "0*0",
+          "adformat": "NATIVE_STATIC",
+          "price": 4500,
+          "bundleId": "com.sankuai.meituan.takeoutnew",
+          "advertiserId": 100,
+          "desc": "美团外卖-andr-native AppBanner"
+        },
+        {
+          "dspId": "1244458061297360952",
+          "tagId": "114",
+          "placementId": "1581398712083",
+          "isVideo": "false",
+          "os": "android",
+          "screenStr": "0*0",
+          "adformat": "NATIVE_STATIC",
+          "price": 4500,
+          "bundleId": "com.sankuai.meituan.takeoutnew",
+          "advertiserId": 100,
+          "desc": "美团外卖-andr-外卖订单分享红包"
+        },
+        {
+          "dspId": "1244458061297360952",
+          "tagId": "115",
+          "placementId": "1583141316738",
+          "isVideo": "true",
+          "os": "android",
+          "screenStr": "640*960",
+          "adformat": "NATIVE_VIDEO",
+          "price": 4500,
+          "bundleId": "com.sankuai.meituan.takeoutnew",
+          "advertiserId": 100,
+          "desc": "美团外卖-andr video-splX"
+        },
+        {
+          "dspId": "1244458061297360952",
+          "tagId": "114",
+          "placementId": "1583003167538",
+          "isVideo": "true",
+          "os": "android",
+          "screenStr": "0*0",
+          "adformat": "NATIVE_VIDEO",
+          "price": 4500,
+          "bundleId": "com.sankuai.meituan.takeoutnew",
+          "advertiserId": 100,
+          "desc": "美团外卖-andr- video外卖订单分享红包"
+        },
+        {
+          "dspId": "1244458061297360952",
+          "tagId": "114",
+          "placementId": "1581070340267",
+          "isVideo": "true",
+          "os": "ios",
+          "screenStr": "0*0",
+          "adformat": "NATIVE_VIDEO",
+          "price": 4500,
+          "bundleId": "com.sankuai.meituan.takeoutnew",
+          "advertiserId": 100,
+          "desc": "美团外卖-ios-video外卖订单分享红包"
+        },
+        {
+          "dspId": "1244458061297360952",
+          "tagId": "115",
+          "placementId": "1584278587193",
+          "isVideo": "true",
+          "os": "android",
+          "screenStr": "640*960",
+          "adformat": "NATIVE_VIDEO",
+          "price": 4500,
+          "bundleId": "com.sankuai.meituan.takeoutnew",
+          "advertiserId": 100,
+          "desc": "美团外卖-andr video-spl"
+        },
+        {
+          "dspId": "1244458061297360952",
+          "tagId": "115",
+          "placementId": "1590564226288",
+          "isVideo": "false",
+          "os": "ios",
+          "screenStr": "640*960",
+          "adformat": "SPLASH_STATIC",
+          "price": 4500,
+          "bundleId": "com.meituan.itakeaway",
+          "advertiserId": 100,
+          "desc": "美团外卖-ios-SPLX"
+        },
+        {
+          "dspId": "1244458061297360952",
+          "tagId": "115",
+          "placementId": "1581643974870",
+          "isVideo": "false",
+          "os": "ios",
+          "screenStr": "720*1280",
+          "adformat": "SPLASH_STATIC",
+          "price": 4500,
+          "bundleId": "com.meituan.itakeaway",
+          "advertiserId": 100,
+          "desc": "美团外卖-ios-SPL"
+        },
+        {
+          "dspId": "1244458061297360952",
+          "tagId": "117",
+          "placementId": "1584337023373",
+          "isVideo": "false",
+          "os": "ios",
+          "screenStr": "0*0",
+          "adformat": "NATIVE_STATIC",
+          "price": 4500,
+          "bundleId": "com.meituan.itakeaway",
+          "advertiserId": 100,
+          "desc": "美团外卖-ios-nativeAppBanner"
+        },
+        {
+          "dspId": "1244458061297360952",
+          "tagId": "114",
+          "placementId": "1582865236711",
+          "isVideo": "false",
+          "os": "ios",
+          "screenStr": "0*0",
+          "adformat": "NATIVE_STATIC",
+          "price": 4500,
+          "bundleId": "com.meituan.itakeaway",
+          "advertiserId": 100,
+          "desc": "美团外卖-ios-外卖订单分享红包"
+        },
+        {
+          "dspId": "1244458061297360952",
+          "tagId": "115",
+          "placementId": "1584298540318",
+          "isVideo": "true",
+          "os": "ios",
+          "screenStr": "720*1280",
+          "adformat": "NATIVE_VIDEO",
+          "price": 4500,
+          "bundleId": "com.meituan.itakeaway",
+          "advertiserId": 100,
+          "desc": "美团外卖-ios-SPLvideo"
+        },
+        {
+          "dspId": "1244458061297360952",
+          "tagId": "115",
+          "placementId": "1584857890306",
+          "isVideo": "true",
+          "os": "ios",
+          "screenStr": "640*960",
+          "adformat": "NATIVE_VIDEO",
+          "price": 4500,
+          "bundleId": "com.meituan.itakeaway",
+          "advertiserId": 100,
+          "desc": "美团外卖-ios-SPLXvideo"
+        }
+      ]
+    },
+    "hupu": {
+      "isOpen": "no",
+      "proportion": 0,
+      "num": 3,
+      "placementMapping": [
+        {
+          "dealId": "10031",
+          "tagId": "999",
+          "placementId": "1585299659202",
+          "isVideo": "false",
+          "os": "android",
+          "price": 1500,
+          "bundleId": "",
+          "creativeId": "1111",
+          "desc": "虎扑-and-开屏"
+        },
+        {
+          "dealId": "10031",
+          "tagId": "14629",
+          "placementId": "1585500519790",
+          "isVideo": "false",
+          "os": "android",
+          "price": 600,
+          "bundleId": "",
+          "creativeId": "1111",
+          "desc": "虎扑-and-首页feeds"
+        },
+        {
+          "dealId": "10031",
+          "tagId": "14683",
+          "placementId": "1585066245625",
+          "isVideo": "false",
+          "os": "android",
+          "price": 600,
+          "bundleId": "",
+          "creativeId": "",
+          "desc": "虎扑-and-底部feeds"
+        },
+        {
+          "dealId": "10030",
+          "tagId": "999",
+          "placementId": "1586842420018",
+          "isVideo": "false",
+          "os": "ios",
+          "price": 2000,
+          "bundleId": "",
+          "creativeId": "",
+          "desc": "虎扑-ios-开屏"
+        },
+        {
+          "dealId": "10030",
+          "tagId": "14629",
+          "placementId": "1587877441180",
+          "isVideo": "false",
+          "os": "ios",
+          "price": 800,
+          "bundleId": "",
+          "creativeId": "",
+          "desc": "虎扑-ios-首页feeds"
+        },
+        {
+          "dealId": "10030",
+          "tagId": "14683",
+          "placementId": "1588760723341",
+          "isVideo": "false",
+          "os": "ios",
+          "price": 800,
+          "bundleId": "",
+          "creativeId": "",
+          "desc": "虎扑-ios-底部feeds"
+        },
+        {
+          "dealId": "10031",
+          "tagId": "14629",
+          "placementId": "1586042749645",
+          "isVideo": "true",
+          "os": "android",
+          "price": 600,
+          "bundleId": "",
+          "creativeId": "",
+          "desc": "虎扑-安卓-首feeds视频"
+        },
+        {
+          "dealId": "10030",
+          "tagId": "14629",
+          "placementId": "1587103350051",
+          "isVideo": "true",
+          "os": "ios",
+          "price": 800,
+          "bundleId": "",
+          "creativeId": "",
+          "desc": "虎扑-ios-首feeds视频"
+        },
+        {
+          "dealId": "10031",
+          "tagId": "14683",
+          "placementId": "1587309836873",
+          "isVideo": "true",
+          "os": "android",
+          "price": 600,
+          "bundleId": "",
+          "creativeId": "",
+          "desc": "虎扑-安卓-底feeds视频"
+        },
+        {
+          "dealId": "10030",
+          "tagId": "14683",
+          "placementId": "1585729005302",
+          "isVideo": "true",
+          "os": "ios",
+          "price": 800,
+          "bundleId": "",
+          "creativeId": "",
+          "desc": "虎扑-ios-底feeds视频"
+        }
+      ]
+    },
+    "weibo": {
+      "placementMapping": [
+        {
+          "tagId": "1000000002",
+          "dealId": "423891ad8053c8254f069fdc99db82f0",
+          "isVideo": false,
+          "os": "ios",
+          "placementId": "1580176302948",
+          "crid": "0201",
+          "price": 3000,
+          "adformat": "NATIVE_STATIC",
+          "bundleId": "",
+          "desc": "ios-信息流-静态"
+        },
+        {
+          "tagId": "1000000002",
+          "dealId": "423891ad8053c8254f069fdc99db82f0",
+          "isVideo": false,
+          "os": "android",
+          "placementId": "1582238803765",
+          "crid": "0202",
+          "price": 3000,
+          "adformat": "NATIVE_STATIC",
+          "bundleId": "",
+          "desc": "安卓-信息流-静态"
+        },
+        {
+          "tagId": "1000000010",
+          "dealId": "423891ad8053c8254f069fdc99db82f0",
+          "placementId": "1582646148386",
+          "isVideo": false,
+          "os": "ios",
+          "crid": "1001",
+          "price": 3000,
+          "adformat": "NATIVE_STATIC",
+          "bundleId": "",
+          "desc": "ios-评论流-静态"
+        },
+        {
+          "tagId": "1000000010",
+          "dealId": "423891ad8053c8254f069fdc99db82f0",
+          "isVideo": false,
+          "os": "android",
+          "placementId": "1582677741855",
+          "crid": "1002",
+          "price": 3000,
+          "adformat": "NATIVE_STATIC",
+          "bundleId": "",
+          "desc": "安卓-评论流-静态"
+        },
+        {
+          "tagId": "1000000014",
+          "dealId": "423891ad8053c8254f069fdc99db82f0",
+          "isVideo": false,
+          "os": "ios",
+          "placementId": "1583211761716",
+          "crid": "1401",
+          "price": 3000,
+          "adformat": "NATIVE_STATIC",
+          "bundleId": "",
+          "desc": "ios-视频后推荐流-静态"
+        },
+        {
+          "tagId": "1000000014",
+          "dealId": "423891ad8053c8254f069fdc99db82f0",
+          "isVideo": false,
+          "os": "android",
+          "placementId": "1581064896271",
+          "crid": "1402",
+          "price": 3000,
+          "adformat": "NATIVE_STATIC",
+          "bundleId": "",
+          "desc": "android-视频后推荐流-静态"
+        }
+      ]
+    },
+    "kuaishou": {
+      "placementMapping": [
+        {
+          "tagId": "3543046",
+          "dealId": "423891ad8053c8254f069fdc99db82f0",
+          "isVideo": "false",
+          "os": "ios",
+          "placementId": "1601755381321",
+          "price": 3000,
+          "creative_type_string": "NATIVE_STATIC",
+          "creative_type": 2,
+          "adformat": "SPLASH_STATIC",
+          "interaction_type": "",
+          "bundleId": "com.smile.gifmaker",
+          "desc": "ios-快手开屏"
+        },
+        {
+          "tagId": "3543040",
+          "dealId": "",
+          "isVideo": "true",
+          "os": "ios",
+          "placementId": "1602934715025",
+          "price": 3000,
+          "creative_type_string": "NATIVE_STATIC",
+          "creative_type": 4,
+          "adformat": "",
+          "interaction_type": "",
+          "bundleId": "com.smile.gifmaker",
+          "desc": "ios-快手-信息流视频-有封面"
+        },
+        {
+          "tagId": "3543048",
+          "dealId": "",
+          "placementId": "1600178675936",
+          "isVideo": "true",
+          "os": "ios",
+          "price": 3000,
+          "creative_type_string": "NATIVE_STATIC",
+          "creative_type": 4,
+          "adformat": "",
+          "interaction_type": "",
+          "bundleId": "com.smile.gifmaker",
+          "desc": "ios-快手-信息流视频-无封面"
+        },
+        {
+          "tagId": "3543058",
+          "dealId": "",
+          "isVideo": "false",
+          "os": "ios",
+          "placementId": "000000000000145",
+          "crid": "1002",
+          "price": 3000,
+          "creative_type_string": "NATIVE_STATIC",
+          "creative_type": 2,
+          "adformat": "",
+          "interaction_type": "",
+          "bundleId": "com.smile.gifmaker",
+          "desc": "ios-快手-便利贴"
+        },
+        {
+          "tagId": "3543016",
+          "dealId": "423891ad8053c8254f069fdc99db82f0",
+          "isVideo": "false",
+          "os": "android",
+          "placementId": "1600158891204",
+          "price": 3000,
+          "creative_type_string": "NATIVE_STATIC",
+          "creative_type": 2,
+          "adformat": "SPLASH_STATIC",
+          "interaction_type": "",
+          "bundleId": "com.smile.gifmaker",
+          "desc": "android-快手开屏"
+        },
+        {
+          "tagId": "3543010",
+          "dealId": "",
+          "isVideo": "true",
+          "os": "android",
+          "placementId": "1600426273951",
+          "price": 3000,
+          "creative_type_string": "NATIVE_STATIC",
+          "creative_type": 4,
+          "adformat": "",
+          "interaction_type": "",
+          "bundleId": "com.smile.gifmaker",
+          "desc": "android-快手-信息流视频-有封面"
+        },
+        {
+          "tagId": "3543018",
+          "dealId": "",
+          "isVideo": "true",
+          "os": "android",
+          "placementId": "1600904427096",
+          "price": 3000,
+          "creative_type_string": "NATIVE_STATIC",
+          "creative_type": 4,
+          "adformat": "",
+          "interaction_type": "",
+          "bundleId": "com.smile.gifmaker",
+          "desc": "android-快手-信息流视频-无封面"
+        },
+        {
+          "tagId": "3543028",
+          "dealId": "",
+          "isVideo": "false",
+          "os": "android",
+          "placementId": "2000000000000146",
+          "price": 3000,
+          "creative_type_string": "NATIVE_STATIC",
+          "creative_type": 2,
+          "adformat": "",
+          "interaction_type": "",
+          "bundleId": "com.smile.gifmaker",
+          "desc": "android-快手-便利贴"
+        },
+        {
+          "tagId": "3543047",
+          "dealId": "423891ad8053c8254f069fdc99db82f0",
+          "isVideo": "false",
+          "os": "ios",
+          "placementId": "1602521375671",
+          "price": 3000,
+          "creative_type_string": "NATIVE_STATIC",
+          "creative_type": 2,
+          "adformat": "SPLASH_STATIC",
+          "interaction_type": "",
+          "bundleId": "com.smile.gifmaker",
+          "desc": "ios-快手极速版开屏"
+        },
+        {
+          "tagId": "3543049",
+          "dealId": "",
+          "isVideo": "true",
+          "os": "ios",
+          "placementId": "1601787423775",
+          "price": 3000,
+          "creative_type_string": "NATIVE_STATIC",
+          "creative_type": 4,
+          "adformat": "",
+          "interaction_type": "",
+          "bundleId": "com.smile.gifmaker",
+          "desc": "ios-快手极速版-信息流视频-无封面"
+        },
+        {
+          "tagId": "3543057",
+          "dealId": "",
+          "isVideo": "false",
+          "os": "ios",
+          "placementId": "2000000000000147",
+          "price": 3000,
+          "creative_type_string": "NATIVE_STATIC",
+          "creative_type": 2,
+          "adformat": "",
+          "interaction_type": "",
+          "bundleId": "com.smile.gifmaker",
+          "desc": "ios-快手极速版-便利贴"
+        },
+        {
+          "tagId": "3543017",
+          "dealId": "423891ad8053c8254f069fdc99db82f0",
+          "isVideo": "false",
+          "os": "android",
+          "placementId": "1600416836691",
+          "price": 3000,
+          "creative_type_string": "NATIVE_STATIC",
+          "creative_type": 2,
+          "adformat": "SPLASH_STATIC",
+          "interaction_type": "",
+          "bundleId": "com.smile.gifmaker",
+          "desc": "android-快手极速版开屏"
+        },
+        {
+          "tagId": "3543019",
+          "dealId": "",
+          "isVideo": "true",
+          "os": "android",
+          "placementId": "1598832192410",
+          "price": 3000,
+          "creative_type_string": "NATIVE_STATIC",
+          "creative_type": 4,
+          "adformat": "",
+          "interaction_type": "",
+          "bundleId": "com.smile.gifmaker",
+          "desc": "android-快手极速版-信息流视频-无封面"
+        },
+        {
+          "tagId": "3543027",
+          "dealId": "",
+          "isVideo": "false",
+          "os": "android",
+          "placementId": "2000000000000144",
+          "price": 3000,
+          "creative_type_string": "NATIVE_STATIC",
+          "creative_type": 2,
+          "adformat": "",
+          "interaction_type": "",
+          "bundleId": "com.smile.gifmaker",
+          "desc": "android-快手极速版-便利贴"
+        }]
+    },
+    "meitu": {
+      "staticAds": 100,
+      "setTags": ["100092","100091"],
+      "placementMapping":[
+        {
+          "placementId": "1601005461573",
+          "dealId": "meitu_inmobi",
+          "tagId": "72",
+          "bundleId": "com.meitu.meiyancamera",
+          "price": 27.5,
+          "os": "android",
+          "style": "PMP",
+          "content": "feed",
+          "iconSize": 171
+        },
+        {
+          "placementId": "1600587772352",
+          "dealId": "meitu_inmobi",
+          "tagId": "214",
+          "bundleId": "com.meitu.meiyancamera",
+          "price": 10,
+          "os": "android",
+          "style": "PMP",
+          "content": "feed",
+          "iconSize": 120
+        },
+        {
+          "placementId": "1600755317564",
+          "dealId": "meitu_inmobi",
+          "tagId": "71",
+          "bundleId": "com.meitu.myxj",
+          "price": 27.5,
+          "os": "ios",
+          "style": "PMP",
+          "content": "feed",
+          "iconSize": 171
+        },
+        {
+          "placementId": "1602003692262",
+          "dealId": "meitu_inmobi",
+          "tagId": "213",
+          "bundleId": "com.meitu.myxj",
+          "price": 12,
+          "os": "ios",
+          "style": "PMP",
+          "content": "feed",
+          "iconSize": 120
+        },
+        {
+          "placementId": "1601463639653",
+          "dealId": "meitu_inmobi",
+          "tagId": "40",
+          "bundleId": "com.mt.mtxx.mtxx",
+          "price": 27.5,
+          "os": "android",
+          "style": "PMP",
+          "content": "feed",
+          "iconSize": 120
+        },
+        {
+          "placementId": "1599153476085",
+          "dealId": "meitu_inmobi",
+          "tagId": "100092",
+          "bundleId": "com.mt.mtxx.mtxx",
+          "price": 5,
+          "os": "android",
+          "style": "PMP",
+          "content": "video",
+          "iconSize": 100
+        },
+        {
+          "placementId": "1601758799608",
+          "dealId": "meitu_inmobi",
+          "tagId": "100092",
+          "bundleId": "com.mt.mtxx.mtxx",
+          "price": 5,
+          "os": "android",
+          "style": "PMP",
+          "content": "feed",
+          "iconSize": 100
+        },
+        {
+          "placementId": "1600902984706",
+          "dealId": "meitu_inmobi",
+          "tagId": "38",
+          "bundleId": "com.meitu.mtxx",
+          "price": 27.5,
+          "os": "ios",
+          "style": "PMP",
+          "content": "feed",
+          "iconSize": 120
+        },
+        {
+          "placementId": "1601628646551",
+          "dealId": "meitu_inmobi",
+          "tagId": "100091",
+          "bundleId": "com.meitu.mtxx",
+          "price": 5,
+          "os": "ios",
+          "style": "PMP",
+          "content": "video",
+          "iconSize": 100
+        },
+        {
+          "placementId": "1602260055339",
+          "dealId": "meitu_inmobi",
+          "tagId": "100091",
+          "bundleId": "com.meitu.mtxx",
+          "price": 5,
+          "os": "ios",
+          "style": "PMP",
+          "content": "feed",
+          "iconSize": 100
+        },
+        {
+          "placementId": "1600243911997",
+          "dealId": "meitu_inmobi",
+          "tagId": "73",
+          "bundleId": "com.meitu.wheecam",
+          "price": 18,
+          "os": "android",
+          "style": "PMP",
+          "content": "feed",
+          "iconSize": 100
+        },
+        {
+          "placementId": "1602361096428",
+          "dealId": "meitu_inmobi",
+          "tagId": "74",
+          "bundleId": "com.meitu.selfiecity",
+          "price": 20,
+          "os": "ios",
+          "style": "PMP",
+          "content": "feed",
+          "iconSize": 100
+        },
+        {
+          "placementId": "1600542754918",
+          "dealId": "meitu_inmobi",
+          "tagId": "140",
+          "bundleId": "com.meitu.meipaimv",
+          "price": 20,
+          "os": "android",
+          "style": "PMP",
+          "content": "feed",
+          "iconSize": 100
+        },
+        {
+          "placementId": "1599767733689",
+          "dealId": "meitu_inmobi",
+          "tagId": "139",
+          "bundleId": "com.meitu.mtmv",
+          "price": 20,
+          "os": "ios",
+          "style": "PMP",
+          "content": "feed",
+          "iconSize": 100
+        },
+        {
+          "placementId": "1602261970045",
+          "dealId": "meitu_inmobi",
+          "tagId": "55",
+          "bundleId": "com.meitu.makeup",
+          "price": 20,
+          "os": "ios",
+          "style": "PMP",
+          "content": "feed",
+          "iconSize": 120
+        },
+        {
+          "placementId": "1601122186362",
+          "dealId": "meitu_inmobi",
+          "tagId": "63",
+          "bundleId": "com.meitu.makeup",
+          "price": 22,
+          "os": "android",
+          "style": "PMP",
+          "content": "feed",
+          "iconSize": 120
+        }
+      ]
+    },
+    "momo": {
+      "placementMapping": [
+        {
+          "placementId": "2000000000000097",
+          "os": "android",
+          "price": 30.0,
+          "bundle": "com.immomo.momo",
+          "size": "9:16"
+        },
+        {
+          "placementId": "2000000000000096",
+          "os": "android",
+          "price": 30.0,
+          "bundle": "com.immomo.momo",
+          "size": "2:3"
+        },
+        {
+          "placementId": "2000000000000094",
+          "os": "ios",
+          "price": 30.0,
+          "bundle": "com.wemomo.momoappdemo1",
+          "size": "9:16"
+        },
+        {
+          "placementId": "2000000000000095",
+          "os": "ios",
+          "price": 30.0,
+          "bundle": "com.wemomo.momoappdemo1",
+          "size": "2:3"
+        }
+      ]
+    }
+  },
+  "iosModuleMapping": {
+    "default": "iphone",
+    "iphone1,1": "iPhone",
+    "iphone3,1": "iPhone 4",
+    "iphone3,2": "iPhone 4",
+    "iphone3,3": "iPhone 4",
+    "iphone4,1": "iPhone 4S",
+    "iphone5,1": "iPhone 5",
+    "iphone5,2": "iPhone 5",
+    "iphone5,3": "iPhone 5C",
+    "iphone5,4": "iPhone 5C",
+    "iphone6,1": "iPhone 5S",
+    "iphone6,2": "iPhone 5S",
+    "iphone7,2": "iPhone 6",
+    "iphone7,1": "iPhone 6 Plus",
+    "iphone8,1": "iPhone 6S",
+    "iphone8,2": "iPhone 6S Plus",
+    "iphone8,4": "iPhone SE",
+    "iphone9,1": "iPhone 7",
+    "iphone9,3": "iPhone 7",
+    "iphone9,2": "iPhone 7 Plus",
+    "iphone9,4": "iPhone 7 Plus"
+  },
+  "androidModuleMapping": {
+    "iqiyi": [
+      "oppo",
+      "vivo",
+      "huawei"
+    ]
+  }
+}

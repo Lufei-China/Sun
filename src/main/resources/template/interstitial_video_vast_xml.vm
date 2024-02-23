@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VAST xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vast.xsd" version="3.0">
+   <Ad id="$vast.adId">
+      <InLine>
+         <AdSystem>$vast.adSystem</AdSystem>
+         <AdTitle>$vast.title</AdTitle>
+         <Error><![CDATA[$vast.errorUrl]]></Error>
+         <Impression><![CDATA[$vast.impressionUrl]]></Impression>
+         <Creatives>
+            <Creative>
+               <Linear>
+                  <Duration>$vast.duration</Duration>
+                  <TrackingEvents>
+                     <Tracking event="start"><![CDATA[$vast.start]]></Tracking>
+                     <Tracking event="firstQuartile"><![CDATA[$vast.q1]]></Tracking>
+                     <Tracking event="midpoint"><![CDATA[$vast.mid]]></Tracking>
+                     <Tracking event="thirdQuartile"><![CDATA[$vast.q3]]></Tracking>
+                     <Tracking event="complete"><![CDATA[$vast.complete]]></Tracking>
+                     <Tracking event="skip"><![CDATA[$vast.skip]]></Tracking>
+                     <Tracking event="clickTracking"><![CDATA[$vast.clickTracking]]></Tracking>
+                  </TrackingEvents>
+                  <VideoClicks>
+                     <ClickThrough><![CDATA[$vast.clickThrough]]></ClickThrough>
+                  </VideoClicks>
+                  <MediaFiles>
+                     <MediaFile delivery="progressive" type="video/mp4" width="" height=""><![CDATA[$vast.videoUrl]]></MediaFile>
+                  </MediaFiles>
+               </Linear>
+            </Creative>
+            <Creative>
+               <CompanionAds>
+                  <Companion id="endCard">
+                        #if ($vast.videoWidth>$vast.videoHeight)
+                            <HTMLResource><![CDATA[<body style="margin:0px;"><div id="creative" style="overflow: hidden"><img src="$vast.endCardImageUrl" width="auto" height="100%" style="object-fit:contain;"></div></body>]]></HTMLResource>
+                        #else
+                            <HTMLResource><![CDATA[<body style="margin:0px;"><div id="creative" style="overflow: hidden"><img src="$vast.endCardImageUrl" width="100%" height="auto" style="object-fit:contain;"></div></body>]]></HTMLResource>
+                        #end
+                      <TrackingEvents>
+                        <Tracking event="creativeView"><![CDATA[$vast.trackingCreativeView]]></Tracking>
+                     </TrackingEvents>
+                     <CompanionClickThrough><![CDATA[$vast.companionClickThrough]]></CompanionClickThrough>
+                  </Companion>
+               </CompanionAds>
+            </Creative>
+         </Creatives>
+      </InLine>
+   </Ad>
+</VAST>

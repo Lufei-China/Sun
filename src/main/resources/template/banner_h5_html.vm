@@ -1,0 +1,27 @@
+<script type="text/javascript">
+    var context = {};
+    context.interactionType = '${model.openMode}';
+    context.targetUrl = '${model.targetUrl}';
+    context.fallbackUrl = '${model.fallbackUrl}';
+    context.landingUrl = '${model.landingUrl}';
+    context.imageWidth = '${htmlContext.image.width}';
+    context.imageHeight = '${htmlContext.image.height}';
+    context.imageUrl = '${htmlContext.image.url}';
+    context.impressionBeacons = [
+        #if(${htmlContext.impressionTrackers})
+            #foreach(${impressionTracker} in ${htmlContext.impressionTrackers})
+                '${impressionTracker}',
+            #end
+        #end
+    ];
+    context.clickBeacons = [
+        #if(${htmlContext.clickTrackers})
+            #foreach(${clickTracker} in ${htmlContext.clickTrackers})
+                '${clickTracker}',
+            #end
+        #end
+    ];
+    window['context'] = context;
+</script>
+<html><head></head><body><div id="banner_box"></div>
+<script>function showMyAd(){var a=context.imageUrl,b=document.createElement("img");b.setAttribute("src",a),b.style.width=context.imageWidth,b.style.height=context.imageHeight,document.getElementById("banner_box").appendChild(b),banner_fireImpressions()}var impression_fired=!1,click_fired=!1,mraid=window.mraid,imraid=window.imraid,context=window.context;window.onerror=function(a,b,c){var d="msg:"+a+",lineNo:"+c+",url:"+b;console.log("window error:"+d)};var banner_events={impressionBeacons:context.impressionBeacons,clickBeacons:context.clickBeacons};window.addEventListener("click",function(){console.log("imraid:",imraid),console.log("mraid:",mraid);var a="";"DOWNLOAD"===context.interactionType||"SKSTORE"===context.interactionType?a=context.targetUrl:"DEEPLINK"===context.interactionType?a=context.landingUrl:"OPEN_IN_APP"===context.interactionType&&(a=landingUrl),banner_fireClicks(banner_events.clickBeacons),imraid&&"function"==typeof imraid.openExternal?(console.log("imraid.openExternal invoke:",a),imraid.openExternal(a)):mraid&&"function"==typeof mraid.open?(console.log("mraid.open invoke:",a),mraid.open(a)):(console.log("window href invoke:",a),window.location.href=a)});var banner_fireBeacon=function(a){if(null!=a){var b=document.createElement("img");b.setAttribute("src",a),b.style.display="none",document.body.appendChild(b)}},banner_fireBeacons=function(a){for(var b=0;b<a.length;++b)banner_fireBeacon(a[b])},banner_fireImpressions=function(){impression_fired||(console.log("inmobi china fire impression"),banner_fireBeacons(context.impressionBeacons),impression_fired=!0)},banner_fireClicks=function(){click_fired||(console.log("inmobi china fire click"),banner_fireBeacons(context.clickBeacons),click_fired=!0)},checkMraidState=function(){console.log("mraid init state:",mraid.getState()),"loading"===mraid.getState()?mraid.addEventListener("ready",showMyAd):(console.log("mraid state:",mraid.getState()),showMyAd())};checkMraidState();</script></body></html>

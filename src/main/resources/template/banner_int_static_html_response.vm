@@ -1,0 +1,28 @@
+#set ($html_page="#parse('banner_int_static_html')")
+{
+"ads": [{
+"pubContent": "$tool.java($html_page)",
+"markupType": "html",
+"expiry": 9000,
+"metaInfo": {
+"creativeType": "nonvideo",
+"iasEnabled": false,
+"adMasterSDKInfo": {
+"enabled": false
+},
+"omsdkInfo": {
+"omidEnabled": false,
+"customReferenceData": "",
+"isolateVerificationScripts": false
+},
+"disableIMViewability": false
+},
+"creativeId": "$model.encryptedAdId",
+"impressionId": "$model.requestId",
+"hasBidEncrypt":  $model.hasBidEncrypt,
+"bidPassthrough": "$model.bidPassthrough",
+"bidSharing": $model.bidSharing,
+"bid": "$model.encryptedBid"
+}],
+"requestId":"$model.requestId"
+}

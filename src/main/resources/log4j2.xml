@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Don't forget to set system property
+
+-Dlog4j2.contextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector
+
+     to make all loggers asynchronous. -->
+
+<configuration packages="com.inmobi.supply.framework.log4j.core.appender" status="WARN">
+    <Properties>
+        <Property name="SERVICENAME">sun</Property>
+        <Property name="PODNAME">${env:HOSTNAME:-sun-default}</Property>
+        <Property name="LOGCENTERKAFKABROKERS">${sys:LogCenterKafkaBrokers:-}</Property>
+    </Properties>
+
+    <Appenders>
+        <!--<Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36}:%L - %msg%n"/>
+        </Console>
+
+        <InmobiKafka name="InmobiKafka" topic="fluentd-log" syncSend="false">
+            <InmobiJsonLayout compact="true" eventEol="true">
+                <KeyValuePair key="timestamp" value="$${date:yyyy-MM-dd'T'HH:mm:ss.SSSZ}"/>
+                <KeyValuePair key="indexname" value="lc-${SERVICENAME}-$${date:yyyyMMdd}"/>
+                <KeyValuePair key="podname" value="${PODNAME}"/>
+            </InmobiJsonLayout>
+            <Property name="bootstrap.servers">${LOGCENTERKAFKABROKERS}</Property>
+            <Property name="batch.size">524288</Property>
+        </InmobiKafka>-->
+    </Appenders>
+    <loggers>
+        <root level="off" includeLocation="true">
+            <!--<appender-ref ref="Console"/>
+            <appender-ref ref="InmobiKafka"/>-->
+        </root>
+        <!--<Logger name="org.apache.kafka" level="INFO"/>-->
+        <Logger name="org.apache.kafka" level="ERROR"/>
+    </loggers>
+</configuration>

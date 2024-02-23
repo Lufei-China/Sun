@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Don't forget to set system property
+-Dlog4j2.contextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector
+     to make all loggers asynchronous. -->
+<configuration status="WARN">
+    <loggers>
+        <root level="off">
+        </root>
+        <Logger name="org.apache.kafka" level="off"/>
+    </loggers>
+</configuration>

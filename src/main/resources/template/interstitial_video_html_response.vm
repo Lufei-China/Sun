@@ -1,0 +1,50 @@
+#set ($primaryViewWidth=$model.parentViewWidth)
+#set ($aspectRatio=$math.div($model.video.coverWidth, $model.video.coverHeight))
+#set ($primaryViewHeight = $math.ceil($math.div($primaryViewWidth, $aspectRatio)))
+
+#set ($bitRate = $math.ceil($math.div($model.video.size, $model.video.videoDuration)))
+
+#if($model.openMode == "DEEPLINK")
+	#set($pagesArrayItemUrl = $model.itemUrl)
+#else
+	#set($pagesArrayItemUrl = "109|click|video")
+#end
+#set ($html_page="#parse('interstitial_video_html')")
+{
+	"ads": [{
+		"pubContent": "$tool.java($html_page)",
+		"markupType": "html",
+		"expiry": 9000,
+        "allowAutoRedirection": $htmlContext.allowAutoRedirection,
+		"metaInfo": {
+			"creativeType": "video",
+			"iasEnabled": false,
+			"adMasterSDKInfo": {
+				"enabled": false
+			},
+			"omsdkInfo": {
+				"omidEnabled": false,
+				"customReferenceData": "",
+				"isolateVerificationScripts": false
+			},
+			"disableIMViewability": false,
+			"interaction" :{
+				"openMode":"$model.openMode",
+				"itemUrl":"$model.itemUrl",
+				"fallbackUrl":"$model.fallbackUrl"
+			},
+            "eventTrackers": $model.sdkAllTrackers
+		},
+		"tracking": "web",
+		"creativeId": "$model.encryptedAdId",
+		"impressionId": "$model.requestId",
+		"hasBidEncrypt": $model.hasBidEncrypt,
+		"bidPassthrough": $model.bidPassthrough,
+		"bidSharing": $model.bidSharing,
+		"bid": "$model.encryptedBid",
+		"rewards": {
+		"default": "default"
+		}
+	}],
+	"requestId": "$model.requestId"
+}

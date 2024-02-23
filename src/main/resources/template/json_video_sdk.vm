@@ -1,0 +1,296 @@
+
+#set ($primaryViewWidth=$model.parentViewWidth)
+#set ($aspectRatio=$math.div($model.video.coverWidth, $model.video.coverHeight))
+#set ($primaryViewHeight = $math.ceil($math.div($primaryViewWidth, $aspectRatio)))
+
+#set ($bitRate = $math.ceil($math.div($model.video.size, $model.video.videoDuration)))
+
+#if($model.openMode == "DEEPLINK")
+	#set($pagesArrayItemUrl = $model.itemUrl)
+#else
+	#set($pagesArrayItemUrl = "109|click|video")
+#end
+{
+	"ads": [{
+		"pubContent": {
+			"version": 0.1,
+			"orientation": "portrait",
+			"shouldAutoOpenLandingPage": $model.shouldAutoOpenLandingPage,
+			"styleRefs": {
+				"defaultStyle": {
+					"geometry": [
+						0,
+						0,
+						0,
+						0
+					]
+				}
+			},
+			"passThroughJson": {
+			},
+			"adContent": {
+				"title": "$model.title",
+				"description": "$model.description",
+				"iconUrl": "$model.iconUrl",
+				"ctaText": "$model.ctaText",
+				"rating": "",
+				"landingPageUrl": "$model.itemUrl",
+				"isApp": $model.app
+				#if($model.originId != "" && $model.originId)
+					,"originId": "$model.originId"
+				#else
+				#end
+			},
+			"trackers": $model.ctaTrackers,
+			"eventTrackers": "$model.allTrackers",
+			"onClick": {
+				"itemUrl": "109|click|video",
+				"openMode": "$model.openMode",
+				"appBundleId":"$model.packageName",
+				"appName":"$model.appName",
+				"adName":"$model.adName",
+				"fallbackUrl": "$model.fallbackUrl"
+				#if($model.openMode.endsWith("SKSTORE") && $model.skanVersion != "")
+					,"skAdNetworkParams":{
+						"version": "$model.skanVersion",
+						"network": "$model.network",
+						"campaign": "$model.campaign",
+						"nonce": "$model.nonce",
+						"sourceapp": "$model.sourceapp",
+						"itunesitem": "$model.itunesitem",
+						"timestamp": "$model.timestamp",
+						"ctaSignature": "$model.ctaSignature",
+						"vtaSignature" : "$model.vtaSignature"
+					}
+				#else
+				#end
+			},
+			"rootContainer": {
+                "assetName": "root",
+				"assetType": "container",
+				"assetStyle": {
+					"backgroundColor": "#ff7f7f7f",
+					"geometry": [
+						0,
+						0,
+						$primaryViewWidth,
+                        $primaryViewHeight
+					]
+				},
+				"assetValue": [{
+						"assetName": "videoAsset",
+	                    "assetType": "VIDEO",
+						"assetValue": [],
+						"showMute": false,
+						"soundOn": false,
+						"showProgress": false,
+						"loop": false,
+						"autoPlay": true,
+						"assetId": "109",
+						"video": {
+							"duration": $model.video.videoDuration,
+							"format": "mp4",
+							"clickThroughUrl": "$model.itemUrl",
+							"mediaFiles": [{
+									"url": "$model.video.videoUrl",
+									"height": $model.video.coverHeight,
+									"width": $model.video.coverWidth,
+									"bitRate": $bitRate
+								}
+							],
+							"trackers": $model.deckTrackers
+						},
+						"assetStyle": {
+							"geometry": [
+								0,
+								0,
+								$primaryViewWidth,
+                                $primaryViewHeight
+							]
+						}
+					},
+					{
+					    "assetName": "videoOverlay",
+                    	"assetType": "image",
+						"assetValue": [
+							"https://cdn-supply.inmobi.cn/sdk/sdk/700/transparent1486721946.png"
+						],
+						"assetStyle": {
+							"geometry": [
+								0,
+								0,
+								$model.video.coverWidth,
+                                $model.video.coverHeight
+							],
+							"contentMode": "aspectFit"
+						},
+						"assetOnclick": {
+							"itemUrl": "$pagesArrayItemUrl",
+							"openMode": "$model.openMode",
+							"fallbackUrl": "$model.fallbackUrl"
+							#if($model.openMode.endsWith("SKSTORE") && $model.skanVersion != "")
+							,"skAdNetworkParams":{
+								"version": "$model.skanVersion",
+								"network": "$model.network",
+								"campaign": "$model.campaign",
+								"nonce": "$model.nonce",
+								"sourceapp": "$model.sourceapp",
+								"itunesitem": "$model.itunesitem",
+								"timestamp": "$model.timestamp",
+								"ctaSignature": "$model.ctaSignature",
+								"vtaSignature" : "$model.vtaSignature"
+							}
+							#else
+							#end
+						},
+						"trackers":$model.ctaTrackers
+					},
+					{
+						"assetValue": [
+							"https://cdn-supply.inmobi.cn/sdk/sdk/700/5fc0a0a17c0e4bd1ba5133e33d4cc88a.png"
+						],
+						"assetName": "adChoicesButton",
+						"assetType": "image",
+						"assetStyle": {
+							"geometry": [
+								10,
+								$math.sub($primaryViewHeight, 25),
+								103,
+								20
+							],
+							"contentMode": "aspectFit"
+						},
+						"assetOnclick": {
+							"itemUrl": "https://www.inmobi.cn/page/opt-out?i=%7B%22IDA%22%3A%22A710847B-BB93-4131-8907-8615A85AF5DA%22%7D",
+							"openMode": "$model.openMode"
+							#if($model.openMode.endsWith("SKSTORE") && $model.skanVersion != "")
+							,"skAdNetworkParams":{
+								"version": "$model.skanVersion",
+								"network": "$model.network",
+								"campaign": "$model.campaign",
+								"nonce": "$model.nonce",
+								"sourceapp": "$model.sourceapp",
+								"itunesitem": "$model.itunesitem",
+								"timestamp": "$model.timestamp",
+								"ctaSignature": "$model.ctaSignature",
+								"vtaSignature" : "$model.vtaSignature"
+							}
+							#else
+							#end
+
+						}
+					}
+				]
+			},
+			"pages": [{
+				"version": 0.1,
+				"orientation": "portrait",
+				"disableBackButton": true,
+				"styleRefs": {
+					"defaultStyle": {
+						"geometry": [
+							0,
+							0,
+							0,
+							0
+						]
+					}
+				},
+				"rootContainer": {
+				    "assetName": "root",
+                	"assetType": "container",
+                	"assetStyle": {
+                		"backgroundColor": "#00000000",
+                		"geometry": [
+                			0,
+                			0,
+                			250,
+                			150
+               			]
+   					},
+					"assetValue": [{
+							"assetValue": [
+								"109"
+							],
+							"showMute": false,
+							"soundOn": true,
+							"showProgress": false,
+							"loop": false,
+							"assetId": "110",
+							"assetName": "videoRefAsset",
+							"assetType": "VIDEO",
+							"assetStyle": {
+								"geometry": [
+									0,
+									0,
+									250,
+									150
+								]
+							},
+							"valueType": "reference"
+						},
+						{
+						    "assetName": "videoOverlay",
+                        	"assetType": "image",
+							"assetValue": [
+								"https://cdn-supply.inmobi.cn/sdk/sdk/700/transparent1486721946.png"
+							],
+							"assetStyle": {
+								"geometry": [
+									0,
+									0,
+									250,
+									150
+								],
+								"contentMode": "aspectFit"
+							},
+							"assetOnclick": {
+								"itemUrl": "$pagesArrayItemUrl",
+								"fallbackUrl": "$model.fallbackUrl",
+								"openMode": "$model.openMode"
+								#if($model.openMode.endsWith("SKSTORE") && $model.skanVersion != "")
+								,"skAdNetworkParams":{
+									"version": "$model.skanVersion",
+									"network": "$model.network",
+									"campaign": "$model.campaign",
+									"nonce": "$model.nonce",
+									"sourceapp": "$model.sourceapp",
+									"itunesitem": "$model.itunesitem",
+									"timestamp": "$model.timestamp",
+									"ctaSignature": "$model.ctaSignature",
+									"vtaSignature" : "$model.vtaSignature"
+								}
+								#else
+								#end
+							},
+							"trackers":$model.ctaTrackers
+						}
+					]
+				}
+			}]
+		},
+		"markupType": "inmobiJson",
+		"expiry": 9000,
+		"metaInfo": {
+			"creativeType": "video",
+			"iasEnabled": false,
+			"adMasterSDKInfo": {
+				"enabled": false
+			},
+			"omsdkInfo": {
+				"omidEnabled": false,
+				"customReferenceData": "",
+				"isolateVerificationScripts": false
+			},
+			"disableIMViewability": false
+		},
+		"tracking": "web",
+		"creativeId": "$model.encryptedAdId",
+		"impressionId": "$model.requestId",
+		"hasBidEncrypt": $model.hasBidEncrypt,
+		"bidPassthrough": $model.bidPassthrough,
+		"bidSharing": $model.bidSharing,
+		"bid": "$model.encryptedBid"
+	}],
+	"requestId": "$model.requestId"
+}
